@@ -1,0 +1,19 @@
+dogs.list.name: Name
+dogs.list.birthday: Birthday
+nursery.list.name: Nursery
+nursery.list.photo: Photo
+nursery.list.bdate: Birthday
+nursery.list.owner: Owner
+nursery.list.adress: Adress
+nursery.list.phone: Phone
+nursery.list.cellphone: Cellphone
+nursery.list.email: E-mail
+nursery.list.site: Site
+nursery.list.about: About
+nursery.list.nursery: Nursery list
+total.action: Action
+total.show: Show
+total.edit: Edit
+total.create: Create
+total.delete: Delete
+total.back: Back

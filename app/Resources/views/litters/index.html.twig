@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Litters list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ldate</th>
+                <th>Idlitters</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for litter in litters %}
+            <tr>
+                <td><a href="{{ path('litters_show', { 'idLitters': litter.idLitters }) }}">{{ litter.ldate }}</a></td>
+                <td>{{ litter.idLitters }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('litters_show', { 'idLitters': litter.idLitters }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('litters_new') }}">Create a new litter</a>
+        </li>
+    </ul>
+{% endblock %}

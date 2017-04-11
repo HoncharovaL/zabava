@@ -1,0 +1,84 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * Vaccinations
+ */
+class Vaccinations
+{
+    /**
+     * @var string
+     */
+    private $vaccinations;
+
+    /**
+     * @var string
+     */
+    private $ageVac;
+
+    /**
+     * @var integer
+     */
+    private $idVaccinations;
+
+
+    /**
+     * Set vaccinations
+     *
+     * @param string $vaccinations
+     *
+     * @return Vaccinations
+     */
+    public function setVaccinations($vaccinations)
+    {
+        $this->vaccinations = $vaccinations;
+
+        return $this;
+    }
+
+    /**
+     * Get vaccinations
+     *
+     * @return string
+     */
+    public function getVaccinations()
+    {
+        return $this->vaccinations;
+    }
+
+    /**
+     * Set ageVac
+     *
+     * @param string $ageVac
+     *
+     * @return Vaccinations
+     */
+    public function setAgeVac($ageVac)
+    {
+        $this->ageVac = $ageVac;
+
+        return $this;
+    }
+
+    /**
+     * Get ageVac
+     *
+     * @return string
+     */
+    public function getAgeVac()
+    {
+        return $this->ageVac;
+    }
+
+    /**
+     * Get idVaccinations
+     *
+     * @return integer
+     */
+    public function getIdVaccinations()
+    {
+        return $this->idVaccinations;
+    }
+}
+

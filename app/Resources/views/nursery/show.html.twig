@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{'nursery.list.about'|trans}}</h1>
+
+    <table>
+             <tbody>  
+              <tr>
+                <th>{{'nursery.list.name'|trans}}</th>
+                <td>{{ nursery.nameNur }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.photo'|trans}}</th>
+                <td> <img src="{{nursery.photo}}" alt="nursery" style="width:304px;height:228px;"> </td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.bdate'|trans}}</th>
+                <td>{% if nursery.bdate %}{{ nursery.bdate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.owner'|trans}}</th>
+                <td>{{ nursery.owner }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.adress'|trans}}</th>
+                <td>{{ nursery.adress }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.phone'|trans}}</th>
+                 <td>{{ nursery.phone }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.cellphone'|trans}}</th>
+                <td>{{ nursery.cellphone }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.email'|trans}}</th>
+                <td>{{ nursery.email }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.site'|trans}}</th>
+                <td>{{ nursery.site }}</td>
+            </tr>
+            <tr>
+                <th>{{'nursery.list.about'|trans}}</th>
+                <td>{{ nursery.about }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('homepage')}}">{{'total.back'|trans}}</a>
+        </li>
+        <li>
+            <a href="{{ path('nursery_edit', { 'idNursery': nursery.idNursery }) }}">{{'total.edit'|trans}}</a>
+        </li>
+
+    </ul>
+{% endblock %}

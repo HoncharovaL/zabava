@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\DogTitles" table="dog_titles">
+    <indexes>
+      <index name="id_dogs" columns="id_dogs"/>
+      <index name="id_titles" columns="id_titles"/>
+    </indexes>
+    <id name="idDogTit" type="integer" column="id_dog_tit">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="description" type="text" column="description" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idTitles" target-entity="Titles" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_titles" referenced-column-name="id_titles"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDogs" target-entity="Dogs" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_dogs" referenced-column-name="id_dogs"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

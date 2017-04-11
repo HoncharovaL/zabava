@@ -1,0 +1,289 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Dogs
+ *
+ * @ORM\Table(name="dogs", indexes={@ORM\Index(name="id_litter", columns={"id_litter"}), @ORM\Index(name="id_nursery", columns={"id_nursery"})})
+ * @ORM\Entity
+ */
+class Dogs
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="bdate", type="date", nullable=false)
+     */
+    private $bdate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=300, nullable=false)
+     */
+    private $photo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quality", type="string", length=100, nullable=false)
+     */
+    private $quality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sex", type="string", length=10, nullable=false)
+     */
+    private $sex;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_dogs", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idDogs;
+
+    /**
+     * @var \AppBundle\Entity\Nursery
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Nursery")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_nursery", referencedColumnName="id_nursery")
+     * })
+     */
+    private $idNursery;
+
+    /**
+     * @var \AppBundle\Entity\Litters
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Litters")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_litter", referencedColumnName="id_litters")
+     * })
+     */
+    private $idLitter;
+
+
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Dogs
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set bdate
+     *
+     * @param \DateTime $bdate
+     *
+     * @return Dogs
+     */
+    public function setBdate($bdate)
+    {
+        $this->bdate = $bdate;
+
+        return $this;
+    }
+
+    /**
+     * Get bdate
+     *
+     * @return \DateTime
+     */
+    public function getBdate()
+    {
+        return $this->bdate;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Dogs
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Dogs
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set quality
+     *
+     * @param string $quality
+     *
+     * @return Dogs
+     */
+    public function setQuality($quality)
+    {
+        $this->quality = $quality;
+
+        return $this;
+    }
+
+    /**
+     * Get quality
+     *
+     * @return string
+     */
+    public function getQuality()
+    {
+        return $this->quality;
+    }
+
+    /**
+     * Set sex
+     *
+     * @param string $sex
+     *
+     * @return Dogs
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * Get sex
+     *
+     * @return string
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
+     * Get idDogs
+     *
+     * @return integer
+     */
+    public function getIdDogs()
+    {
+        return $this->idDogs;
+    }
+
+    /**
+     * Set idNursery
+     *
+     * @param \AppBundle\Entity\Nursery $idNursery
+     *
+     * @return Dogs
+     */
+    public function setIdNursery(\AppBundle\Entity\Nursery $idNursery = null)
+    {
+        $this->idNursery = $idNursery;
+
+        return $this;
+    }
+
+    /**
+     * Get idNursery
+     *
+     * @return \AppBundle\Entity\Nursery
+     */
+    public function getIdNursery()
+    {
+        return $this->idNursery;
+    }
+
+    /**
+     * Set idLitter
+     *
+     * @param \AppBundle\Entity\Litters $idLitter
+     *
+     * @return Dogs
+     */
+    public function setIdLitter(\AppBundle\Entity\Litters $idLitter = null)
+    {
+        $this->idLitter = $idLitter;
+
+        return $this;
+    }
+
+    /**
+     * Get idLitter
+     *
+     * @return \AppBundle\Entity\Litters
+     */
+    public function getIdLitter()
+    {
+        return $this->idLitter;
+    }
+}

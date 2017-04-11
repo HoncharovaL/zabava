@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Titles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Idtitles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for title in titles %}
+            <tr>
+                <td><a href="{{ path('titles_show', { 'idTitles': title.idTitles }) }}">{{ title.title }}</a></td>
+                <td>{{ title.idTitles }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('titles_show', { 'idTitles': title.idTitles }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('titles_edit', { 'idTitles': title.idTitles }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('titles_new') }}">Create a new title</a>
+        </li>
+    </ul>
+{% endblock %}

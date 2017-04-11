@@ -1,0 +1,134 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Litters
+ *
+ * @ORM\Table(name="litters", indexes={@ORM\Index(name="id_mother", columns={"id_mother"}), @ORM\Index(name="id_father", columns={"id_father"})})
+ * @ORM\Entity
+ */
+class Litters
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ldate", type="date", nullable=false)
+     */
+    private $ldate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_litters", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idLitters;
+
+    /**
+     * @var \AppBundle\Entity\Dogs
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_mother", referencedColumnName="id_dogs")
+     * })
+     */
+    private $idMother;
+
+    /**
+     * @var \AppBundle\Entity\Dogs
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_father", referencedColumnName="id_dogs")
+     * })
+     */
+    private $idFather;
+
+
+
+    /**
+     * Set ldate
+     *
+     * @param \DateTime $ldate
+     *
+     * @return Litters
+     */
+    public function setLdate($ldate)
+    {
+        $this->ldate = $ldate;
+
+        return $this;
+    }
+
+    /**
+     * Get ldate
+     *
+     * @return \DateTime
+     */
+    public function getLdate()
+    {
+        return $this->ldate;
+    }
+
+    /**
+     * Get idLitters
+     *
+     * @return integer
+     */
+    public function getIdLitters()
+    {
+        return $this->idLitters;
+    }
+
+    /**
+     * Set idMother
+     *
+     * @param \AppBundle\Entity\Dogs $idMother
+     *
+     * @return Litters
+     */
+    public function setIdMother(\AppBundle\Entity\Dogs $idMother = null)
+    {
+        $this->idMother = $idMother;
+
+        return $this;
+    }
+
+    /**
+     * Get idMother
+     *
+     * @return \AppBundle\Entity\Dogs
+     */
+    public function getIdMother()
+    {
+        return $this->idMother;
+    }
+
+    /**
+     * Set idFather
+     *
+     * @param \AppBundle\Entity\Dogs $idFather
+     *
+     * @return Litters
+     */
+    public function setIdFather(\AppBundle\Entity\Dogs $idFather = null)
+    {
+        $this->idFather = $idFather;
+
+        return $this;
+    }
+
+    /**
+     * Get idFather
+     *
+     * @return \AppBundle\Entity\Dogs
+     */
+    public function getIdFather()
+    {
+        return $this->idFather;
+    }
+}

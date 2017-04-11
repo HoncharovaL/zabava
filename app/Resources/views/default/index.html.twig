@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <a href="{{ path('nursery_show', { 'idNursery': 1}) }}">{{'nursery.list.about'|trans}}</a>
+    <a href="{{path('titles_index')}}">titles are there</a>
+    <a href="{{path('litters_index')}}">litters are there</a>
+    <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
+    
+    hi there, here will be news soon
+
+{% endblock %}

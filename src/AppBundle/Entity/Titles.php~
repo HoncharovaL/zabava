@@ -1,0 +1,55 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * Titles
+ */
+class Titles
+{
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var integer
+     */
+    private $idTitles;
+
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Titles
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Get idTitles
+     *
+     * @return integer
+     */
+    public function getIdTitles()
+    {
+        return $this->idTitles;
+    }
+}
+

@@ -1,0 +1,19 @@
+dogs.list.name: Имя
+dogs.list.birthday: Дата рождения
+nursery.list.name: Питомник
+nursery.list.photo: Фотография
+nursery.list.bdate: Дата основания
+nursery.list.owner: Владелец
+nursery.list.adress: Адрес
+nursery.list.phone: Телефон
+nursery.list.cellphone: Мобильный телефон
+nursery.list.email: E-mail
+nursery.list.site: Сайт
+nursery.list.about: О питомнике
+nursery.list.nursery: Список питомников
+total.action: Действия
+total.show: Подробнее
+total.edit: Изменить
+total.create: Создать
+total.delete: Удалить
+total.back: Назад

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{path('nursery_index')}}">nursery are there</a>
+    <a href="{{path('titles_index')}}">titles are there</a>
+    <a href="{{path('litters_index')}}">litters are there</a>
+    <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
+    <h1>Dogs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>{% trans %}dogs.list.name{% endtrans %}</th>
+                <th>{{'dogs.list.birthday'|trans}}</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Quality</th>
+                <th>Sex</th>
+                <th>Iddogs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dog in dogs %}
+            <tr>
+                <td><a href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">{{ dog.name }}</a></td>
+                <td>{% if dog.bdate %}{{ dog.bdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ dog.description }}</td>
+                
+                <td> <img src="{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
+                <td>{{ dog.quality }}</td>
+                <td>{{ dog.sex }}</td>
+                <td>{{ dog.nameNur}}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dogs_new') }}">Create a new dog</a>
+        </li>
+    </ul>
+{% endblock %}
