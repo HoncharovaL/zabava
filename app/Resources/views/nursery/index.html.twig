@@ -16,7 +16,7 @@
             <tr>
                 <td><a href="{{ path('nursery_show', { 'idNursery': nursery.idNursery }) }}">{{ nursery.nameNur }}</a></td>
                 <td>{% if nursery.bdate %}{{ nursery.bdate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ nursery.owner }}</td>
+                <td>{{ 'nursery.list.owner'|trans }}</td>
                 <td>
                     <ul>
                         <li>
