@@ -4,3 +4,5 @@
 /var/sessions/
 /vendor/
 /web/bundles/
+/nbproject/private/
+/nbproject/
