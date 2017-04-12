@@ -13,7 +13,17 @@ class NurseryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nameNur')->add('bdate')->add('owner')->add('adress')->add('phone')->add('cellphone')->add('email')->add('photo')->add('about')->add('site');
+$builder->add('nameNur', null, array('label' => 'Название питомника'))
+        ->add('photo')
+        ->add('bdate', null, array('label' => 'Дата основания'))
+        ->add('owner', null, array('label' => 'Владелец'))
+        ->add('adress', null, array('label' => 'Адрес'))
+        ->add('phone', null, array('label' => 'Телефон'))
+        ->add('cellphone', null, array('label' => 'Мобильный телефон'))
+        ->add('email', null, array('label' => 'Электронный почтовый ящик'))     
+        ->add('site', null, array('label' => 'Сайт'))
+        ->add('about', null, array('label' => 'О нас '))
+        ;
     }
     
     /**
@@ -33,6 +43,4 @@ class NurseryType extends AbstractType
     {
         return 'appbundle_nursery';
     }
-
-
 }
