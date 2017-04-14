@@ -1,0 +1,8 @@
+services:
+    app.twig_extension:
+        class: AppBundle\Twig\Extension\NurseryExtension
+        public: false
+        arguments:
+            - '@doctrine'
+        tags:
+            - { name: twig.extension }

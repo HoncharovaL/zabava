@@ -17,3 +17,16 @@ total.edit: Edit
 total.create: Create
 total.delete: Delete
 total.back: Back
+
+main: 
+    title: Home
+header:
+    link:
+        main: Home
+        our_dogs: Our dogs
+        litters: Litters
+        advices: Care tips
+        exhibitions: Exhibitions
+        services: Services
+        gallery: Gallery
+        reviews: Reviews

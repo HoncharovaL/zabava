@@ -17,3 +17,17 @@ total.edit: Изменить
 total.create: Создать
 total.delete: Удалить
 total.back: Назад
+
+main: 
+    title: Главная
+    
+header:
+    link:
+        main: Главная
+        our_dogs: Наши собаки
+        litters: Пометы
+        advices: Советы по уходу
+        exhibitions: Выставки
+        services: Услуги
+        gallery: Галерея
+        reviews: Отзывы

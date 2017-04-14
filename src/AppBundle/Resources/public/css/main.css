@@ -1,0 +1,102 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+/*
+@font-face {
+    font-family: customFont;
+    src: url(fonts/EIRIK_RAUDE.ttf);
+}*/
+
+/*div {
+подзаголовки, кнопки
+    font-family: myFirstFont;
+}*/
+
+body 
+{
+    background-color: #f8f8f8;
+    color: #323232;
+    font: 14px Verdana;
+}
+
+.container {
+    width: 1300px;
+    margin: auto;
+}
+
+.header {
+    background-image: url(../img/top.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    height: 142px;
+}
+.header-top {
+    vertical-align: middle;
+    padding: 20px 15px;
+}
+
+.header-top .logo {
+    width: 25%;
+    float: left;
+    height: 77px;
+    display: inline-block;
+}
+
+.header-top .menu-item {
+    height: 77px;
+    display: inline-block;
+    margin: 0 15px;
+    padding-top: 20px;
+}
+
+.header-top .menu-item a {
+    color: #323232;
+    text-decoration: none;
+}
+
+.header-top .menu-item a:hover {
+    color: #e59e18;
+    border-bottom: 2px #e59e18 dashed;
+}
+
+.header-bottom {
+    margin: -35px auto;
+    width: 30%;
+}
+
+.header-bottom .header-bottom-phonenumber {
+    display: inline-block;
+    margin-left: 65px;
+}
+
+.header-bottom .header-bottom-phonenumber img {
+    width: 20px;
+    float: left;
+}
+
+.footer {
+    background-color: #eeeeec;
+}
+
+.footer .footer-contacts,
+.footer .footer-logo
+{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+.footer hr {
+    color: #323232;
+    background-color: #323232; /* too dark*/
+    width: 30%;
+    margin: auto;
+    height: 1px;
+}
+
+.footer-contacts-phone {
+    font-weight: bold;
+}
