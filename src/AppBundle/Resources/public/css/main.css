@@ -58,13 +58,12 @@ body
 }
 
 .header-bottom {
-    margin: -35px auto;
-    width: 30%;
+    margin: -35px 0 0 38%;
 }
 
 .header-bottom .header-bottom-phonenumber {
     display: inline-block;
-    margin-left: 65px;
+    width: 30%;
     font: 18px eirikRaude;
 }
 
