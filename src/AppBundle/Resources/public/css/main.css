@@ -74,6 +74,7 @@ body
 }
 
 .footer {
+    padding: 30px 0;
     background-color: #eeeeec;
 }
 
@@ -81,8 +82,8 @@ body
 .footer .footer-logo
 {
     width: 30%;
-    margin: auto;
     text-align: center;
+    margin: 30px auto;
 }
 
 .footer hr {
