@@ -1,29 +1,43 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Services
+ *  
+ * @ORM\Table(name="services")
+ * @ORM\Entity
  */
 class Services
 {
     /**
      * @var string
+     *   
+     * @ORM\Column(name="services", type="string", length=200, nullable=false)
      */
     private $services;
 
     /**
      * @var string
+     *   
+     * @ORM\Column(name="description", type="string", length=200, nullable=false)
      */
     private $description;
 
     /**
      * @var string
+     *      
+     * @ORM\Column(name="price", type="string", length=200, nullable=false)
      */
     private $price;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_services", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idServices;
 

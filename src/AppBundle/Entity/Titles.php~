@@ -1,19 +1,28 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Titles
+ *  
+ * @ORM\Table(name="titles")
+ * @ORM\Entity
  */
 class Titles
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=200, nullable=false)
      */
     private $title;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id_titles", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idTitles;
 
@@ -52,4 +61,3 @@ class Titles
         return $this->idTitles;
     }
 }
-

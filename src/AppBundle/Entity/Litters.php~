@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Litters
@@ -36,7 +37,7 @@ class Litters
      *   @ORM\JoinColumn(name="id_mother", referencedColumnName="id_dogs")
      * })
      */
-    private $idMother;
+    private $mother;
 
     /**
      * @var \AppBundle\Entity\Dogs
@@ -46,9 +47,17 @@ class Litters
      *   @ORM\JoinColumn(name="id_father", referencedColumnName="id_dogs")
      * })
      */
-    private $idFather;
+    private $father;
 
+    /**
+     * @var ArrayCollection|AppBundle\Entity\Dogs[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dogs", mappedBy="litters")
+     */
+    private $dogs;
 
+    public function __construct() {
+        $this->dogs = new ArrayCollection();
+    }
 
     /**
      * Set ldate
@@ -87,48 +96,82 @@ class Litters
     /**
      * Set idMother
      *
-     * @param \AppBundle\Entity\Dogs $idMother
+     * @param \AppBundle\Entity\Dogs $Mother
      *
      * @return Litters
      */
-    public function setIdMother(\AppBundle\Entity\Dogs $idMother = null)
+    public function setMother(\AppBundle\Entity\Dogs $Mother = null)
     {
-        $this->idMother = $idMother;
+        $this->mother = $Mother;
 
         return $this;
     }
 
     /**
-     * Get idMother
+     * Get Mother
      *
      * @return \AppBundle\Entity\Dogs
      */
-    public function getIdMother()
+    public function getMother()
     {
-        return $this->idMother;
+        return $this->mother;
     }
 
     /**
-     * Set idFather
+     * Set Father
      *
-     * @param \AppBundle\Entity\Dogs $idFather
+     * @param \AppBundle\Entity\Dogs $father
      *
      * @return Litters
      */
-    public function setIdFather(\AppBundle\Entity\Dogs $idFather = null)
+    public function setFather(\AppBundle\Entity\Dogs $father = null)
     {
-        $this->idFather = $idFather;
+        $this->father = $father;
 
         return $this;
     }
 
     /**
-     * Get idFather
+     * Get father
      *
      * @return \AppBundle\Entity\Dogs
      */
-    public function getIdFather()
+    public function getFather()
     {
-        return $this->idFather;
+        return $this->father;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return sprintf('%s + %s (%s)',
+                $this->getFather()->getName(),
+                $this->getMother()->getName(),
+                $this->ldate->format('d.m.Y'));
+    }
+
+    /**
+     * Set dogs
+     *
+     * @param ArrayCollection $dogs
+     *
+     * @return Litters
+     */
+    public function setDogs(ArrayCollection $dogs)
+    {
+        $this->dogs = $dogs;
+
+        return $this;
+    }
+
+    /**
+     * Get dogs
+     *
+     * @return ArrayCollection
+     */
+    public function getDogs()
+    {
+        return $this->dogs;
     }
 }
