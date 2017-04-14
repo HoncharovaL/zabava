@@ -36,7 +36,7 @@ class DogTitles
      *   @ORM\JoinColumn(name="id_titles", referencedColumnName="id_titles")
      * })
      */
-    private $idTitles;
+    private $titles;
 
     /**
      * @var \AppBundle\Entity\Dogs
@@ -85,27 +85,27 @@ class DogTitles
     }
 
     /**
-     * Set idTitles
+     * Set titles
      *
      * @param \AppBundle\Entity\Titles $idTitles
      *
      * @return DogTitles
      */
-    public function setIdTitles(\AppBundle\Entity\Titles $idTitles = null)
+    public function setTitles(\AppBundle\Entity\Titles $titles = null)
     {
-        $this->idTitles = $idTitles;
+        $this->titles = $titles;
 
         return $this;
     }
 
     /**
-     * Get idTitles
+     * Get titles
      *
      * @return \AppBundle\Entity\Titles
      */
-    public function getIdTitles()
+    public function getTitles()
     {
-        return $this->idTitles;
+        return $this->titles;
     }
 
     /**

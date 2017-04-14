@@ -282,4 +282,28 @@ class Dogs {
     public function __construct() {
         $this->dogtitles = new ArrayCollection();
     }
+
+    /**
+     * Add dogtitle
+     *
+     * @param \AppBundle\Entity\DogTitles $dogtitle
+     *
+     * @return Dogs
+     */
+    public function addDogtitle(\AppBundle\Entity\DogTitles $dogtitle)
+    {
+        $this->dogtitles[] = $dogtitle;
+
+        return $this;
+    }
+
+    /**
+     * Remove dogtitle
+     *
+     * @param \AppBundle\Entity\DogTitles $dogtitle
+     */
+    public function removeDogtitle(\AppBundle\Entity\DogTitles $dogtitle)
+    {
+        $this->dogtitles->removeElement($dogtitle);
+    }
 }

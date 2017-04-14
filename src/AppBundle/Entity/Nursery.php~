@@ -70,7 +70,49 @@ class Nursery
      */
     private $idNursery;
 
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=50)
+     */
+    private $photo;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="about",  type="text", length=65535)
+     */
+    private $about;
+    public function getAbout() {
+        return $this->about;
+    }
 
+    public function setAbout($about) {
+        $this->about = $about;
+    }
+
+        public function getPhoto() {
+        return $this->photo;
+    }
+
+    public function getSite() {
+        return $this->site;
+    }
+
+    public function setPhoto($photo) {
+        $this->photo = $photo;
+    }
+
+    public function setSite($site) {
+        $this->site = $site;
+    }
+
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="site", type="string", length=100)
+     */
+    private $site;
 
     /**
      * Set nameNur
@@ -248,5 +290,12 @@ class Nursery
     public function getIdNursery()
     {
         return $this->idNursery;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return $this->nameNur;;
     }
 }

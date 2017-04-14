@@ -1,14 +1,20 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Vaccinations
+ *  
+ * @ORM\Table(name="vaccinations")
+ * @ORM\Entity
  */
 class Vaccinations
 {
     /**
      * @var string
+     *      
+     * @ORM\Column(name="vaccinations", type="string", length=200, nullable=false)
      */
     private $vaccinations;
 
@@ -19,6 +25,10 @@ class Vaccinations
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="id_vaccinations", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idVaccinations;
 

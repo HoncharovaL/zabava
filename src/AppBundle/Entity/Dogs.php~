@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Dogs
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="dogs", indexes={@ORM\Index(name="id_litter", columns={"id_litter"}), @ORM\Index(name="id_nursery", columns={"id_nursery"})})
  * @ORM\Entity
  */
-class Dogs
-{
+class Dogs {
+
     /**
      * @var string
      *
@@ -53,8 +54,30 @@ class Dogs
      * @ORM\Column(name="sex", type="string", length=10, nullable=false)
      */
     private $sex;
-
+    
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="state", type="integer")
+     */
+    private $state;
+    function getState() {
+        return $this->state;
+    }
+
+    function getDogtitles() {
+        return $this->dogtitles;
+    }
+
+    function setState($state) {
+        $this->state = $state;
+    }
+
+    function setDogtitles(ArrayCollection $dogtitles) {
+        $this->dogtitles = $dogtitles;
+    }
+
+        /**
      * @var integer
      *
      * @ORM\Column(name="id_dogs", type="bigint")
@@ -71,19 +94,22 @@ class Dogs
      *   @ORM\JoinColumn(name="id_nursery", referencedColumnName="id_nursery")
      * })
      */
-    private $idNursery;
+    private $nursery;
 
     /**
      * @var \AppBundle\Entity\Litters
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Litters")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_litter", referencedColumnName="id_litters")
-     * })
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Litters", inversedBy="dogs")
+     * @ORM\JoinColumn(name="id_litter", referencedColumnName="id_litters")
      */
-    private $idLitter;
+    private $litters;
 
+    function setLitters($litters) {
+        $this->litters = $litters;
+    }
 
+    function getLitters() {
+        return $this->litters;
+    }
 
     /**
      * Set name
@@ -92,8 +118,7 @@ class Dogs
      *
      * @return Dogs
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -104,8 +129,7 @@ class Dogs
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -116,8 +140,7 @@ class Dogs
      *
      * @return Dogs
      */
-    public function setBdate($bdate)
-    {
+    public function setBdate($bdate) {
         $this->bdate = $bdate;
 
         return $this;
@@ -128,8 +151,7 @@ class Dogs
      *
      * @return \DateTime
      */
-    public function getBdate()
-    {
+    public function getBdate() {
         return $this->bdate;
     }
 
@@ -140,8 +162,7 @@ class Dogs
      *
      * @return Dogs
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -152,8 +173,7 @@ class Dogs
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -164,8 +184,7 @@ class Dogs
      *
      * @return Dogs
      */
-    public function setPhoto($photo)
-    {
+    public function setPhoto($photo) {
         $this->photo = $photo;
 
         return $this;
@@ -176,8 +195,7 @@ class Dogs
      *
      * @return string
      */
-    public function getPhoto()
-    {
+    public function getPhoto() {
         return $this->photo;
     }
 
@@ -188,8 +206,7 @@ class Dogs
      *
      * @return Dogs
      */
-    public function setQuality($quality)
-    {
+    public function setQuality($quality) {
         $this->quality = $quality;
 
         return $this;
@@ -200,8 +217,7 @@ class Dogs
      *
      * @return string
      */
-    public function getQuality()
-    {
+    public function getQuality() {
         return $this->quality;
     }
 
@@ -212,8 +228,7 @@ class Dogs
      *
      * @return Dogs
      */
-    public function setSex($sex)
-    {
+    public function setSex($sex) {
         $this->sex = $sex;
 
         return $this;
@@ -224,8 +239,7 @@ class Dogs
      *
      * @return string
      */
-    public function getSex()
-    {
+    public function getSex() {
         return $this->sex;
     }
 
@@ -234,56 +248,38 @@ class Dogs
      *
      * @return integer
      */
-    public function getIdDogs()
-    {
+    public function getIdDogs() {
         return $this->idDogs;
     }
 
     /**
-     * Set idNursery
+     * Set nursery
      *
-     * @param \AppBundle\Entity\Nursery $idNursery
+     * @param \AppBundle\Entity\Nursery $nursery
      *
      * @return Dogs
      */
-    public function setIdNursery(\AppBundle\Entity\Nursery $idNursery = null)
-    {
-        $this->idNursery = $idNursery;
+    public function setNursery(\AppBundle\Entity\Nursery $nursery = null) {
+        $this->nursery = $nursery;
 
         return $this;
     }
 
     /**
-     * Get idNursery
+     * Get nursery
      *
      * @return \AppBundle\Entity\Nursery
      */
-    public function getIdNursery()
-    {
-        return $this->idNursery;
+    public function getNursery() {
+        return $this->nursery;
     }
-
-    /**
-     * Set idLitter
-     *
-     * @param \AppBundle\Entity\Litters $idLitter
-     *
-     * @return Dogs
+ /**
+     * @var ArrayCollection|AppBundle\Entity\DogTitles[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DogTitles", mappedBy="dogtitles")
      */
-    public function setIdLitter(\AppBundle\Entity\Litters $idLitter = null)
-    {
-        $this->idLitter = $idLitter;
+    private $dogtitles;
 
-        return $this;
-    }
-
-    /**
-     * Get idLitter
-     *
-     * @return \AppBundle\Entity\Litters
-     */
-    public function getIdLitter()
-    {
-        return $this->idLitter;
+    public function __construct() {
+        $this->dogtitles = new ArrayCollection();
     }
 }

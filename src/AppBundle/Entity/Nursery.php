@@ -18,6 +18,20 @@ class Nursery
      * @ORM\Column(name="name_nur", type="string", length=200, nullable=false)
      */
     private $nameNur;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_nur_en", type="string", length=200, nullable=false)
+     */
+    private $nameNur_en;
+    function getNameNur_en() {
+        return $this->nameNur_en;
+    }
+
+    function setNameNur_en($nameNur_en) {
+        $this->nameNur_en = $nameNur_en;
+    }
 
     /**
      * @var \DateTime
@@ -36,11 +50,39 @@ class Nursery
     /**
      * @var string
      *
+     * @ORM\Column(name="owner_en", type="string", length=200, nullable=false)
+     */
+    private $owner_en;
+    function getOwner_en() {
+        return $this->owner_en;
+    }
+
+    function setOwner_en($owner_en) {
+        $this->owner_en = $owner_en;
+    }
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adress", type="string", length=200, nullable=false)
      */
     private $adress;
-
+    
     /**
+     * @var string
+     *
+     * @ORM\Column(name="adress_en", type="string", length=200, nullable=false)
+     */
+    private $adress_en;
+    function getAdress_en() {
+        return $this->adress_en;
+    }
+
+    function setAdress_en($adress_en) {
+        $this->adress_en = $adress_en;
+    }
+
+        /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=50, nullable=false)
@@ -83,7 +125,22 @@ class Nursery
      * @ORM\Column(name="about",  type="text", length=65535)
      */
     private $about;
-    public function getAbout() {
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="about_en",  type="text", length=65535)
+     */
+    private $about_en;
+    function getAbout_en() {
+        return $this->about_en;
+    }
+
+    function setAbout_en($about_en) {
+        $this->about_en = $about_en;
+    }
+
+        public function getAbout() {
         return $this->about;
     }
 

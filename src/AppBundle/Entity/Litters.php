@@ -174,4 +174,28 @@ class Litters
     {
         return $this->dogs;
     }
+
+    /**
+     * Add dog
+     *
+     * @param \AppBundle\Entity\Dogs $dog
+     *
+     * @return Litters
+     */
+    public function addDog(\AppBundle\Entity\Dogs $dog)
+    {
+        $this->dogs[] = $dog;
+
+        return $this;
+    }
+
+    /**
+     * Remove dog
+     *
+     * @param \AppBundle\Entity\Dogs $dog
+     */
+    public function removeDog(\AppBundle\Entity\Dogs $dog)
+    {
+        $this->dogs->removeElement($dog);
+    }
 }
