@@ -3,16 +3,11 @@
     margin: 0;
     padding: 0;
 }
-/*
-@font-face {
-    font-family: customFont;
-    src: url(fonts/EIRIK_RAUDE.ttf);
-}*/
 
-/*div {
-подзаголовки, кнопки
-    font-family: myFirstFont;
-}*/
+@font-face {
+    font-family: eirikRaude;
+    src: url(../fonts/EIRIK_RAUDE.ttf);
+}
 
 body 
 {
@@ -70,6 +65,7 @@ body
 .header-bottom .header-bottom-phonenumber {
     display: inline-block;
     margin-left: 65px;
+    font: 18px eirikRaude;
 }
 
 .header-bottom .header-bottom-phonenumber img {
