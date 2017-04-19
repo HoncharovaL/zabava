@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * Nursery controller.
  *
@@ -45,6 +46,24 @@ class NurseryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $nursery1= $form->getData();
+            // $file stores the uploaded file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $nursery1->getPhoto();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where user avatars are stored
+            $file->move(
+                // This parameter should be configured
+                $this->getParameter('photo_image'),
+                $fileName
+            );
+
+            // Update the 'avatar' property to store file name
+            // instead of its contents
+            $nursery1->setPhoto($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($nursery);
             $em->flush();
@@ -65,12 +84,13 @@ class NurseryController extends Controller
      * @Method("GET")
      */
     public function showAction(Nursery $nursery)
-    {
+    {       $request = $this->get('translator')->getLocale();
         $deleteForm = $this->createDeleteForm($nursery);
 
         return $this->render('nursery/show.html.twig', array(
             'nursery' => $nursery,
             'delete_form' => $deleteForm->createView(),
+            'loc'=>$request,
         ));
     }
 
@@ -133,5 +153,11 @@ class NurseryController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+     public function downloadImageAction(Image $image)
+    {
+        $downloadHandler = $this->get('vich_uploader.download_handler');
+
+        return $downloadHandler->downloadObject($image, $fileField = 'photoFile');
     }
 }

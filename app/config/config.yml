@@ -38,6 +38,12 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
+    globals:
+        root_path: %kernel.root_dir%
+        photo_path: '%kernel.root_dir%\..\web\images\photo\'
 
 # Doctrine Configuration
 doctrine:
@@ -79,3 +85,17 @@ lunetics_locale:
   allowed_locales:
     - ru
     - en
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: you@example.com
+        sender_name: i
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        photo_image:
+            uri_prefix:         /images/photo
+            upload_destination: '%kernel.root_dir%/../web/images/photo'

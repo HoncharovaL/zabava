@@ -7,23 +7,38 @@
              <tbody>  
               <tr>
                 <th>{{'nursery.list.name'|trans}}</th>
+                {% if loc!='en' %}
                 <td>{{ nursery.nameNur }}</td>
+                {% else %}
+                <td>{{nursery.nameNurEn}}</td>
+                {%endif%}
             </tr>
             <tr>
                 <th>{{'nursery.list.photo'|trans}}</th>
-                <td> <img src="{{nursery.photo}}" alt="nursery" style="width:304px;height:228px;"> </td>
+                 <th>"{{photo_path}}{{nursery.photo}}"</th>
+                <td><img src="{{photo_path}}{{nursery.photo}}" 
+                         style="width:304px;height:228px;"></td>
             </tr>
             <tr>
                 <th>{{'nursery.list.bdate'|trans}}</th>
                 <td>{% if nursery.bdate %}{{ nursery.bdate|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
+                
                 <th>{{'nursery.list.owner'|trans}}</th>
+                {% if loc!='en' %}
                 <td>{{ nursery.owner }}</td>
+                {% else %}
+                <td>{{nursery.nameNurEn}}</td>
+                {%endif%}
             </tr>
             <tr>
                 <th>{{'nursery.list.adress'|trans}}</th>
+                {% if loc!='en' %}
                 <td>{{ nursery.adress }}</td>
+                {% else %}
+                <td>{{nursery.adressEn}}</td>
+                {%endif%}
             </tr>
             <tr>
                 <th>{{'nursery.list.phone'|trans}}</th>
@@ -43,7 +58,11 @@
             </tr>
             <tr>
                 <th>{{'nursery.list.about'|trans}}</th>
+                {% if loc!='en' %}
                 <td>{{ nursery.about }}</td>
+                {% else %}
+                <td>{{nursery.aboutEn}}</td>
+                {%endif%}
             </tr>
         </tbody>
     </table>
