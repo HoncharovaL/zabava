@@ -43,7 +43,7 @@ twig:
         - 'VichUploaderBundle:Form:fields.html.twig'
     globals:
         root_path: %kernel.root_dir%
-        photo_path: '%kernel.root_dir%\..\web\images\photo\'
+        photo_path: '\images\photo\'
 
 # Doctrine Configuration
 doctrine:

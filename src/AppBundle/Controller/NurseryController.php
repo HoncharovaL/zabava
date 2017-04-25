@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use AppBundle\Entity\Comments;
+use DateTime;
 
 /**
  * Nursery controller.
@@ -23,13 +24,17 @@ class NurseryController extends Controller
      * @Method("GET")
      */
     public function indexAction()
-    {
+    {   $request = $this->get('translator')->getLocale();
         $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+        'SELECT p FROM AppBundle:Nursery p WHERE p.idNursery>1');
+        $nurseries = $query->getResult();
 
-        $nurseries = $em->getRepository('AppBundle:Nursery')->findAll();
+       // $nurseries = $em->getRepository('AppBundle:Nursery')->findAll();
 
         return $this->render('nursery/index.html.twig', array(
             'nurseries' => $nurseries,
+            'loc'=>$request,
         ));
     }
 
@@ -42,33 +47,16 @@ class NurseryController extends Controller
     public function newAction(Request $request)
     {
         $nursery = new Nursery();
-        $form = $this->createForm('AppBundle\Form\NurseryType', $nursery);
+        $form = $this->createForm('AppBundle\Form\NurseryType1', $nursery);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $nursery1= $form->getData();
-            // $file stores the uploaded file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = $nursery1->getPhoto();
-
-            // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-            // Move the file to the directory where user avatars are stored
-            $file->move(
-                // This parameter should be configured
-                $this->getParameter('photo_image'),
-                $fileName
-            );
-
-            // Update the 'avatar' property to store file name
-            // instead of its contents
-            $nursery1->setPhoto($fileName);
+           
             $em = $this->getDoctrine()->getManager();
             $em->persist($nursery);
             $em->flush();
 
-            return $this->redirectToRoute('nursery_show', array('idNursery' => $nursery->getIdnursery()));
+            return $this->redirectToRoute('nursery_index');
         }
 
         return $this->render('nursery/new.html.twig', array(
@@ -81,17 +69,47 @@ class NurseryController extends Controller
      * Finds and displays a nursery entity.
      *
      * @Route("/{idNursery}", name="nursery_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Nursery $nursery)
-    {       $request = $this->get('translator')->getLocale();
+    public function showAction(Nursery $nursery,Request $request1)
+    {   $request = $this->get('translator')->getLocale();
         $deleteForm = $this->createDeleteForm($nursery);
-
-        return $this->render('nursery/show.html.twig', array(
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+        'SELECT p FROM AppBundle:Comments p WHERE p.idNursery=1');
+        $comments = $query->getResult();
+        $comment = new Comments();
+        $form = $this->createForm('AppBundle\Form\CommentsType', $comment);
+        $form->handleRequest($request1);
+       if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager(); 
+            $comment->setIdNursery($nursery);
+            $dt = new DateTime();
+            $comment->setCdate($dt);
+            $em->persist($comment);
+            $em->flush();
+            $comments = $query->getResult();
+            $comment = new Comments();
+            return $this->render('nursery/show.html.twig', array(
             'nursery' => $nursery,
             'delete_form' => $deleteForm->createView(),
             'loc'=>$request,
+            'comments'=>$comments,
+            'comment' => $comment,
+            'form' => $form->createView(),
         ));
+        }
+         return $this->render('nursery/show.html.twig', array(
+            'nursery' => $nursery,
+            'delete_form' => $deleteForm->createView(),
+            'loc'=>$request,
+            'comments'=>$comments,
+            'comment' => $comment,
+            'form' => $form->createView(),
+        ));
+        
+
+        
     }
 
     /**
@@ -100,22 +118,24 @@ class NurseryController extends Controller
      * @Route("/{idNursery}/edit", name="nursery_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Nursery $nursery)
+    public function editAction(Request $request, Nursery $nursery,Request $request1)
     {
-        $deleteForm = $this->createDeleteForm($nursery);
+        
         $editForm = $this->createForm('AppBundle\Form\NurseryType', $nursery);
         $editForm->handleRequest($request);
-
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+        'SELECT p FROM AppBundle:Comments p WHERE p.idNursery=1');
+        $comments = $query->getResult();
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('nursery_edit', array('idNursery' => $nursery->getIdnursery()));
         }
 
         return $this->render('nursery/edit.html.twig', array(
             'nursery' => $nursery,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'comments'=>$comments,
         ));
     }
 
@@ -159,5 +179,27 @@ class NurseryController extends Controller
         $downloadHandler = $this->get('vich_uploader.download_handler');
 
         return $downloadHandler->downloadObject($image, $fileField = 'photoFile');
+    }
+     /**
+     * Displays a form to edit an existing nursery entity.
+     *
+     * @Route("/{idNursery}/editPar", name="nursery_editPar")
+     * @Method({"GET", "POST"})
+     */
+    public function editParAction(Request $request, Nursery $nursery)
+    {
+         $deleteForm = $this->createDeleteForm($nursery);
+        $editForm = $this->createForm('AppBundle\Form\NurseryType1', $nursery);
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('nursery_editPar', array('idNursery' => $nursery->getIdnursery()));
+        }
+
+        return $this->render('nursery/editPar.html.twig', array(
+            'nursery' => $nursery,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 }

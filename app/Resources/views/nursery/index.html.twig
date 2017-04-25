@@ -1,29 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'nursery.list.nursery'|trans}}</h1>
+    <h1>{{'total.partners'|trans}}</h1>
 
     <table>
         <thead>
             <tr>
                 <th>{{'nursery.list.name'|trans}}</th>
-                <th>{{'nursery.list.bdate'|trans}}</th>
+                <th>{{'nursery.list.photo'|trans}}</th>
                 <th>{{'nursery.list.owner'|trans}}</th>
             </tr>
         </thead>
         <tbody>
         {% for nursery in nurseries %}
             <tr>
-                <td><a href="{{ path('nursery_show', { 'idNursery': nursery.idNursery }) }}">{{ nursery.nameNur }}</a></td>
-                <td>{% if nursery.bdate %}{{ nursery.bdate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ 'nursery.list.owner'|trans }}</td>
+                 {% if loc!='en' %}
+                <td>{{ nursery.nameNur }}</td>
+                {% else %}
+                <td>{{nursery.nameNurEn}}</td>
+                {%endif%}
+                <td><img src="{{photo_path}}{{nursery.photo}}" 
+                         style="width:304px;height:228px;"></td>
+               {% if loc!='en' %}
+                <td>{{ nursery.owner }}</td>
+                {% else %}
+                <td>{{nursery.nameNurEn}}</td>
+                {%endif%}
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('nursery_show', { 'idNursery': nursery.idNursery }) }}">{{'total.show'|trans}}</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('nursery_edit', { 'idNursery': nursery.idNursery }) }}">{{'total.edit'|trans}}</a>
+                            <a href="{{ path('nursery_editPar', { 'idNursery': nursery.idNursery }) }}">{{'total.edit'|trans}}</a>
                         </li>
                     </ul>
                 </td>

@@ -15,7 +15,6 @@
             </tr>
             <tr>
                 <th>{{'nursery.list.photo'|trans}}</th>
-                 <th>"{{photo_path}}{{nursery.photo}}"</th>
                 <td><img src="{{photo_path}}{{nursery.photo}}" 
                          style="width:304px;height:228px;"></td>
             </tr>
@@ -66,14 +65,38 @@
             </tr>
         </tbody>
     </table>
-
+            <h1>{{'total.comments'|trans}}</h1>
+{% for comments in comments %}
+                    <tr>
+                    <td>{{ comments.cdate|date("d/m/Y")  }}</td>
+                    </tr>
+                    <br/>
+                    <tr>
+                    <td>{{ comments.klname }}</td>
+                    </tr>
+                     <br/>
+                    <tr>
+                        <td>{{ comments.question }}</td>
+                    </tr>
+                    <br/>
+                {% endfor %}
     <ul>
         <li>
             <a href="{{ path('homepage')}}">{{'total.back'|trans}}</a>
         </li>
+  {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
         <li>
             <a href="{{ path('nursery_edit', { 'idNursery': nursery.idNursery }) }}">{{'total.edit'|trans}}</a>
         </li>
 
+   {# {% endif %}#}
+
     </ul>
+            <h1>{{'total.yourcomment'|trans}}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value={{'total.save'|trans}} />
+    {{ form_end(form) }}
+
 {% endblock %}

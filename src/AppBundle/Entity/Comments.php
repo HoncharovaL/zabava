@@ -58,8 +58,17 @@ class Comments
      * })
      */
     private $idDogs;
-
-    /**
+        /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="cdate", type="date", nullable=false)
+     */
+    private $cdate;
+    
+    /* function setIdNursery($idNursery) {
+        $this->idNursery = $idNursery;
+    }*/
+        /**
      * @var \AppBundle\Entity\Services
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Services")
@@ -69,7 +78,15 @@ class Comments
      */
     private $idServices;
 
-
+ /**
+     * @var \AppBundle\Entity\Nursery
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Nursery")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="id_nursery", referencedColumnName="id_nursery")
+     * })
+     */
+    private $idNursery;
 
     /**
      * Set klname
@@ -78,6 +95,31 @@ class Comments
      *
      * @return Comments
      */
+    
+    function getIdDogs() {
+        return $this->idDogs;
+    }
+
+    function getIdServices() {
+        return $this->idServices;
+    }
+
+    function getIdNursery() {
+        return $this->idNursery;
+    }
+
+    function setIdDogs(\AppBundle\Entity\Dogs $idDogs) {
+        $this->idDogs = $idDogs;
+    }
+
+    function setIdServices(\AppBundle\Entity\Services $idServices) {
+        $this->idServices = $idServices;
+    }
+
+    function setIdNursery(\AppBundle\Entity\Nursery $idNursery) {
+        $this->idNursery = $idNursery;
+    }
+   
     public function setKlname($klname)
     {
         $this->klname = $klname;
@@ -176,52 +218,27 @@ class Comments
     {
         return $this->idComments;
     }
-
-    /**
-     * Set idDogs
+     /**
+     * Set cdate
      *
-     * @param \AppBundle\Entity\Dogs $idDogs
+     * @param \DateTime $cdate
      *
      * @return Comments
      */
-    public function setIdDogs(\AppBundle\Entity\Dogs $idDogs = null)
-    {
-        $this->idDogs = $idDogs;
+    public function setCdate($cdate) {
+        $this->cdate = $cdate;
 
         return $this;
     }
 
     /**
-     * Get idDogs
+     * Get cdate
      *
-     * @return \AppBundle\Entity\Dogs
+     * @return \DateTime
      */
-    public function getIdDogs()
-    {
-        return $this->idDogs;
+    public function getCdate() {
+        return $this->cdate;
     }
 
-    /**
-     * Set idServices
-     *
-     * @param \AppBundle\Entity\Services $idServices
-     *
-     * @return Comments
-     */
-    public function setIdServices(\AppBundle\Entity\Services $idServices = null)
-    {
-        $this->idServices = $idServices;
-
-        return $this;
-    }
-
-    /**
-     * Get idServices
-     *
-     * @return \AppBundle\Entity\Services
-     */
-    public function getIdServices()
-    {
-        return $this->idServices;
-    }
+    
 }

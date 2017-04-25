@@ -6,8 +6,40 @@
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="{{'total.edit'|trans}}" />
+        
     {{ form_end(edit_form) }}
+    <h1>{{'total.comments'|trans}}</h1>
 
+    <table>
+        <thead>
+            <tr>
+                <th>{{'total.date'|trans}}</th>
+                <th>{{'dogs.list.name'|trans}}</th>
+                <th>{{'nursery.list.email'|trans}}</th>
+                <th>{{'total.comments'|trans}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.cdate|date("d/m/Y") }}</td>
+                <td><a href="{{ path('comments_show', { 'idComments': comment.idComments }) }}">{{ comment.klname }}</a></td>
+                <td>{{ comment.email }}</td>
+                <td>{{ comment.question }}</td>
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('comments_edit', { 'idComments': comment.idComments }) }}">{{'total.edit'|trans}}</a>
+                        </li>
+                        
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
     <ul>
         <li>
             <a href="{{ path('homepage')}}">{{'total.back'|trans}}</a>

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{'services.list.services'|trans}}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>{{'services.list.services'|trans}}</th>
+                {% if loc!='en' %}
+                <td>{{ service.services }}</td>
+                {% else %}
+                <td>{{service.servicesEng}}</td>
+                {%endif%}
+            </tr>
+            <tr>
+                <th>{{'services.list.description'|trans}}</th>
+                {% if loc!='en' %}
+                <td>{{ service.description }}</td>
+                {% else %}
+                <td>{{service.descriptionEn}}</td>
+                {%endif%}
+            </tr>
+            <tr>
+                <th>{{'services.list.price'|trans}}</th>
+                <td>{{ service.price }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('services_index') }}">{{'total.back'|trans}}</a>
+        </li>
+    </ul>
+    <h1>{{'total.yourquestion'|trans}}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value={{'total.save'|trans}} />
+    {{ form_end(form) }}
+{% endblock %}

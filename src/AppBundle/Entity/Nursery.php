@@ -40,6 +40,11 @@ class Nursery
     public function setPhotoFile(File $image = null)
     {
         $this->photoFile = $image;
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     
         return $this;
     }
@@ -52,19 +57,25 @@ class Nursery
         return $this->photoFile;
     }
 
-    
+/**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name_nur", type="string", length=200, nullable=false)
+     * @ORM\Column(name="name_nur", type="string", length=200,nullable=true)
      */
     private $nameNur;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="name_nur_en", type="string", length=200, nullable=false)
+     * @ORM\Column(name="name_nur_en", type="string", length=200,nullable=true)
      */
     private $nameNurEn;
     
@@ -72,35 +83,35 @@ class Nursery
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="bdate", type="date", nullable=false)
+     * @ORM\Column(name="bdate", type="date",nullable=true)
      */
     private $bdate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="owner", type="string", length=200)
+     * @ORM\Column(name="owner", type="string", length=200,nullable=true)
      */
     private $owner;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="owner_en", type="string", length=200, nullable=false)
+     * @ORM\Column(name="owner_en", type="string", length=200,nullable=true)
      */
     private $ownerEn;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="string", length=200, nullable=false)
+     * @ORM\Column(name="adress", type="string", length=200,nullable=true)
      */
     private $adress;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="adress_en", type="string", length=200)
+     * @ORM\Column(name="adress_en", type="string", length=200,nullable=true)
      */
     private $adressEn;
      
@@ -108,21 +119,21 @@ class Nursery
         /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=50)
+     * @ORM\Column(name="phone", type="string", length=50,nullable=true)
      */
     private $phone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cellphone", type="string", length=50)
+     * @ORM\Column(name="cellphone", type="string", length=50,nullable=true)
      */
     private $cellphone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=100)
+     * @ORM\Column(name="email", type="string", length=100,nullable=true)
      */
     private $email;
 
@@ -146,14 +157,14 @@ class Nursery
      /**
      * @var string
      *
-     * @ORM\Column(name="about",  type="text", length=65535)
+     * @ORM\Column(name="about",  type="text", length=65535,nullable=true)
      */
     private $about;
     
      /**
      * @var string
      *
-     * @ORM\Column(name="about_en",  type="text", length=65535)
+     * @ORM\Column(name="about_en",  type="text", length=65535,nullable=true)
      */
     private $aboutEn;
      public function getAboutEn() {
@@ -446,6 +457,6 @@ class Nursery
      * @return string
      */
     public function __toString() {
-        return $this->nameNur;;
+        return $this->nameNur;
     }
 }

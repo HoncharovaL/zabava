@@ -8,6 +8,11 @@
     </head>
     <body>
         {{locale_switcher()}}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="/app_dev.php/logout">Выход</a>
+    {% else %}
+         <a href="/app_dev.php/login">Вход</a>
+    {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

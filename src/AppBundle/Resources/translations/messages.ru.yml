@@ -17,3 +17,16 @@ total.edit: Изменить
 total.create: Создать
 total.delete: Удалить
 total.back: Назад
+total.comments: Комментарии
+total.entername: Введите Ваше имя
+total.save: Сохранить
+total.yourcomment: Ваш комментарий
+total.date: Дата
+total.partners: Партнеры
+titles.list.title: Титул
+titles.list.titles: Титулы
+vaccinations.list.vaccinations: Прививки
+services.list.services: Услуги
+services.list.description: Описание
+services.list.price: Цена, грн
+total.yourquestion: Введите Ваш вопрос

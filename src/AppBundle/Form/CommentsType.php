@@ -6,15 +6,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TitlesType extends AbstractType
+class CommentsType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', null, array('label' =>'titles.list.title'))
-                ->add('titleEng', null, array('label' =>'on english'));
+        $builder->add('klname', null, array('label' =>'total.entername'))
+                ->add('phone', null, array('label' =>'nursery.list.phone'))
+                ->add('email', null, array('label' =>'nursery.list.email'))
+                ->add('question', null, array('label' =>'total.comments'));
     }
     
     /**
@@ -23,7 +25,7 @@ class TitlesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Titles'
+            'data_class' => 'AppBundle\Entity\Comments'
         ));
     }
 
@@ -32,7 +34,7 @@ class TitlesType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_titles';
+        return 'appbundle_comments';
     }
 
 
