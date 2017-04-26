@@ -30,3 +30,8 @@ services.list.services: Услуги
 services.list.description: Описание
 services.list.price: Цена, грн
 total.yourquestion: Введите Ваш вопрос
+total.questions: Вопросы
+comments.list.questserv: Вопросы об услугах
+comments.list.questdogs: Вопросы о собаках
+comments.list.name: Имя посетителя
+dogs.list.namedog: Кличка собаки

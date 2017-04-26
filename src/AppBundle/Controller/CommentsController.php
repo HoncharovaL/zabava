@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Comments;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Comment controller.
@@ -23,11 +25,21 @@ class CommentsController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $comments = $em->getRepository('AppBundle:Comments')->findAll();
-
+        $query = $em->createQuery(
+        'SELECT c.idComments,c.klname, c.phone, c.email, c.question, s.services FROM AppBundle:Comments c, '
+                . 'AppBundle:services s '
+                . 'WHERE c.idNursery is null and c.idServices=s.idServices ' 
+                . 'order by c.cdate desc');
+        $comments = $query->getResult();
+        $querydogs = $em->createQuery(
+        'SELECT  c.idComments,c.klname, c.phone, c.email, c.question, d.name FROM AppBundle:Comments c, '
+                . 'AppBundle:dogs d '
+                . 'WHERE c.idNursery is null and c.idDogs=d.idDogs ' 
+                . 'order by c.cdate desc');
+        $commentsdogs = $querydogs->getResult();
         return $this->render('comments/index.html.twig', array(
             'comments' => $comments,
+            'commentsdogs' => $commentsdogs,
         ));
     }
 
@@ -133,4 +145,35 @@ class CommentsController extends Controller
             ->getForm()
         ;
     }
+    
+    /**
+ * @param Comments $comment
+ *
+ * @Route("/{id}/entity-remove", requirements={"id" = "\d+"}, name="delete_route_name")
+ * @return RedirectResponse
+ *
+ */
+public function deleteActionName(Comments $comment)
+{$em = $this->getDoctrine()->getManager();
+            $em->remove($comment);
+            $em->flush();
+    
+
+        $query = $em->createQuery(
+        'SELECT c.idComments,c.klname, c.phone, c.email, c.question, s.services FROM AppBundle:Comments c, '
+                . 'AppBundle:services s '
+                . 'WHERE c.idNursery is null and c.idServices=s.idServices ' 
+                . 'order by c.cdate desc');
+        $comments = $query->getResult();
+        $querydogs = $em->createQuery(
+        'SELECT  c.idComments,c.klname, c.phone, c.email, c.question, d.name FROM AppBundle:Comments c, '
+                . 'AppBundle:dogs d '
+                . 'WHERE c.idNursery is null and c.idDogs=d.idDogs ' 
+                . 'order by c.cdate desc');
+        $commentsdogs = $querydogs->getResult();
+        return $this->render('comments/index.html.twig', array(
+            'comments' => $comments,
+            'commentsdogs' => $commentsdogs,
+        ));  
+}
 }

@@ -1,45 +1,68 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Comments list</h1>
+    <h1>{{'comments.list.questserv'|trans}}</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Klname</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Question</th>
-                <th>Idcomments</th>
-                <th>Actions</th>
+                <th>{{'comments.list.name'|trans}}</th>
+                <th>{{'nursery.list.phone'|trans}}</th>
+                <th>{{'nursery.list.email'|trans}}</th>
+                <th>{{'total.questions'|trans}}</th>
+                <th>{{'services.list.services'|trans}}</th>
             </tr>
         </thead>
         <tbody>
         {% for comment in comments %}
             <tr>
-                <td><a href="{{ path('comments_show', { 'idComments': comment.idComments }) }}">{{ comment.klname }}</a></td>
+                <td>{{ comment.klname }}</td>
                 <td>{{ comment.phone }}</td>
                 <td>{{ comment.email }}</td>
                 <td>{{ comment.question }}</td>
-                <td>{{ comment.idComments }}</td>
+                <td>{{ comment.services}}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('comments_show', { 'idComments': comment.idComments }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('comments_edit', { 'idComments': comment.idComments }) }}">edit</a>
-                        </li>
+                         {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                         <a href="{{ path('delete_route_name', {'id': comment.idComments }) }}">{{'total.delete'|trans}}</a>
+                         {# {% endif %}#}
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+<h1>{{'comments.list.questdogs'|trans}}</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('comments_new') }}">Create a new comment</a>
-        </li>
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>{{'comments.list.name'|trans}}</th>
+                <th>{{'nursery.list.phone'|trans}}</th>
+                <th>{{'nursery.list.email'|trans}}</th>
+                <th>{{'total.questions'|trans}}</th>
+                <th>{{'dogs.list.namedog'|trans}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in commentsdogs %}
+            <tr>
+                <td>{{ comment.klname }}</td>
+                <td>{{ comment.phone }}</td>
+                <td>{{ comment.email }}</td>
+                <td>{{ comment.question }}</td>
+                <td>{{ comment.name}}</td>
+                 <td>
+                    <ul>
+                         {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                        <li>
+                            <a href="{{ path('comments_edit', { 'idComments': comment.idComments }) }}">{{'total.edit'|trans}}</a>
+                        </li>
+                           {# {% endif %}#}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

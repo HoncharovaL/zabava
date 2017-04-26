@@ -30,3 +30,8 @@ services.list.services: Services
 services.list.description: Description
 services.list.price: Price, UAH
 total.yourquestion: Enter your question
+total.questions: Questions
+comments.list.questserv: Questions about services
+comments.list.questdogs: Questions about dogs
+comments.list.name: Visitor's name
+dogs.list.namedog: Dog's name

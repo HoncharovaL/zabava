@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Comments;
+use DateTime;
 
 /**
  * Service controller.
@@ -63,7 +64,7 @@ class ServicesController extends Controller
      * Finds and displays a service entity.
      *
      * @Route("/{idServices}", name="services_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function showAction(Services $service,Request $request1)
     {   $request = $this->get('translator')->getLocale();
