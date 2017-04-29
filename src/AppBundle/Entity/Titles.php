@@ -16,8 +16,21 @@ class Titles
      * @ORM\Column(name="title", type="string", length=200, nullable=false)
      */
     private $title;
-
     /**
+     * @var string
+     *
+     * @ORM\Column(name="title_eng", type="string", length=200, nullable=false)
+     */
+    private $titleEng;
+    function getTitleEng() {
+        return $this->titleEng;
+    }
+
+    function setTitleEng($titleEng) {
+        $this->titleEng = $titleEng;
+    }
+
+        /**
      * @var integer
      *
      * @ORM\Column(name="id_titles", type="integer")

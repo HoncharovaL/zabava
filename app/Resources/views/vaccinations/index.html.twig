@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{'vaccinations.list.vaccinations'|trans}}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>{{'vaccinations.list.vaccinations'|trans}}</th>
+                <th>On English</th>
+                <th>{{'total.action'|trans}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vaccination in vaccinations %}
+            <tr>
+                <td><a href="{{ path('vaccinations_show', { 'idVaccinations': vaccination.idVaccinations }) }}">{{ vaccination.vaccinations }}</a></td>
+                <td>{{ vaccination.vaccinationsEng }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vaccinations_show', { 'idVaccinations': vaccination.idVaccinations }) }}">{{'total.show'|trans}}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vaccinations_edit', { 'idVaccinations': vaccination.idVaccinations }) }}">{{'total.edit'|trans}}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vaccinations_new') }}">{{'total.create'|trans}}</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'total.partners'|trans}}</h1>
+    <h1>{{'vaccinations.list.vaccinations'|trans}}</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('nursery_index') }}">{{'total.back'|trans}}</a>
+            <a href="{{ path('vaccinations_index') }}">{{'total.back'|trans}}</a>
         </li>
     </ul>
 {% endblock %}

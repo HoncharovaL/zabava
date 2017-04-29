@@ -4,44 +4,51 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{{"main.title"|trans}}{% endblock %}</title>
         {% block stylesheets %}
-             <link href="{{ asset('bundles/app/css/main.css') }}" rel="stylesheet">
+            <link href="{{ asset('bundles/app/css/main.css') }}" rel="stylesheet">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <div class="main-container"> 
-        {% block all %}
-            {% block header %}
-                <div class="header">
-                    <div class="container">
-                        <div class="header-top">
-                            <div class="logo">
-                                <a href="{{path("homepage")}}"><img src="{{ asset('bundles/app/img/logo_orange.png') }}"/></a>
-                            </div>
-                            <div class="menu-item"><a href="{{path("homepage")}}">{{"header.link.main"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.our_dogs"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.litters"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.advices"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.exhibitions"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.services"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.gallery"|trans}}</a></div>
-                            <div class="menu-item"><a href="">{{"header.link.reviews"|trans}}</a></div>
-                        </div>
-                        <div class="header-bottom">
-                            {% set phonenumbers = get_nursery_phonenumbers() %}
-                            {% for phonenumber in phonenumbers %}
-                                <div class="header-bottom-phonenumber">
-                                    <img src="{{ asset('bundles/app/img/call.png') }}"/>
-                                    <span>{{phonenumber}}</span>
+            {% block all %}
+                {% block header %}
+                    <div class="header">
+                        <div class="container">
+                            <div class="header-top">
+                                <div class="logo">
+                                    <a href="{{path("homepage")}}"><img src="{{ asset('bundles/app/img/logo_orange.png') }}"/></a>
                                 </div>
-                            {% endfor %}
+                                <div class="menu-item"><a href="{{path("homepage")}}">{{"header.link.main"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.our_dogs"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.litters"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.advices"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.exhibitions"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.services"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.gallery"|trans}}</a></div>
+                                <div class="menu-item"><a href="">{{"header.link.reviews"|trans}}</a></div>
+                                <div class="menu-item">
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                        <a href="{{path('fos_user_security_logout')}}">{{"header.link.logout"|trans}}</a>
+                                    {% else %}
+                                        <a href="{{path('fos_user_security_login')}}">{{"header.link.login"|trans}}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="header-bottom">
+                                {% set phonenumbers = get_nursery_phonenumbers() %}
+                                {% for phonenumber in phonenumbers %}
+                                    <div class="header-bottom-phonenumber">
+                                        <img src="{{ asset('bundles/app/img/call.png') }}"/>
+                                        <span>{{phonenumber}}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endblock %}
-                   
-            <div class="container">
-{#                 {{locale_switcher()}}#}
+                {% endblock %}
+
+                <div class="container">
+                    {#                 {{locale_switcher()}}#}
                 {% block body %}{% endblock %}
             </div>
             {% block footer %}
@@ -54,9 +61,9 @@
                         <div class="footer-contacts">
                             {% set phonenumbers = get_nursery_phonenumbers() %}
                             <div class="footer-contacts-phone">
-                            {% for phonenumber in phonenumbers %}
-                                <div>{{phonenumber}}</div>
-                            {% endfor %}
+                                {% for phonenumber in phonenumbers %}
+                                    <div>{{phonenumber}}</div>
+                                {% endfor %}
                             </div>
                             <div>{{ get_nursery_email() }}</div>
                             <div>{{ get_nursery_address() }}</div>
@@ -66,7 +73,7 @@
                 </div>
             {% endblock %}
         {% endblock %}
-        </div>
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

@@ -17,6 +17,24 @@ total.edit: Изменить
 total.create: Создать
 total.delete: Удалить
 total.back: Назад
+total.comments: Комментарии
+total.entername: Введите Ваше имя
+total.save: Сохранить
+total.yourcomment: Ваш комментарий
+total.date: Дата
+total.partners: Партнеры
+titles.list.title: Титул
+titles.list.titles: Титулы
+vaccinations.list.vaccinations: Прививки
+services.list.services: Услуги
+services.list.description: Описание
+services.list.price: Цена, грн
+total.yourquestion: Введите Ваш вопрос
+total.questions: Вопросы
+comments.list.questserv: Вопросы об услугах
+comments.list.questdogs: Вопросы о собаках
+comments.list.name: Имя посетителя
+dogs.list.namedog: Кличка собаки
 
 main: 
     title: Главная
@@ -31,3 +49,5 @@ header:
         services: Услуги
         gallery: Галерея
         reviews: Отзывы
+        login: Вход
+        logout: Выход

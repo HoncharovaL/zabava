@@ -17,8 +17,21 @@ class Vaccinations
      * @ORM\Column(name="vaccinations", type="string", length=200, nullable=false)
      */
     private $vaccinations;
-
     /**
+     * @var string
+     *      
+     * @ORM\Column(name="vaccinations_eng", type="string", length=200, nullable=false)
+     */
+    private $vaccinationsEng;
+    function getVaccinationsEng() {
+        return $this->vaccinationsEng;
+    }
+
+    function setVaccinationsEng($vaccinationsEng) {
+        $this->vaccinationsEng = $vaccinationsEng;
+    }
+
+        /**
      * @var string
      */
     private $ageVac;

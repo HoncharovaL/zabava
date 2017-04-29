@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'titles.list.title'|trans}}</h1>
+    <h1>{{'services.list.services'|trans}}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value={{'total.edit'|trans}} />
+        <input type="submit" value="{{'total.edit'|trans}}" />
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
-            <a href="{{ path('titles_index') }}">{{'total.back'|trans}}</a>
+            <a href="{{ path('services_index') }}">{{'total.back'|trans}}</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value={{'total.delete'|trans}}>
+                <input type="submit" value="{{'total.delete'|trans}}">
             {{ form_end(delete_form) }}
         </li>
     </ul>

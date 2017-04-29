@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    
+   
+
     <a href="{{ path('nursery_show', { 'idNursery': 1}) }}">{{'nursery.list.about'|trans}}</a>
-    <a href="{{path('titles_index')}}">titles are there</a>
+    <a href="{{ path('nursery_index') }}">{{'total.partners'|trans}}</a>
+    <a href="{{path('titles_index')}}">{{'titles.list.title'|trans}}</a>
+    <a href="{{path('vaccinations_index')}}">{{'vaccinations.list.vaccinations'|trans}}</a>
+    <a href="{{path('services_index')}}">{{'services.list.services'|trans}}</a>
+    <a href="{{path('comments_index')}}">{{'total.questions'|trans}}</a>
     <a href="{{path('litters_index')}}">litters are there</a>
     <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
-    
+
     hi there, here will be news soon
 
 {% endblock %}

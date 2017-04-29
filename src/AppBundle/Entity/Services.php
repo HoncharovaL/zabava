@@ -17,15 +17,39 @@ class Services
      * @ORM\Column(name="services", type="string", length=200, nullable=false)
      */
     private $services;
-
+    
     /**
      * @var string
      *   
-     * @ORM\Column(name="description", type="string", length=200, nullable=false)
+     * @ORM\Column(name="services_eng", type="string", length=200, nullable=false)
+     */
+    private $servicesEng;
+ 
+
+    
+
+        /**
+     * @var string
+     *   
+     * @ORM\Column(name="description", type="text", length=65535,nullable=true)
      */
     private $description;
+    
+            /**
+     * @var string
+     *   
+     * @ORM\Column(name="description_en", type="text", length=65535,nullable=true)
+     */
+    private $descriptionEn;
+    function getDescriptionEn() {
+        return $this->descriptionEn;
+    }
 
-    /**
+    function setDescriptionEn($descriptionEn) {
+        $this->descriptionEn = $descriptionEn;
+    }
+
+        /**
      * @var string
      *      
      * @ORM\Column(name="price", type="string", length=200, nullable=false)
@@ -122,5 +146,12 @@ class Services
     public function getIdServices()
     {
         return $this->idServices;
+    }
+    
+    function setServicesEng($servicesEng) {
+        $this->servicesEng = $servicesEng;
+    }
+       function getServicesEng() {
+        return $this->servicesEng;
     }
 }

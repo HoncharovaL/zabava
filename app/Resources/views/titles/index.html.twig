@@ -1,28 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Titles list</h1>
+    <h1>{{'titles.list.titles'|trans}}</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Idtitles</th>
-                <th>Actions</th>
+                <th>{{'titles.list.title'|trans}}</th>
+                <th>On English</th>
+                <th>{{'total.action'|trans}}</th>
             </tr>
         </thead>
         <tbody>
         {% for title in titles %}
             <tr>
                 <td><a href="{{ path('titles_show', { 'idTitles': title.idTitles }) }}">{{ title.title }}</a></td>
-                <td>{{ title.idTitles }}</td>
+                <td>{{ title.titleEng }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('titles_show', { 'idTitles': title.idTitles }) }}">show</a>
+                            <a href="{{ path('titles_show', { 'idTitles': title.idTitles }) }}">{{'total.show'|trans}}</a>
                         </li>
                         <li>
-                            <a href="{{ path('titles_edit', { 'idTitles': title.idTitles }) }}">edit</a>
+                            <a href="{{ path('titles_edit', { 'idTitles': title.idTitles }) }}">{{'total.edit'|trans}}</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('titles_new') }}">Create a new title</a>
+            <a href="{{ path('titles_new') }}">{{'total.create'|trans}}</a>
         </li>
     </ul>
 {% endblock %}

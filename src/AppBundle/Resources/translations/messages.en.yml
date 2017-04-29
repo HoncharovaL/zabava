@@ -17,6 +17,24 @@ total.edit: Edit
 total.create: Create
 total.delete: Delete
 total.back: Back
+total.comments: Comments
+total.entername: Enter your name
+total.save: Save
+total.yourcomment: Your comment
+total.date: Date
+total.partners: Partners
+titles.list.title: Title
+titles.list.titles: Title
+vaccinations.list.vaccinations: Vaccinations
+services.list.services: Services
+services.list.description: Description
+services.list.price: Price, UAH
+total.yourquestion: Enter your question
+total.questions: Questions
+comments.list.questserv: Questions about services
+comments.list.questdogs: Questions about dogs
+comments.list.name: Visitor's name
+dogs.list.namedog: Dog's name
 
 main: 
     title: Home
@@ -30,3 +48,5 @@ header:
         services: Services
         gallery: Gallery
         reviews: Reviews
+        login: Login
+        logout: Logout

@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'total.partners'|trans}}</h1>
+    <h1>{{'services.list.services'|trans}}</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value={{'total.create'|trans}} />
+        <input type="submit" value="{{'total.create'|trans}}"/>
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('nursery_index') }}">{{'total.back'|trans}}</a>
+            <a href="{{ path('services_index') }}">{{'total.back'|trans}}</a>
         </li>
     </ul>
 {% endblock %}
