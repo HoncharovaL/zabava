@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{'total.news'|trans}}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>{{'total.date'|trans}}</th>
+                <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{'total.caption'|trans}}</th>
+               {% if loc!='en' %}
+                <td>{{ news.title }}</td>
+                {% else %}
+               <td>{{news.titleEn}}</td>
+                {%endif%}
+            </tr>
+            <tr>
+               <td><img src="{{photo_path}}{{news.photo}}" 
+                         style="width:304px;height:228px;"></td>
+            </tr>
+            <tr>
+                {% if loc!='en' %}
+                <td>{{ news.newsdesc }}</td>
+                {% else %}
+                <td>{{news.newsdescEn}}</td>
+                {%endif%}
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+        </li>
+        <li>
+            <a href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{'total.edit'|trans}}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="{{'total.delete'|trans}}">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

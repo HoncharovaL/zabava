@@ -1,59 +1,58 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   
-
-    <a href="{{ path('nursery_show', { 'idNursery': 1}) }}">{{'nursery.list.about'|trans}}</a>
-    <a href="{{ path('nursery_index') }}">{{'total.partners'|trans}}</a>
-    <a href="{{path('titles_index')}}">{{'titles.list.title'|trans}}</a>
-    <a href="{{path('vaccinations_index')}}">{{'vaccinations.list.vaccinations'|trans}}</a>
-    <a href="{{path('services_index')}}">{{'services.list.services'|trans}}</a>
-    <a href="{{path('comments_index')}}">{{'total.questions'|trans}}</a>
-    <a href="{{path('litters_index')}}">litters are there</a>
-    <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
-
     <h1>News list</h1>
 
     <table>
+        <thead>
+            <tr>
+                <th>Ndate</th>
+                <th>Title</th>
+                <th>Newsdesc</th>
+                <th>Newsphoto</th>
+                <th>Newstype</th>
+                <th>Idnews</th>
+                <th>Titleen</th>
+                <th>Newsdescen</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
         <tbody>
         {% for news in news %}
             <tr>
                 <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
                 <td><a href="{{ path('news_show', { 'idNews': news.idNews }) }}">
                 {% if loc!='en' %}
-                {{ news.title }}
+                {{ news.titleEn }}
                 {% else %}
-               {{news.titleEn}}
+               {{news.title}}
                 {%endif%}
                 </a></td>
                 <td><img src="{{photo_path}}{{news.photo}}" 
                          style="width:304px;height:228px;"></td>
                 {% if loc!='en' %}
-                <td>{{ news.newsdesc }}</td>
+                <td>{{ news.newsdescEn }}</td>
                 {% else %}
-                <td>{{news.newsdescEn}}</td>
+                <td>{{news.newsdesc}}</td>
                 {%endif%}
                 <td>
                     <ul>
                         <li>
                             <a href="{{ path('news_show', { 'idNews': news.idNews }) }}">show</a>
                         </li>
-                        {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
                         <li>
                             <a href="{{ path('news_edit', { 'idNews': news.idNews }) }}">edit</a>
                         </li>
-                         {# {% endif %}#}
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-{#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+
     <ul>
         <li>
             <a href="{{ path('news_new') }}">Create a new news</a>
         </li>
     </ul>
- {# {% endif %}#}
 {% endblock %}

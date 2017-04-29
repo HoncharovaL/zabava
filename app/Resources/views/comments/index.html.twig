@@ -6,6 +6,7 @@
     <table>
         <thead>
             <tr>
+                <th>{{'total.date'|trans}}</th>
                 <th>{{'comments.list.name'|trans}}</th>
                 <th>{{'nursery.list.phone'|trans}}</th>
                 <th>{{'nursery.list.email'|trans}}</th>
@@ -16,6 +17,7 @@
         <tbody>
         {% for comment in comments %}
             <tr>
+                <td>{% if comment.cdate %}{{ comment.cdate|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ comment.klname }}</td>
                 <td>{{ comment.phone }}</td>
                 <td>{{ comment.email }}</td>
@@ -37,6 +39,7 @@
     <table>
         <thead>
             <tr>
+                <th>{{'total.date'|trans}}</th>
                 <th>{{'comments.list.name'|trans}}</th>
                 <th>{{'nursery.list.phone'|trans}}</th>
                 <th>{{'nursery.list.email'|trans}}</th>
@@ -47,6 +50,7 @@
         <tbody>
         {% for comment in commentsdogs %}
             <tr>
+                <td>{% if comment.cdate %}{{ comment.cdate|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ comment.klname }}</td>
                 <td>{{ comment.phone }}</td>
                 <td>{{ comment.email }}</td>

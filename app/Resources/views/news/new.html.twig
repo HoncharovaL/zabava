@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{'total.create'|trans}} {{'total.news'|trans}}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value={{'total.create'|trans}}/>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+        </li>
+    </ul>
+{% endblock %}
