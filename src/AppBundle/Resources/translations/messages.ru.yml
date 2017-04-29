@@ -44,6 +44,9 @@ total.other: Другое
 
 main: 
     title: Главная
+    block:
+        partners: Наши друзья
+        news: Новости
     
 header:
     link:

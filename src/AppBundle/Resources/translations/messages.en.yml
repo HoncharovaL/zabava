@@ -43,6 +43,9 @@ total.other: Other
 
 main: 
     title: Home
+    block:
+        partners: Our friends
+        news: News
 header:
     link:
         main: Home

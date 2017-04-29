@@ -1,54 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    {#
-        <a href="{{ path('nursery_show', { 'idNursery': 1}) }}">{{'nursery.list.about'|trans}}</a>
-        <a href="{{ path('nursery_index') }}">{{'total.partners'|trans}}</a>
-        <a href="{{path('titles_index')}}">{{'titles.list.title'|trans}}</a>
-        <a href="{{path('vaccinations_index')}}">{{'vaccinations.list.vaccinations'|trans}}</a>
-        <a href="{{path('services_index')}}">{{'services.list.services'|trans}}</a>
-        <a href="{{path('comments_index')}}">{{'total.questions'|trans}}</a>
-        <a href="{{path('litters_index')}}">litters are there</a>
-        <a href="{{path('dogtitles_index')}}">dogtitles are there</a>#}
-
-    <h1>News list</h1>
-
-    <table>
-        <tbody>
-            {% for news in news %}
-                <tr>
-                    <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
-                    <td><a href="{{ path('news_show', { 'idNews': news.idNews }) }}">
-                            {% if loc!='en' %}
-                                {{ news.title }}
+    {% if news|length %}
+        <div class="home-news">
+            <div class="container">
+                <h3>{{'main.block.news'|trans}}</h3>
+                {% for news in news %}
+                    <div class="home-news-item">
+                        <img src="{{photo_path}}{{news.photo}}"/>
+                        <div class="home-news-item-title">
+                            {% if loc=='en' %}
+                                {{ news.titleEn }}
                             {% else %}
-                                {{news.titleEn}}
-                            {%endif%}
-                        </a></td>
-                    <td><img src="{{photo_path}}{{news.photo}}" 
-                             style="width:304px;height:228px;"></td>
-                        {% if loc!='en' %}
-                        <td>{{ news.newsdesc }}</td>
-                    {% else %}
-                        <td>{{news.newsdescEn}}</td>
-                    {%endif%}
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('news_show', { 'idNews': news.idNews }) }}">show</a>
-                            </li>
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <li>
-                                    <a href="{{ path('news_edit', { 'idNews': news.idNews }) }}">edit</a>
-                                </li>
+                                {{ news.title }}
                             {% endif %}
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                        </div>
+                        <div class="home-news-item-description">
+                            {% if loc=='en' %}
+                                {{ news.newsdescEn }}
+                            {% else %}
+                                {{ news.newsdesc }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <ul>
             <li>
@@ -56,9 +34,15 @@
             </li>
         </ul>
     {% endif %}
-    
-    partners
-    {% for partner in partners %}
-        <a href="{{partner.site}}"><img src="{{photo_path}}{{ partner.photo }}"/></a>
-    {% endfor %}
+
+    {% if partners|length %}
+        <div class="home-partners">
+            <div class="container">
+                <h3>{{'main.block.partners'|trans}}</h3>
+                {% for partner in partners %}
+                    <a href="{{partner.site}}"><img src="{{photo_path}}{{ partner.photo }}"/></a>
+                    {% endfor %}
+            </div>
+        </div>
+    {% endif%}
 {% endblock %}
