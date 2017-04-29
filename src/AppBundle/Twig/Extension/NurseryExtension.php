@@ -38,6 +38,7 @@ class NurseryExtension extends \Twig_Extension
             new \Twig_Function('get_nursery_owner', [$this, 'getOwner']),
             new \Twig_Function('get_nursery_email', [$this, 'getEmail']),
             new \Twig_Function('get_nursery_address', [$this, 'getAddress']),
+            new \Twig_Function('get_nursery_id', [$this, 'getNurseryId']),
         ];
     }
 
@@ -70,6 +71,13 @@ class NurseryExtension extends \Twig_Extension
         $this->findNursery();
 
         return $this->nursery->getAdress();
+    }
+
+    public function getNurseryId()
+    {
+        $this->findNursery();
+
+        return $this->nursery->getIdNursery();
     }
 
     private function findNursery()

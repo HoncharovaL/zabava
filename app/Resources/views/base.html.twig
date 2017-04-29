@@ -25,7 +25,7 @@
                                 <div class="menu-item"><a href="">{{"header.link.exhibitions"|trans}}</a></div>
                                 <div class="menu-item"><a href="">{{"header.link.services"|trans}}</a></div>
                                 <div class="menu-item"><a href="">{{"header.link.gallery"|trans}}</a></div>
-                                <div class="menu-item"><a href="">{{"header.link.reviews"|trans}}</a></div>
+                                <div class="menu-item"><a href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{"header.link.reviews"|trans}}</a></div>
                                 <div class="menu-item">
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                         <a href="{{path('fos_user_security_logout')}}">{{"header.link.logout"|trans}}</a>
