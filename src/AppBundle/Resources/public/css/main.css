@@ -96,3 +96,76 @@ body
 .footer-contacts-phone {
     font-weight: bold;
 }
+
+.home-news h3, .home-partners h3 {
+    text-align: center;
+    font: 30px eirikRaude;
+    padding: 20px 0;
+}
+
+.home-news {
+    background: #f1f1ef;
+    padding-bottom: 50px;
+    font: 18px eirikRaude;
+    color: #323232;
+}
+
+.home-news-item {
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 20px;
+    background: #fff;
+    border-bottom: 5px #e59e18 solid;
+}
+
+.home-news-item-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.home-news-item-image img {
+    width: 400px;
+    z-index: -1;
+}
+
+.home-news-item-text {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    background-image:
+        linear-gradient(white, white),  /*  общий фон блока, всегда идёт первым перекрывая всё что под ним  */
+        linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+        linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+    background-repeat: repeat, repeat-x, repeat-x;
+    background-position: 0 0, 10px 0, 10px 0;
+    background-size: auto auto, 20px 20px, 20px 20px;
+    background-clip: padding-box, border-box, border-box;  /*  обрезаем края у общей заливки  */
+    background-origin: padding-box, border-box, border-box, border-box, border-box; 
+}
+
+.home-news-item-title {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px #F3F3F3 solid;
+}
+
+.home-news-item-description {
+    color: #787878;
+    padding-top: 20px;
+}
+
+.home-partners {
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.home-partners img {
+    height: 35px;
+    width: 80px;
+    margin: 0 15px;
+}

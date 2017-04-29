@@ -7,20 +7,24 @@
                 <h3>{{'main.block.news'|trans}}</h3>
                 {% for news in news %}
                     <div class="home-news-item">
-                        <img src="{{photo_path}}{{news.photo}}"/>
-                        <div class="home-news-item-title">
-                            {% if loc=='en' %}
-                                {{ news.titleEn }}
-                            {% else %}
-                                {{ news.title }}
-                            {% endif %}
+                        <div class="home-news-item-image">
+                            <img src="{{photo_path}}{{news.photo}}"/>
                         </div>
-                        <div class="home-news-item-description">
-                            {% if loc=='en' %}
-                                {{ news.newsdescEn }}
-                            {% else %}
-                                {{ news.newsdesc }}
-                            {% endif %}
+                        <div class="home-news-item-text">
+                            <div class="home-news-item-title">
+                                {% if loc=='en' %}
+                                    {{ news.titleEn }}
+                                {% else %}
+                                    {{ news.title }}
+                                {% endif %}
+                            </div>
+                            <div class="home-news-item-description">
+                                {% if loc=='en' %}
+                                    {{ news.newsdescEn }}
+                                {% else %}
+                                    {{ news.newsdesc }}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
