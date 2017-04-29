@@ -1,6 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+     <div class="home-dogs">
+        <div class="container">
+            <div class="home-dogs-left-block">
+                <div class="home-dogs-left-block-take">{{"main.dogs.take"|trans}}</div>
+                <div class="home-dogs-left-block-for-u">{{"main.dogs.for_you"|trans}}</div>
+                <div class="home-dogs-left-block-tailed">{{"main.dogs.tailed"|trans}}</div>
+                <div class="home-dogs-left-block-zabava">{{"main.dogs.zabava"|trans}}</div>
+            </div>
+            <div class="home-dogs-right-block"></div>
+        </div>
+    </div>
+    <div class="home-about-breed">
+        <div class="container">
+            <h3>{{'main.block.about_breed'|trans}}</h3>
+            <div class="home-about-breed-description">{{"main.about_breed.description"|trans}}</div>
+            <div class="home-about-breed-image">
+                <img src="{{ asset('bundles/app/img/about_breed_img.png') }}"/>
+            </div>
+        </div>
+    </div>
     {% if news|length %}
         <div class="home-news">
             <div class="container">

@@ -46,6 +46,15 @@ main:
     block:
         partners: Our friends
         news: News
+        about_breed: About breed
+    dogs:
+        take: Take
+        for_you: your own
+        tailed: tailed
+        zabava: fun
+    about_breed:
+        description:  Miniature Schnauzer remains one of the most popular worldwide, primarily for its temperament and relatively small size. After all, it can be kept even in the smallest apartment. This is a very miniature breed with a weight of no more than 7 kg.
+
 header:
     link:
         main: Home

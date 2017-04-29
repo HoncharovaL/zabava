@@ -97,10 +97,52 @@ body
     font-weight: bold;
 }
 
-.home-news h3, .home-partners h3 {
+.home-dogs {
+    font: 18px eirikRaude;
+}
+.home-dogs-left-block-take {
+    font-size: 110px;
+}
+
+.home-dogs-left-block-for-u {
+    font-size: 185px;
+    color: #e59e18;
+}
+
+.home-dogs-left-block-tailed {
+    font-size: 71px;
+}
+
+.home-dogs-left-block-zabava {
+    font-size: 119px;
+    color: #e59e18;
+}
+
+.home-about-breed {
+    background-image: url(../img/main_about_breed_bg.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    color: #fff;
+    font: 18px eirikRaude;
+    z-index: 1;
+    position: relative;
+}
+
+.home-news h3, .home-partners h3, .home-about-breed h3 {
     text-align: center;
     font: 30px eirikRaude;
     padding: 20px 0;
+    
+}
+
+.home-about-breed-image {
+    text-align: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+.home-about-breed-image img {
+    width: 300px;
 }
 
 .home-news {
