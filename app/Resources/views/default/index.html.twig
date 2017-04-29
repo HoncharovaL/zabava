@@ -56,4 +56,9 @@
             </li>
         </ul>
     {% endif %}
+    
+    partners
+    {% for partner in partners %}
+        <a href="{{partner.site}}"><img src="{{photo_path}}{{ partner.photo }}"/></a>
+    {% endfor %}
 {% endblock %}
