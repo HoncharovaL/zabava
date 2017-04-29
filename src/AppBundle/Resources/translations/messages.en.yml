@@ -24,7 +24,6 @@ total.yourcomment: Your comment
 total.date: Date
 total.partners: Partners
 titles.list.title: Title
-titles.list.titles: Title
 vaccinations.list.vaccinations: Vaccinations
 services.list.services: Services
 services.list.description: Description
@@ -35,6 +34,12 @@ comments.list.questserv: Questions about services
 comments.list.questdogs: Questions about dogs
 comments.list.name: Visitor's name
 dogs.list.namedog: Dog's name
+total.caption: Caption
+total.news: News
+total.type: Category
+total.exhibition: Exhibition
+total.advice: Advice
+total.other: Other
 
 main: 
     title: Home

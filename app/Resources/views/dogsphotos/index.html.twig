@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dogsphotos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Updatedat</th>
+                <th>Photo</th>
+                <th>Iddogph</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dogsPhoto in dogsPhotos %}
+            <tr>
+                <td><a href="{{ path('dogsphotos_show', { 'idDogPh': dogsPhoto.idDogPh }) }}">{{ dogsPhoto.updatedAt }}</a></td>
+                <td>{{ dogsPhoto.photo }}</td>
+                <td>{{ dogsPhoto.idDogPh }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dogsphotos_show', { 'idDogPh': dogsPhoto.idDogPh }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dogsphotos_edit', { 'idDogPh': dogsPhoto.idDogPh }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dogsphotos_new') }}">Create a new dogsPhoto</a>
+        </li>
+    </ul>
+{% endblock %}
