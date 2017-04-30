@@ -16,11 +16,13 @@ class DefaultController extends Controller
     public function indexAction()
     {   $request = $this->get('translator')->getLocale();
         $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('AppBundle:News')->findBy([], ['ndate' => 'DESC']);
+        $news = $em->getRepository('AppBundle:News')->findBy([], ['ndate' => 'DESC'], 3);
+        $partners = $em->getRepository('AppBundle:Nursery')->findBy([], null, null, 1);
 
         return $this->render('default/index.html.twig', array(
             'news' => $news,
             'loc'=>$request,
+            'partners' => $partners,
         ));
        
     }

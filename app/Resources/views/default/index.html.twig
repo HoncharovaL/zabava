@@ -1,59 +1,72 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   
+     <div class="home-dogs">
+        <div class="container">
+            <div class="home-dogs-left-block">
+                <div class="home-dogs-left-block-take">{{"main.dogs.take"|trans}}</div>
+                <div class="home-dogs-left-block-for-u">{{"main.dogs.for_you"|trans}}</div>
+                <div class="home-dogs-left-block-tailed">{{"main.dogs.tailed"|trans}}</div>
+                <div class="home-dogs-left-block-zabava">{{"main.dogs.zabava"|trans}}</div>
+            </div>
+            <div class="home-dogs-right-block"></div>
+        </div>
+    </div>
+    <div class="home-about-breed">
+        <div class="container">
+            <h3>{{'main.block.about_breed'|trans}}</h3>
+            <div class="home-about-breed-description">{{"main.about_breed.description"|trans}}</div>
+            <div class="home-about-breed-image">
+                <img src="{{ asset('bundles/app/img/about_breed_img.png') }}"/>
+            </div>
+        </div>
+    </div>
+    {% if news|length %}
+        <div class="home-news">
+            <div class="container">
+                <h3>{{'main.block.news'|trans}}</h3>
+                {% for news in news %}
+                    <div class="home-news-item">
+                        <div class="home-news-item-image">
+                            <img src="{{photo_path}}{{news.photo}}"/>
+                        </div>
+                        <div class="home-news-item-text">
+                            <div class="home-news-item-title">
+                                {% if loc=='en' %}
+                                    {{ news.titleEn }}
+                                {% else %}
+                                    {{ news.title }}
+                                {% endif %}
+                            </div>
+                            <div class="home-news-item-description">
+                                {% if loc=='en' %}
+                                    {{ news.newsdescEn }}
+                                {% else %}
+                                    {{ news.newsdesc }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <ul>
+            <li>
+                <a href="{{ path('news_new') }}">Create a new news</a>
+            </li>
+        </ul>
+    {% endif %}
 
-    <a href="{{ path('nursery_show', { 'idNursery': 1}) }}">{{'nursery.list.about'|trans}}</a>
-    <a href="{{ path('nursery_index') }}">{{'total.partners'|trans}}</a>
-    <a href="{{path('titles_index')}}">{{'titles.list.title'|trans}}</a>
-    <a href="{{path('vaccinations_index')}}">{{'vaccinations.list.vaccinations'|trans}}</a>
-    <a href="{{path('services_index')}}">{{'services.list.services'|trans}}</a>
-    <a href="{{path('comments_index')}}">{{'total.questions'|trans}}</a>
-    <a href="{{path('litters_index')}}">litters are there</a>
-    <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
-
-    <h1>News list</h1>
-
-    <table>
-        <tbody>
-        {% for news in news %}
-            <tr>
-                <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
-                <td><a href="{{ path('news_show', { 'idNews': news.idNews }) }}">
-                {% if loc!='en' %}
-                {{ news.title }}
-                {% else %}
-               {{news.titleEn}}
-                {%endif%}
-                </a></td>
-                <td><img src="{{photo_path}}{{news.photo}}" 
-                         style="width:304px;height:228px;"></td>
-                {% if loc!='en' %}
-                <td>{{ news.newsdesc }}</td>
-                {% else %}
-                <td>{{news.newsdescEn}}</td>
-                {%endif%}
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('news_show', { 'idNews': news.idNews }) }}">show</a>
-                        </li>
-                        {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                        <li>
-                            <a href="{{ path('news_edit', { 'idNews': news.idNews }) }}">edit</a>
-                        </li>
-                         {# {% endif %}#}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-{#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-    <ul>
-        <li>
-            <a href="{{ path('news_new') }}">Create a new news</a>
-        </li>
-    </ul>
- {# {% endif %}#}
+    {% if partners|length %}
+        <div class="home-partners">
+            <div class="container">
+                <h3>{{'main.block.partners'|trans}}</h3>
+                {% for partner in partners %}
+                    <a href="{{partner.site}}"><img src="{{photo_path}}{{ partner.photo }}"/></a>
+                    {% endfor %}
+            </div>
+        </div>
+    {% endif%}
 {% endblock %}

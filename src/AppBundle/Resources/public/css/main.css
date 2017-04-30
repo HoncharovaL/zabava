@@ -1,0 +1,213 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: eirikRaude;
+    src: url(../fonts/EIRIK_RAUDE.ttf);
+}
+
+body 
+{
+    background-color: #f8f8f8;
+    color: #323232;
+    font: 14px Verdana;
+}
+
+.container {
+    width: 1300px;
+    margin: auto;
+}
+
+.header {
+    background-image: url(../img/top.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    height: 142px;
+}
+.header-top {
+    vertical-align: middle;
+    padding: 20px 15px;
+}
+
+.header-top .logo {
+    width: 25%;
+    float: left;
+    height: 77px;
+    display: inline-block;
+}
+
+.header-top .menu-item {
+    height: 77px;
+    display: inline-block;
+    margin: 0 15px;
+    padding-top: 20px;
+}
+
+.header-top .menu-item a {
+    color: #323232;
+    text-decoration: none;
+}
+
+.header-top .menu-item a:hover {
+    color: #e59e18;
+    border-bottom: 2px #e59e18 dashed;
+}
+
+.header-bottom {
+    margin: -35px 0 0 38%;
+}
+
+.header-bottom .header-bottom-phonenumber {
+    display: inline-block;
+    width: 30%;
+    font: 18px eirikRaude;
+}
+
+.header-bottom .header-bottom-phonenumber img {
+    width: 20px;
+    float: left;
+}
+
+.footer {
+    padding: 30px 0;
+    background-color: #eeeeec;
+}
+
+.footer .footer-contacts,
+.footer .footer-logo
+{
+    width: 30%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+.footer hr {
+    color: #323232;
+    background-color: #323232; /* too dark*/
+    width: 30%;
+    margin: auto;
+    height: 1px;
+}
+
+.footer-contacts-phone {
+    font-weight: bold;
+}
+
+.home-dogs {
+    font: 18px eirikRaude;
+}
+.home-dogs-left-block-take {
+    font-size: 110px;
+}
+
+.home-dogs-left-block-for-u {
+    font-size: 185px;
+    color: #e59e18;
+}
+
+.home-dogs-left-block-tailed {
+    font-size: 71px;
+}
+
+.home-dogs-left-block-zabava {
+    font-size: 119px;
+    color: #e59e18;
+}
+
+.home-about-breed {
+    background-image: url(../img/main_about_breed_bg.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    color: #fff;
+    font: 18px eirikRaude;
+    z-index: 1;
+    position: relative;
+}
+
+.home-news h3, .home-partners h3, .home-about-breed h3 {
+    text-align: center;
+    font: 30px eirikRaude;
+    padding: 20px 0;
+    
+}
+
+.home-about-breed-image {
+    text-align: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+.home-about-breed-image img {
+    width: 300px;
+}
+
+.home-news {
+    background: #f1f1ef;
+    padding-bottom: 50px;
+    font: 18px eirikRaude;
+    color: #323232;
+}
+
+.home-news-item {
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 20px;
+    background: #fff;
+    border-bottom: 5px #e59e18 solid;
+}
+
+.home-news-item-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.home-news-item-image img {
+    width: 400px;
+    z-index: -1;
+}
+
+.home-news-item-text {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    background-image:
+        linear-gradient(white, white),  /*  общий фон блока, всегда идёт первым перекрывая всё что под ним  */
+        linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+        linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+    background-repeat: repeat, repeat-x, repeat-x;
+    background-position: 0 0, 10px 0, 10px 0;
+    background-size: auto auto, 20px 20px, 20px 20px;
+    background-clip: padding-box, border-box, border-box;  /*  обрезаем края у общей заливки  */
+    background-origin: padding-box, border-box, border-box, border-box, border-box; 
+}
+
+.home-news-item-title {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px #F3F3F3 solid;
+}
+
+.home-news-item-description {
+    color: #787878;
+    padding-top: 20px;
+}
+
+.home-partners {
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.home-partners img {
+    height: 35px;
+    width: 80px;
+    margin: 0 15px;
+}
