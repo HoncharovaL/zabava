@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Videos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Video</th>
+                <th>Idvideo</th>
+                <th>Iddogs</th>
+                <th>Idnews</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td><a href="{{ path('videos_show', { 'idVideo': video.idVideo }) }}">{{ video.video }}</a></td>
+                <td>{{ video.idVideo }}</td>
+                <td>{{ video.idDogs }}</td>
+                <td>{{ video.idNews }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('videos_show', { 'idVideo': video.idVideo }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('videos_edit', { 'idVideo': video.idVideo }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('videos_new') }}">Create a new video</a>
+        </li>
+    </ul>
+{% endblock %}

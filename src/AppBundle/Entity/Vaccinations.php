@@ -103,4 +103,8 @@ class Vaccinations
     {
         return $this->idVaccinations;
     }
+    
+        public function __toString() {
+        return $this->vaccinations;
+    }
 }

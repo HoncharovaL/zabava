@@ -41,6 +41,9 @@ total.type: Категория
 total.exhibition: Выставки
 total.advice: Советы
 total.other: Другое
+total.male: Кобель
+total.female: Сука
+total.forsale: Доступен
 
 main: 
     title: Главная

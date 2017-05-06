@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -26,7 +27,23 @@ class newsType extends AbstractType
             'required' => false,
             'allow_delete' => true, // optional, default is true
             'download_link' => true, // optional, default is true
-             ]);
+             ])
+         ->add('dogsPhotos', CollectionType::class, [
+            'required' => false,
+              'by_reference' => false,
+            'entry_type'   => DogsPhotosType::class,
+             'allow_add' => true,
+             'prototype' => true,
+             ])
+        ->add('videos', CollectionType::class, [
+            'required' => false,
+            'by_reference' => false,
+            'entry_type'   => VideosType::class,
+             'allow_add' => true,
+             'prototype' => true,
+            'allow_delete' => true,
+             ]);        
+                ;
         ;
     }
     

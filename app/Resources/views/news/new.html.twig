@@ -4,13 +4,119 @@
     <h1>{{'total.create'|trans}} {{'total.news'|trans}}</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value={{'total.create'|trans}}/>
+    {{ form_row(form.ndate)}}
+    {{ form_row(form.title)}}
+    {{ form_row(form.titleEn)}}
+    {{ form_row(form.newsType)}}
+    {{ form_row(form.newsdesc)}}
+    {{ form_row(form.newsdescEn)}}
+    {{ form_row(form.photoFile)}}
+
+    {# store the prototype on the data-prototype attribute #}
+    <ul id="photos-fields-list"
+        data-prototype="{{ form_widget(form.dogsPhotos.vars.prototype)|e }}">
+        {% for dogsPhoto in form.dogsPhotos %}
+            <li>
+                {{ form_errors(dogsPhoto) }}
+                {{ form_widget(dogsPhoto) }}
+            </li>
+        {% endfor %}
+        <a href="#" id="add-another-photo">Add another photo</a>
+    </ul>
+
+    <ul id="videos-fields-list"
+        data-prototype="{{ form_widget(form.videos.vars.prototype)|e }}">
+        {% for video in form.videos %}
+            <li>
+                {{ form_errors(video) }}
+                {{ form_widget(video) }}
+            </li>
+        {% endfor %}
+        <a href="#" id="add-another-video">Add another video</a>
+    </ul>
+    <input type="submit" value="{{'total.save'|trans}}"/>
+
     {{ form_end(form) }}
 
+
+
+
+    {% if delete_form is defined %}
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    {% endif %}
     <ul>
         <li>
             <a href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
         </li>
     </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var photoCount = '{{ form.dogsPhotos|length }}';
+            var videoCount = '{{ form.videos|length }}';
+            $('#add-another-photo').on('click', function (e) {
+                e.preventDefault();
+
+                var photosList = $('#photos-fields-list');
+
+                // grab the prototype template
+                var newWidget = photosList.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, photoCount);
+                photoCount++;
+
+                // create a new list element and add it to the list
+                var newLi = $('<li></li>').html(newWidget);
+                newLi.appendTo(photosList);
+            });
+            $('#add-another-video').on('click', function (e) {
+                e.preventDefault();
+
+                var videosList = $('#videos-fields-list');
+
+                // grab the prototype template
+                var newWidget = videosList.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, videoCount);
+                videoCount++;
+
+                // create a new list element and add it to the list
+                var newLi = $('<li></li>').html(newWidget);
+                newLi.appendTo(videosList);
+                addDeleteLink(newLi);
+            });
+
+            // Get the ul that holds the collection of tags
+            var $collectionHolder = $('#videos-fields-list');
+
+            // add a delete link to all of the existing tag form li elements
+            $collectionHolder.find('li').each(function () {
+                addDeleteLink($(this));
+            });
+            
+            function addDeleteLink($tagFormLi) {
+                var $removeFormA = $('<a href="#">{{"total.delete"|trans}}</a>');
+                $tagFormLi.append($removeFormA);
+
+                $removeFormA.on('click', function (e) {
+                    // prevent the link from creating a "#" on the URL
+                    e.preventDefault();
+
+                    // remove the li for the tag form
+                    $tagFormLi.remove();
+                });
+            }
+        });
+    </script>
 {% endblock %}

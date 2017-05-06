@@ -73,4 +73,8 @@ class Titles
     {
         return $this->idTitles;
     }
+    
+    public function __toString() {
+        return $this->title;
+    }
 }

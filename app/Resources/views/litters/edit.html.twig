@@ -3,19 +3,78 @@
 {% block body %}
     <h1>Litter edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {{ form_start(form) }}
+    {{ form_row(form.ldate)}}
+    {{ form_row(form.mother)}}
+    {{ form_row(form.father)}}
+
 
     <ul>
+        <ul class="form-collection-container" data-count="{{ form.dogs|length }}" id="dogs-fields-list"
+        data-prototype="{{ form_widget(form.dogs.vars.prototype)|e }}">
+        {% for dog in form.dogs %}
+            <li>
+                {{ form_errors(dog) }}
+                {{ form_widget(dog) }}
+            </li>
+        {% endfor %}
+        <a href="#" class="add-new-element" >Add dog</a>
+    </ul>
+    <input type="submit" value="{{'total.save'|trans}}"/>
+
+    {{ form_end(form) }}
+
+    {% if delete_form is defined %}
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    {% endif %}
         <li>
             <a href="{{ path('litters_index') }}">Back to the list</a>
         </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.form-collection-container .add-new-element').on('click', function (e) {
+                e.preventDefault();
+
+                var list = $(this).parents('.form-collection-container');
+
+                // grab the prototype template
+                var newWidget = list.attr('data-prototype');
+                var count = list.data('count');
+                newWidget = newWidget.replace(/__name__/g, count);
+                count++;
+                list.data('count', count);
+
+                // create a new list element and add it to the list
+                var newLi = $('<li></li>').html(newWidget);
+                newLi.appendTo(list);
+                addDeleteLink(newLi);
+            });
+
+            // add a delete link to all of the existing tag form li elements
+            $('.form-collection-container').find('li').each(function () {
+                addDeleteLink($(this));
+            });
+
+            function addDeleteLink($formLi) {
+                var $removeLi = $('<a href="#">{{"total.delete"|trans}}</a>');
+                $formLi.append($removeLi);
+
+                $removeLi.on('click', function (e) {
+                    // prevent the link from creating a "#" on the URL
+                    e.preventDefault();
+
+                    // remove the li for the tag form
+                    $formLi.remove();
+                });
+            }
+        });
+    </script>
 {% endblock %}

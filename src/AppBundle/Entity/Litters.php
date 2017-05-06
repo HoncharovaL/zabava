@@ -34,7 +34,7 @@ class Litters
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_mother", referencedColumnName="id_dogs")
+     * @ORM\JoinColumn(name="id_mother", referencedColumnName="id_dogs")
      * })
      */
     private $mother;
@@ -44,14 +44,14 @@ class Litters
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_father", referencedColumnName="id_dogs")
+     * @ORM\JoinColumn(name="id_father", referencedColumnName="id_dogs")
      * })
      */
     private $father;
 
     /**
      * @var ArrayCollection|AppBundle\Entity\Dogs[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dogs", mappedBy="litters")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dogs", mappedBy="litters", cascade={"ALL"}, orphanRemoval=true)
      */
     private $dogs;
 
@@ -160,6 +160,9 @@ class Litters
      */
     public function setDogs(ArrayCollection $dogs)
     {
+        foreach($dogs as $dog) {
+            $dog->setLitters($this);
+        }
         $this->dogs = $dogs;
 
         return $this;
@@ -184,7 +187,9 @@ class Litters
      */
     public function addDog(\AppBundle\Entity\Dogs $dog)
     {
-        $this->dogs[] = $dog;
+        $dog->setLitters($this);
+        $dog->setBdate($this->getLdate());
+        $this->dogs->add($dog);
 
         return $this;
     }

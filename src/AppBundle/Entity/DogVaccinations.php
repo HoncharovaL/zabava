@@ -24,7 +24,7 @@ class DogVaccinations
     /**
      * @var \AppBundle\Entity\Dogs
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs",inversedBy="dogVaccinations")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_dogs", referencedColumnName="id_dogs")
      * })
@@ -39,8 +39,7 @@ class DogVaccinations
      *   @ORM\JoinColumn(name="id_vaccinations", referencedColumnName="id_vaccinations")
      * })
      */
-    private $idVaccinations;
-
+    private $vaccinations;
 
 
     /**
@@ -78,26 +77,26 @@ class DogVaccinations
     }
 
     /**
-     * Set idVaccinations
+     * Set vaccinations
      *
-     * @param \AppBundle\Entity\Vaccinations $idVaccinations
+     * @param \AppBundle\Entity\Vaccinations $vaccinations
      *
      * @return DogVaccinations
      */
-    public function setIdVaccinations(\AppBundle\Entity\Vaccinations $idVaccinations = null)
+    public function setVaccinations(\AppBundle\Entity\Vaccinations $vaccinations = null)
     {
-        $this->idVaccinations = $idVaccinations;
+        $this->vaccinations = $vaccinations;
 
         return $this;
     }
 
     /**
-     * Get idVaccinations
+     * Get vaccinations
      *
      * @return \AppBundle\Entity\Vaccinations
      */
-    public function getIdVaccinations()
+    public function getVaccinations()
     {
-        return $this->idVaccinations;
+        return $this->vaccinations;
     }
 }

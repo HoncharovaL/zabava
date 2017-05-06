@@ -6,7 +6,11 @@ use AppBundle\Entity\Dogs;
 use AppBundle\Entity\Litters;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Comments;
+use DateTime;
+
 
 /**
  * Dog controller.
@@ -23,17 +27,10 @@ class DogsController extends Controller
      */
     public function indexAction()
     {
-$em = $this->getDoctrine()->getManager();
-$query = $em->createQuery(
-    'SELECT d.name, d.bdate, d.description, d.photo, d.quality,	d.sex,	d.idDogs, n.nameNur
-    FROM AppBundle:Dogs d
-    left join d.nursery n
-');
-
-
-$dogs = $query->getResult();
-
- return $this->render('dogs/index.html.twig', array(
+        $em = $this->getDoctrine()->getManager();
+        $dogs = $em->getRepository('AppBundle:Dogs')->findAll();
+        
+        return $this->render('dogs/index.html.twig', array(
             'dogs' => $dogs,
         ));
     }
@@ -58,7 +55,7 @@ $dogs = $query->getResult();
             return $this->redirectToRoute('dogs_show', array('id' => $dog->getIdDogs()));
         }
 
-        return $this->render('dogs/new.html.twig', array(
+        return $this->render('dogs/edit.html.twig', array(
             'dog' => $dog,
             'form' => $form->createView(),
         ));
@@ -68,15 +65,29 @@ $dogs = $query->getResult();
      * Finds and displays a dog entity.
      *
      * @Route("/{id}", name="dogs_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Dogs $dog)
-    {
+    public function showAction(Dogs $dog,Request $request1)
+    {   $em = $this->getDoctrine()->getManager();
+//        $photos = $em->getRepository('AppBundle:DogsPhotos')->findBy(['idDogs' => $dog->getIdDogs()]);
+//        $videos = $em->getRepository('AppBundle:Videos')->findBy(['idDogs' => $dog->getIdDogs()]);
         $deleteForm = $this->createDeleteForm($dog);
-
+        $comment = new Comments();
+        $form = $this->createForm('AppBundle\Form\CommentsType', $comment);
+        $form->handleRequest($request1);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager(); 
+            $comment->setIdDogs($dog);
+            $dt = new DateTime();
+            $comment->setCdate($dt);
+            $em->persist($comment);
+            $em->flush();
+            return $this->redirectToRoute('dogs_show', ['id' => $dog->getIdDogs()]);
+        }
         return $this->render('dogs/show.html.twig', array(
             'dog' => $dog,
             'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -93,14 +104,14 @@ $dogs = $query->getResult();
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->persist($dog);
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('dogs_edit', array('id' => $dog->getIdDogs()));
         }
 
         return $this->render('dogs/edit.html.twig', array(
             'dog' => $dog,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

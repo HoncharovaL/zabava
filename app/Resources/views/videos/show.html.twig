@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Video</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Video</th>
+                <td>{{ video.video }}</td>
+            </tr>
+            <tr>
+                <th>Idvideo</th>
+                <td>{{ video.idVideo }}</td>
+            </tr>
+            <tr>
+                <th>Iddogs</th>
+                <td>{{ video.idDogs }}</td>
+            </tr>
+            <tr>
+                <th>Idnews</th>
+                <td>{{ video.idNews }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('videos_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('videos_edit', { 'idVideo': video.idVideo }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
