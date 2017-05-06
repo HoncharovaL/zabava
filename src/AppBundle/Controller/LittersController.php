@@ -24,8 +24,7 @@ class LittersController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $litters = $em->getRepository('AppBundle:Litters')->findAll();
+       $litters = $em->getRepository('AppBundle:Litters')->findAll();
 
         return $this->render('litters/index.html.twig', array(
             'litters' => $litters,
@@ -94,7 +93,7 @@ class LittersController extends Controller
 
         return $this->render('litters/edit.html.twig', array(
             'litter' => $litter,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

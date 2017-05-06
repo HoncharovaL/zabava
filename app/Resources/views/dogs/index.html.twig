@@ -11,26 +11,33 @@
         <thead>
             <tr>
                 <th>{% trans %}dogs.list.name{% endtrans %}</th>
-                <th>{{'dogs.list.birthday'|trans}}</th>
-                <th>Description</th>
                 <th>Photo</th>
                 <th>Quality</th>
                 <th>Sex</th>
-                <th>Iddogs</th>
+                <th>State</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for dog in dogs %}
             <tr>
-                <td><a href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">{{ dog.name }}</a></td>
-                <td>{% if dog.bdate %}{{ dog.bdate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ dog.description }}</td>
-                
-                <td> <img src="{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
-                <td>{{ dog.quality }}</td>
-                <td>{{ dog.sex }}</td>
-                <td>{{ dog.nameNur}}</td>
+                {% if app.request.getLocale!='en' %}
+                <td>{{ dog.name }}</td>
+                {% else %}
+                <td>{{dog.nameEn}}</td>
+                {%endif%}
+                <td> <img src="{{photo_path}}{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
+                {% if app.request.getLocale!='en' %}
+                <td>{{ dog.quality}}</td>
+                {% else %}
+                <td>{{dog.qualityEn}}</td>
+                {%endif%}
+                {% if app.request.getLocale!='en' %}
+                <td>{{ dog.sex}}</td>
+                {% else %}
+                <td>{{dog.sexEn}}</td>
+                {%endif%}
+                <td>{{dog.state}}</td>
                 <td>
                     <ul>
                         <li>

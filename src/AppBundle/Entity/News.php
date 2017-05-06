@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * News
@@ -136,6 +137,63 @@ class News
      * @ORM\Column(name="title_en", type="string", length=300, nullable=false)
      */
     private $titleEn;
+    
+     /**
+     * @var \AppBundle\Entity\News
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DogsPhotos", mappedBy="idNews", cascade={"ALL"}, orphanRemoval=true)
+     */
+    private $dogsPhotos = [];
+    /**
+     * @var \AppBundle\Entity\Videos
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Videos", mappedBy="idNews", cascade={"ALL"}, orphanRemoval=true)
+     */
+    private $videos = [];
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="newsdesc_en", type="text", length=65535, nullable=false)
+     */
+    private $newsdescEn;
+    
+    function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    function getDogsPhotos() {
+        return $this->dogsPhotos;
+    }
+
+    function getVideos() {
+        return $this->videos;
+    }
+    
+    function setUpdatedAt(\DateTime $updatedAt) {
+        $this->updatedAt = $updatedAt;
+    }
+
+    function setDogsPhotos($dogsPhotos) {
+        foreach($dogsPhotos as $photo) {
+            $photo->setIdNews($this);
+            
+        }
+        $this->dogsPhotos = $dogsPhotos;
+    }    
+    function setVideos($videos) {
+        foreach($videos as $video) {
+            $video->setIdNews($this);
+        }
+        
+        $this->videos = $videos;
+    }
+    
+    public function removeVideos(Videos $video)
+    {
+        $this->videos->removeElement($video);
+    }
+    
     function getTitleEn() {
         return $this->titleEn;
     }
@@ -152,12 +210,7 @@ class News
         $this->newsdescEn = $newsdescEn;
     }
 
-        /**
-     * @var string
-     *
-     * @ORM\Column(name="newsdesc_en", type="text", length=65535, nullable=false)
-     */
-    private $newsdescEn;
+
 
     /**
      * Set ndate
@@ -265,4 +318,8 @@ class News
         return $this->idNews;
     }
     
+    public function __construct() {
+        $this->dogsPhotos = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+    }
 }

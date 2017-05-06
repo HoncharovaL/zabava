@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class DogsPhotosType extends AbstractType
 {
@@ -13,7 +14,11 @@ class DogsPhotosType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('updatedAt')->add('photo')->add('idDogs')->add('idNews');
+        $builder->add('photoFile', VichImageType::class, [
+            'required' => false,
+            'allow_delete' => true, // optional, default is true
+            'download_link' => true, // optional, default is true
+             ]);
     }
     
     /**

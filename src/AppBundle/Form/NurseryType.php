@@ -30,10 +30,6 @@ $builder->add('nameNur', null, array('label' => 'Название питомни
         ->add('site', null, array('label' => 'Сайт'))
         ->add('about', null, array('label' => 'О нас '))
         ->add('aboutEn', null, array('label' => 'О нас (англ)'))
-        ->add('photoFile', VichFileType::class, array('required' => false,
-            'allow_delete' => false, // not mandatory, default is true
-            'download_link' => false, // not mandatory, default is true
-            ))
         ->add('photoFile', VichImageType::class, [
             'required' => false,
             'allow_delete' => true, // optional, default is true

@@ -10,12 +10,18 @@
                 <td>{% if litter.ldate %}{{ litter.ldate|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Idlitters</th>
-                <td>{{ litter.idLitters }}</td>
+                <th>Mother</th>
+                <td><a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">{{ litter.mother.name }}</a></td>
+            </tr>
+            <tr>
+                <th>Father</th>
+                <td><a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">{{ litter.father.name }}</a></td>
             </tr>
         </tbody>
     </table>
-
+{% for child in litter.dogs %}
+     <a href="{{ path('dogs_show', { 'id': child.idDogs }) }}">{{ child.name }}</a>
+{% endfor %}
     <ul>
         <li>
             <a href="{{ path('litters_index') }}">Back to the list</a>

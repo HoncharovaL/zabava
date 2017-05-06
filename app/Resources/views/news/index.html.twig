@@ -4,25 +4,13 @@
     <h1>News list</h1>
 
     <table>
-        <thead>
-            <tr>
-                <th>Ndate</th>
-                <th>Title</th>
-                <th>Newsdesc</th>
-                <th>Newsphoto</th>
-                <th>Newstype</th>
-                <th>Idnews</th>
-                <th>Titleen</th>
-                <th>Newsdescen</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+ 
         <tbody>
         {% for news in news %}
             <tr>
                 <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
                 <td><a href="{{ path('news_show', { 'idNews': news.idNews }) }}">
-                {% if loc!='en' %}
+                {% if app.request.getLocale !='en' %}
                 {{ news.titleEn }}
                 {% else %}
                {{news.title}}
@@ -30,7 +18,7 @@
                 </a></td>
                 <td><img src="{{photo_path}}{{news.photo}}" 
                          style="width:304px;height:228px;"></td>
-                {% if loc!='en' %}
+                {% if app.request.getLocale!='en' %}
                 <td>{{ news.newsdescEn }}</td>
                 {% else %}
                 <td>{{news.newsdesc}}</td>

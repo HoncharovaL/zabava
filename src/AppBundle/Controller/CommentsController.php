@@ -26,13 +26,13 @@ class CommentsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
-        'SELECT c.idComments,c.klname, c.phone, c.email, c.question, s.services FROM AppBundle:Comments c, '
+        'SELECT c.idComments,c.cdate, c.klname, c.phone, c.email, c.question, s.services FROM AppBundle:Comments c, '
                 . 'AppBundle:services s '
                 . 'WHERE c.idNursery is null and c.idServices=s.idServices ' 
                 . 'order by c.cdate desc');
         $comments = $query->getResult();
         $querydogs = $em->createQuery(
-        'SELECT  c.idComments,c.klname, c.phone, c.email, c.question, d.name FROM AppBundle:Comments c, '
+        'SELECT  c.idComments,c.klname, c.cdate,c.phone, c.email, c.question, d.name FROM AppBundle:Comments c, '
                 . 'AppBundle:dogs d '
                 . 'WHERE c.idNursery is null and c.idDogs=d.idDogs ' 
                 . 'order by c.cdate desc');

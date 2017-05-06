@@ -65,7 +65,7 @@ class DogsPhotos
     /**
      * @var string
      *
-     * @ORM\Column(name="photos", type="string", length=300, nullable=false)
+     * @ORM\Column(name="photo", type="string", length=300, nullable=true)
      */
     private $photo;
 
@@ -81,7 +81,7 @@ class DogsPhotos
     /**
      * @var \AppBundle\Entity\Dogs
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs", inversedBy="dogsPhotos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_dogs", referencedColumnName="id_dogs")
      * })
@@ -93,7 +93,7 @@ class DogsPhotos
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\News")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_news", referencedColumnName="id_news")
+     * @ORM\JoinColumn(name="id_news", referencedColumnName="id_news")
      * })
      */
     private $idNews;

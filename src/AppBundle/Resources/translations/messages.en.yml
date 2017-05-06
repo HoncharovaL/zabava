@@ -40,6 +40,9 @@ total.type: Category
 total.exhibition: Exhibition
 total.advice: Advice
 total.other: Other
+total.male: Male dog
+total.female: Female dog
+total.forsale: Is available
 
 main: 
     title: Home

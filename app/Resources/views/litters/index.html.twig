@@ -14,8 +14,9 @@
         <tbody>
         {% for litter in litters %}
             <tr>
-                <td><a href="{{ path('litters_show', { 'idLitters': litter.idLitters }) }}">{{ litter.ldate }}</a></td>
-                <td>{{ litter.idLitters }}</td>
+                <td>{% if litter.ldate  %}{{ litter.ldate |date('Y-m-d') }}{% endif %}</td>
+                <td>{{ litter.mother }}</td>
+                <td>{{ litter.father }}</td>
                 <td>
                     <ul>
                         <li>

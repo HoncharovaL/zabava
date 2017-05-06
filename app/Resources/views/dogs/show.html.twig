@@ -7,7 +7,11 @@
         <tbody>
             <tr>
                 <th>Name</th>
+                {% if app.request.getLocale!='en' %}
                 <td>{{ dog.name }}</td>
+                {% else %}
+                <td>{{dog.nameEn}}</td>
+                {%endif%}
             </tr>
             <tr>
                 <th>Bdate</th>
@@ -15,27 +19,58 @@
             </tr>
             <tr>
                 <th>Description</th>
+                {% if app.request.getLocale!='en' %}
                 <td>{{ dog.description }}</td>
+                {% else %}
+                <td>{{dog.descriptionEn}}</td>
+                {%endif%}
             </tr>
             <tr>
                 <th>Photo</th>
-                <td>{{ dog.photo }}</td>
+                <td> <img src="{{photo_path}}{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
             </tr>
             <tr>
                 <th>Quality</th>
-                <td>{{ dog.quality }}</td>
+                <td>{{ dog.quality}}</td>
             </tr>
             <tr>
                 <th>Sex</th>
-                <td>{{ dog.sex }}</td>
+                {% if dog.sex=='1' %}
+                <td>{{ 'total.female'|trans}}</td>
+                {% else %}
+                <td>{{ 'total.male'|trans}}</td>
+                {%endif%}
             </tr>
-            <tr>
-                <th>Iddogs</th>
-                <td>{{ dog.idDogs }}</td>
-            </tr>
+            {% if dog.state=='0' %}
+                 <tr>
+                 <th>State</th>
+                <td>{{ 'total.forsale'|trans}}</td>
+                </tr>
+                {%endif%}
+            
         </tbody>
     </table>
+{% for photo in dog.dogsPhotos %}
+<img src="{{photo_path}}{{photo.photo}}" style="width:304px;height:228px;"/>
+{% endfor %}
 
+{% for video in dog.videos %}
+    <iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe>
+{% endfor %}
+{% for title in dog.dogTitles %}
+{{title.titles}}
+{{title.description}}
+{% endfor %}
+{% for vacc in dog.dogVaccinations %}
+{{vacc.vaccinations}}
+{% endfor %}
+
+<h1>{{'total.yourquestion'|trans}}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value={{'total.save'|trans}} />
+    {{ form_end(form) }}
     <ul>
         <li>
             <a href="{{ path('dogs_index') }}">Back to the list</a>

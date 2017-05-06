@@ -78,7 +78,7 @@ class ServicesController extends Controller
             $comment->setCdate($dt);
             $em->persist($comment);
             $em->flush();
-            $comment = new Comments();
+            return $this->redirectToRoute('services_show', ['id' => $service->getIdServices()]);
         }
         
         return $this->render('services/show.html.twig', array(

@@ -41,7 +41,7 @@ class DogTitles
     /**
      * @var \AppBundle\Entity\Dogs
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs", inversedBy="dogTitles")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_dogs", referencedColumnName="id_dogs")
      * })
@@ -87,7 +87,7 @@ class DogTitles
     /**
      * Set titles
      *
-     * @param \AppBundle\Entity\Titles $idTitles
+     * @param \AppBundle\Entity\Titles $titles
      *
      * @return DogTitles
      */

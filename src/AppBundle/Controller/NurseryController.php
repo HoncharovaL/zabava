@@ -89,15 +89,8 @@ class NurseryController extends Controller
             $em->persist($comment);
             $em->flush();
             $comments = $query->getResult();
-            $comment = new Comments();
-            return $this->render('nursery/show.html.twig', array(
-            'nursery' => $nursery,
-            'delete_form' => $deleteForm->createView(),
-            'loc'=>$request,
-            'comments'=>$comments,
-            'comment' => $comment,
-            'form' => $form->createView(),
-        ));
+            return $this->redirectToRoute('nursery_show', ['id' => $nursery->getIdNursery()]);
+
         }
          return $this->render('nursery/show.html.twig', array(
             'nursery' => $nursery,

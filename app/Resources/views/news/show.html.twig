@@ -30,6 +30,13 @@
             </tr>
         </tbody>
     </table>
+{% for photo in photos %}
+<img src="{{photo_path}}{{photo.photo}}" style="width:304px;height:228px;"/>
+{% endfor %}
+
+{% for video in videos %}
+    <iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe>
+{% endfor %}
 
     <ul>
         <li>
