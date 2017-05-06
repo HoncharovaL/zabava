@@ -68,3 +68,15 @@ header:
         reviews: Отзывы
         login: Вход
         logout: Выход
+
+reviews:
+    text:
+        comment_author: '<strong>%name%</strong> написала:'
+    nursery:
+        name: Название
+        bdate: Дата основания
+        owner: Владелец
+        adress: Адрес
+        phones: Телефон
+        email: Email
+        about: Описание

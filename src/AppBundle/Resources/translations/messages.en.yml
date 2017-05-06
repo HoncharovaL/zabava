@@ -67,3 +67,15 @@ header:
         reviews: Reviews
         login: Login
         logout: Logout
+        
+reviews:
+    text:
+        comment_author: '<strong>%name%</strong> wrote:'
+    nursery:
+        name: Name
+        bdate: Creation date
+        owner: Owner
+        adress: Address
+        phones: Phones
+        email: Email
+        about: About

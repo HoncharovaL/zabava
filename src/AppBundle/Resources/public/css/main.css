@@ -112,7 +112,7 @@ body
 }
 
 .home-dogs-left-block-tailed {
-    font-size: 47px;
+    font-size: 48px;
 }
 
 .home-dogs-left-block-zabava {
@@ -121,13 +121,13 @@ body
 }
 .home-dogs-left-block{
     text-align: center;    
-    width: 33%;
+    width: 35%;
     display: inline-block;
     margin-top: 0px;
 }
 .home-dogs-right-block{
     display: inline-block;
-    width: 66%;    
+    width: 64%;    
 }
 
 .home-about-breed {
@@ -140,7 +140,7 @@ body
     position: relative;
 }
 
-.home-news h3, .home-partners h3, .home-about-breed h3 {
+.home-news h3, .home-partners h3, .home-about-breed h3 , .reviews-about-nursery h3 {
     text-align: center;
     font: 30px eirikRaude;
     padding: 20px 0;
@@ -222,4 +222,34 @@ body
     height: 35px;
     width: 80px;
     margin: 0 15px;
+}
+
+.reviews-about-nursery img {
+    max-height: 325px;
+    object-fit: contain; /* Fit logo in the image size */
+    -o-object-fit: contain; /* Fit logo fro opera browser */
+    object-position: top; /* Set logo position */
+    -o-object-position: top;
+/*    float: left;*/
+}
+
+
+/*.reviews-about-nursery .nursery-container{
+    text-align: center;
+}*/
+.reviews-comment-item .date{
+    opacity: .5;
+    margin:  10px 0px;
+    font: 15px eirikRaude;
+}
+.reviews-comment-item .title {
+    margin:  10px 0px;   
+}
+.reviews-comment-item .text {
+    margin:  10px 0px;
+}
+.reviews-comment-item {
+    padding: 30px 30px;
+    /*font: 18px eirikRaude;*/
+    border-bottom: 1px solid #DCDCDC;
 }
