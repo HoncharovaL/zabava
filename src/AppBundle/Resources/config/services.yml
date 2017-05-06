@@ -1,8 +1,25 @@
 services:
-    app.twig_extension:
+    #service
+    app.service.translation:
+        class: AppBundle\Service\TranslationService
+        public: false
+        arguments:
+            - '@request_stack'
+
+    #twig
+    app.twig_extension.nursery:
         class: AppBundle\Twig\Extension\NurseryExtension
         public: false
         arguments:
             - '@doctrine'
+            - '@app.service.translation'
+        tags:
+            - { name: twig.extension }
+
+    app.twig_extension.translation:
+        class: AppBundle\Twig\Extension\TranslationExtension
+        public: false
+        arguments:
+            - '@app.service.translation'
         tags:
             - { name: twig.extension }
