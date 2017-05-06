@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/app/css/jcarousel.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
-     <div class="home-dogs">
+    <div class="home-dogs">
         <div class="container">
             <div class="home-dogs-left-block">
                 <div class="home-dogs-left-block-take">{{"main.dogs.take"|trans}}</div>
@@ -9,7 +14,20 @@
                 <div class="home-dogs-left-block-tailed">{{"main.dogs.tailed"|trans}}</div>
                 <div class="home-dogs-left-block-zabava">{{"main.dogs.zabava"|trans}}</div>
             </div>
-            <div class="home-dogs-right-block"></div>
+            <div class="home-dogs-right-block">
+                <div class="jcarousel-wrapper">
+                    <div class="jcarousel" data-jcarousel="true">
+                        <ul style="left: 0px; top: 0px;">
+                            {% for dog in dogs %}
+                                <li><img src="{{photo_path}}{{dog.photo}}"/></li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+
+                    <a href="#" class="jcarousel-control-prev inactive" data-jcarouselcontrol="true">‹</a>
+                    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="home-about-breed">
@@ -69,4 +87,39 @@
             </div>
         </div>
     {% endif%}
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{asset("bundles/app/js/jquery.jcarousel.min.js")}}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.jcarousel').jcarousel({
+                wrap: 'circular'
+            });
+
+            $('.jcarousel-control-prev')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+        $('.jcarousel-control-next')
+            .on('jcarouselcontrol:active', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('jcarouselcontrol:inactive', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '+=1'
+            });
+
+        });
+    </script>
 {% endblock %}

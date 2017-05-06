@@ -18,11 +18,13 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('AppBundle:News')->findBy([], ['ndate' => 'DESC'], 3);
         $partners = $em->getRepository('AppBundle:Nursery')->findBy([], null, null, 1);
+        $dogs = $em->getRepository('AppBundle:Dogs')->findBy([], null, 3);
 
         return $this->render('default/index.html.twig', array(
             'news' => $news,
             'loc'=>$request,
             'partners' => $partners,
+            'dogs' => $dogs,
         ));
        
     }
