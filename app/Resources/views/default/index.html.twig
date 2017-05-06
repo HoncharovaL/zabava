@@ -50,18 +50,10 @@
                         </div>
                         <div class="home-news-item-text">
                             <div class="home-news-item-title">
-                                {% if loc=='en' %}
-                                    {{ news.titleEn }}
-                                {% else %}
-                                    {{ news.title }}
-                                {% endif %}
+                                {{ get_translated(news, 'title') }}
                             </div>
                             <div class="home-news-item-description">
-                                {% if loc=='en' %}
-                                    {{ news.newsdescEn }}
-                                {% else %}
-                                    {{ news.newsdesc }}
-                                {% endif %}
+                                {{ get_translated(news, 'newsdesc') }}
                             </div>
                         </div>
                     </div>
@@ -69,13 +61,13 @@
             </div>
         </div>
     {% endif %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <ul>
             <li>
                 <a href="{{ path('news_new') }}">Create a new news</a>
             </li>
         </ul>
-    {% endif %}
+    {% endif %}#}
 
     {% if partners|length %}
         <div class="home-partners">
