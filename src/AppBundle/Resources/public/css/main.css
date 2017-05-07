@@ -335,6 +335,7 @@ h3 {
 }
 
 .news-page {
+    margin-top: 20px;
     overflow: hidden;
     background: #fff;
     border-bottom: 5px #e59e18 solid;
