@@ -25,9 +25,10 @@ class DogsPhotosController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $dogsPhotos = $em->getRepository('AppBundle:DogsPhotos')->findAll();
-
+        $videos = $em->getRepository('AppBundle:Videos')->findAll();
         return $this->render('dogsphotos/index.html.twig', array(
             'dogsPhotos' => $dogsPhotos,
+            'videos' => $videos,
         ));
     }
 

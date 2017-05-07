@@ -1,41 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Dogsphotos list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Updatedat</th>
-                <th>Photo</th>
-                <th>Iddogph</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+<table>
         <tbody>
-        {% for dogsPhoto in dogsPhotos %}
-            <tr>
-                <td><a href="{{ path('dogsphotos_show', { 'idDogPh': dogsPhoto.idDogPh }) }}">{{ dogsPhoto.updatedAt }}</a></td>
-                <td>{{ dogsPhoto.photo }}</td>
-                <td>{{ dogsPhoto.idDogPh }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('dogsphotos_show', { 'idDogPh': dogsPhoto.idDogPh }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dogsphotos_edit', { 'idDogPh': dogsPhoto.idDogPh }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+        {% for dog in dogsPhotos %}
+                 <td> <img src="{{photo_path}}{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('dogsphotos_new') }}">Create a new dogsPhoto</a>
-        </li>
-    </ul>
+<table>
+        <tbody>
+{% for video in videos %}
+   <td><iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe></td> 
+{% endfor %}
+        </tbody>
+</table>
 {% endblock %}

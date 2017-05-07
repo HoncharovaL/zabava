@@ -4,30 +4,35 @@
     <h1>Litters list</h1>
 
     <table>
-        <thead>
-            <tr>
-                <th>Ldate</th>
-                <th>Idlitters</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
         <tbody>
         {% for litter in litters %}
             <tr>
+                
+                <td> <img src="{{photo_path}}{{litter.mother.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
+                <td><a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">{{ litter.mother.name }}</a></td>
+                <td> <img src="{{photo_path}}{{litter.father.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
+                <td><a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">{{ litter.father.name }}</a></td>
                 <td>{% if litter.ldate  %}{{ litter.ldate |date('Y-m-d') }}{% endif %}</td>
-                <td>{{ litter.mother }}</td>
-                <td>{{ litter.father }}</td>
+                <td>  
+                        <table>
+        <tbody>
+            {% for child in litter.dogs %}
+            <a href="{{ path('dogs_show', { 'id': child.idDogs }) }}">{{ child.name }}</a>
+            {{child.state}}
+            {{child.sex}}
+            {% endfor %}
+                    </tbody>
+    </table>
+            </td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('litters_show', { 'idLitters': litter.idLitters }) }}">show</a>
-                        </li>
                         <li>
                             <a href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
             </tr>
+
         {% endfor %}
         </tbody>
     </table>
