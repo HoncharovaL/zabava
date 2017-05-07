@@ -20,6 +20,7 @@ total.back: Назад
 total.comments: Комментарии
 total.entername: Введите Ваше имя
 total.save: Сохранить
+total.send: Отправить
 total.yourcomment: Ваш комментарий
 total.date: Дата
 total.partners: Партнеры
@@ -75,6 +76,8 @@ header:
 reviews:
     text:
         comment_author: '<strong>%name%</strong> написала:'
+        pay_attention: Обратите внимание!
+        comment_disclaimer: '<p>Все комментарии проходят тщательную модерацию. К публикации не допускаются: </p><p> - комментарии рекламного характера </p><p> - комментарии содержащие оскорбления </p><p> - комментарии без указания контактных данных</p>'
     nursery:
         name: Название
         bdate: Дата основания
@@ -83,3 +86,7 @@ reviews:
         phones: Телефон
         email: Email
         about: Описание
+    label: 
+        name: Ваше имя
+        email: Ваш e-mail
+        comment: Комментарий

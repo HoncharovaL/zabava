@@ -253,3 +253,37 @@ body
     /*font: 18px eirikRaude;*/
     border-bottom: 1px solid #DCDCDC;
 }
+
+.reviews-add-comment .review-form, .reviews-add-comment .review-disclaimer {
+    display: inline-block;
+    width: 45%;
+}
+
+.reviews-add-comment .review-disclaimer {
+    padding-top: 28px;
+}
+.reviews-add-comment .review-disclaimer h4 {
+   color: #e59e18;
+   font-size: 18px;
+   font: bold italic 18px eirikRaude;
+   padding-bottom: 20px;
+}
+
+.reviews-add-comment .review-disclaimer p {
+     font: 18px eirikRaude;
+     color: #B5B5B5;
+     padding-bottom: 5px;
+}
+
+.reviews-add-comment .review-form {
+    padding: 20px 30px;
+    float: left;
+}
+
+.reviews-add-comment input[type="text"], .reviews-add-comment textarea {
+    width: 49.5%;
+}
+
+.reviews-add-comment textarea {
+    width: 100%;
+}

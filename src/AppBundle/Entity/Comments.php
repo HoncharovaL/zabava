@@ -22,7 +22,7 @@ class Comments
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=100, nullable=false)
+     * @ORM\Column(name="phone", type="string", length=100, nullable=true)
      */
     private $phone;
 
