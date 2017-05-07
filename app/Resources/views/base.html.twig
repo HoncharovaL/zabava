@@ -26,7 +26,7 @@
                                 <div class="menu-item"><a class='decorated-href' href="{{path("news_index", { 'newsType': 2})}}">{{"header.link.advices"|trans}}</a></div>
                                 <div class="menu-item"><a class='decorated-href' href="{{path("news_index", { 'newsType': 1})}}">{{"header.link.exhibitions"|trans}}</a></div>
                                 <div class="menu-item"><a class='decorated-href' href="{{path("services_index")}}">{{"header.link.services"|trans}}</a></div>
-                                <div class="menu-item"><a class='decorated-href' href="">{{"header.link.gallery"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path('dogsphotos_index')}}">{{"header.link.gallery"|trans}}</a></div>
                                 <div class="menu-item"><a class='decorated-href' href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{"header.link.reviews"|trans}}</a></div>
                                 <div class="menu-item">
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}

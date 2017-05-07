@@ -387,10 +387,10 @@ h3 {
 }
 
 .photos .photo-item {
-    margin: 30px auto;
-    width: 400px;
+    margin: 15px auto;
+    width: 410px;
     height: 400px;
-    padding-right: 10px;
+    padding: 10px 10px;
     display: inline-block;
     text-align: center;
 }
@@ -401,9 +401,9 @@ h3 {
 }
 
 .videos .video-item {
-    width: 600px;
-    height: 500px;
-    padding-right: 10px;
+    width: 620px;
+    height: 350px;
+    padding: 10px 10px;
     display: inline-block;
     text-align: center;
 }
