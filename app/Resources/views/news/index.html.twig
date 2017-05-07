@@ -3,7 +3,15 @@
 {% block body %}
     <div class='container'>
         <div class='news-container'>
-            <h3> {{ 'main.block.news'|trans }} </h3>
+            <h3>
+                {% if app.request.get('newsType') == 1 %}
+                    {{ 'header.link.exhibitions'|trans }}
+                {% elseif app.request.get('newsType') == 2 %}
+                    {{ 'header.link.advices'|trans }}
+                {% else%}
+                    {{ 'main.block.news'|trans }}
+                {% endif %}
+            </h3>
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class='button-container'>

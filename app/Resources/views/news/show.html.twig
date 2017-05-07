@@ -1,54 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'total.news'|trans}}</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>{{'total.date'|trans}}</th>
-                <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>{{'total.caption'|trans}}</th>
-               {% if loc!='en' %}
-                <td>{{ news.title }}</td>
-                {% else %}
-               <td>{{news.titleEn}}</td>
-                {%endif%}
-            </tr>
-            <tr>
-               <td><img src="{{photo_path}}{{news.photo}}" 
-                         style="width:304px;height:228px;"></td>
-            </tr>
-            <tr>
-                {% if loc!='en' %}
-                <td>{{ news.newsdesc }}</td>
-                {% else %}
-                <td>{{news.newsdescEn}}</td>
-                {%endif%}
-            </tr>
-        </tbody>
-    </table>
-{% for photo in photos %}
-<img src="{{photo_path}}{{photo.photo}}" style="width:304px;height:228px;"/>
-{% endfor %}
-
-{% for video in videos %}
-    <iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe>
-{% endfor %}
-
-    <ul>
-        <li>
-            <a href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
-        </li>
-        <li>
-            <a href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{'total.edit'|trans}}</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="{{'total.delete'|trans}}">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class='container'>
+        <div class='news-page'>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class='button-container'>
+                    <a class="submit-button" href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{"total.edit"|trans}}</a>
+                    {{ form_start(delete_form) }}
+                    <input class="submit-button" type="submit" value="{{'total.delete'|trans}}">
+                    {{ form_end(delete_form) }}
+                </div>
+            {% endif %}
+            <div class="image">
+                <a class='colorbox group1' href='{{photo_path}}{{news.photo}}'><img src="{{photo_path}}{{news.photo}}"/></a>
+            </div>
+            <div class="text">
+                <div class="title">
+                    <a class='decorated-href' href='{{path('news_show', {'idNews': news.idNews})}}'>{{ get_translated(news, 'title') }}</a>
+                </div>
+                <div class="description">
+                    {{ get_translated(news, 'newsdesc') }}
+                </div>
+                <div class='photos'>
+                    {% for photo in photos %}
+                        <div class='photo-item'><a class='colorbox group1' href='{{photo_path}}{{photo.photo}}'><img src="{{photo_path}}{{photo.photo}}"/></a></div>
+                    {% endfor %}
+                </div>
+                <div class='videos'>
+                    {% for video in videos %}
+                        <div class='video-item'>{{video.video|raw}}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript'>
+        $('a.colorbox').colorbox({rel: 'group1'});
+    </script>
 {% endblock %}

@@ -39,6 +39,11 @@ h3 {
     padding-right: 30px;
 }
 
+.button-container > * {
+    display: inline-block;
+    margin-right: 10px;
+}
+
 .container {
     width: 1300px;
     margin: auto;
@@ -327,4 +332,77 @@ h3 {
 
 .reviews-add-comment textarea {
     width: 100%;
+}
+
+.news-page {
+    overflow: hidden;
+    background: #fff;
+    border-bottom: 5px #e59e18 solid;
+}
+
+.news-page .decorated-href {
+    font:  18px eirikRaude;
+}
+
+.news-page .image {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.news-page .image img {
+    width: 100%;
+    z-index: -1;
+}
+
+.news-page .text {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    background-image:
+        linear-gradient(white, white),  /*  общий фон блока, всегда идёт первым перекрывая всё что под ним  */
+        linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+        linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+    background-repeat: repeat, repeat-x, repeat-x;
+    background-position: 0 0, 10px 0, 10px 0;
+    background-size: auto auto, 20px 20px, 20px 20px;
+    background-clip: padding-box, border-box, border-box;  /*  обрезаем края у общей заливки  */
+    background-origin: padding-box, border-box, border-box, border-box, border-box; 
+}
+
+.news-page .title {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px #F3F3F3 solid;
+}
+
+.news-page .description {
+    color: #787878;
+    padding-top: 20px;
+}
+
+.photos .photo-item {
+    margin: 30px auto;
+    width: 400px;
+    height: 400px;
+    padding-right: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.photos .photo-item img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.videos .video-item {
+    width: 600px;
+    height: 500px;
+    padding-right: 10px;
+    display: inline-block;
+    text-align: center;
 }
