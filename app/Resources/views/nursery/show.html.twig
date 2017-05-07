@@ -5,39 +5,21 @@
         <div class="reviews-about-nursery">
             <h3>{{'nursery.list.about'|trans}}</h3>
             <div class="nursery-container">
-                <img src="{{photo_path}}{{nursery.photo}}"/>
-                {#<div>
-                    <strong>{{'reviews.nursery.name'|trans}}</strong>
-                    {{ get_translated(nursery, 'nameNur') }}
+                <div class="nursery-photo">
+                    <img src="{{photo_path}}{{nursery.photo}}"/>
                 </div>
-                <div>
-                    <strong>{{'reviews.nursery.bdate'|trans}}</strong>
-                    {% if nursery.bdate %}{{ nursery.bdate|date('Y-m-d') }}{% endif %}
+                <div class="nursery-description">
+                    <p>{{'reviews.nursery.conact_us_via'|trans}}</p>
+                    <p>{{'reviews.nursery.conact_us_via_phones'|trans}}</p>
+                    <p class="important-info">{{ nursery.phone }}</p>
+                    <p class="important-info">{{ nursery.cellphone }}</p>
+                    <p>{{'reviews.nursery.conact_us_via_email'|trans}}</p>
+                    <p class="important-info">{{ nursery.email }}</p>
+                    <p>{{ get_translated(nursery, 'adress') }}</p>
+                    <p class="very-important-info">{{ get_translated(nursery, 'owner') }}</p>
                 </div>
-                <div>
-                    <strong>{{'reviews.nursery.owner'|trans}}</strong>
-                    {{ get_translated(nursery, 'owner') }}
-                </div>
-                <div>
-                    <strong>{{'reviews.nursery.adress'|trans}}</strong>
-                    {{ get_translated(nursery, 'adress') }}
-                </div>
-                <div>
-                    <strong>{{'reviews.nursery.phones'|trans}}</strong>
-                    {{ nursery.phone }}
-                    {{ nursery.cellphone }}
-                </div>
-                <div>
-                    <strong>{{'reviews.nursery.email'|trans}}</strong>
-                    {{ nursery.email }}
-                </div>
-                <div>#}
-                {#                    {{ get_translated(nursery, 'about') }}#}
-                {#                    dgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddddgdfgdkjfgdlkfgjhdlfkgjhdflkjghdlkjghdflkj rliugth reliutah leruh ldfkgjh lfkjghlfkj zhdkjhrg;kuh ldkjvgbzldfkjg balrgiuaerhliaurh aiurhliudfhkdjf alrk ghaldfjbh ldfkjgdfh,gkh drhltiuert hleiurtheriu eriutg heruighdlugh dlug hdlri ugherluh lrugh lsuhglsiudhglsuhglusdh suirgh sldughl dsghlsiu hdgliusd hliduhg lidu hlidug hdliuhlsfghsliughsldiurghldiuhglsudhglsiughsl sdlgushglsduigh lsiduf hsiurh lsrdg uhldu hlusihg lsiuh guirghlsduhg lsidu ghlsiudghldiughlsd jghaleriuthelrut herliuterhtl uiiudfh dfgjhdrugreiug df,j vga lruha elr iut hkj dddddd #}
-
-                {#                </div>#}
-                {#            </div>#}
             </div>
+            <div style="clear: left"></div>
         </div>
         <div class="reviews-comments-list">
             {% for comments in comments %}
@@ -66,6 +48,6 @@
                 <p>{{'reviews.text.comment_disclaimer'|trans|raw}}</p>
             </div>
         </div>
-            <div style="clear: left"></div>
+        <div style="clear: left"></div>
     </div>
 {% endblock %}

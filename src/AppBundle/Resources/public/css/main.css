@@ -224,19 +224,49 @@ body
     margin: 0 15px;
 }
 
+.reviews-about-nursery .nursery-photo, .reviews-about-nursery .nursery-description {
+    display: inline-block;
+}
+
+.reviews-about-nursery .nursery-photo {
+    width: 60%;
+    float: left;
+    text-align: center;
+}
+
+.reviews-about-nursery .nursery-description {
+    width: 25%;
+    border: #3f84ba 2px solid;
+    padding: 15px;
+    font: 20px eirikRaude;
+    color: #6C6C6C;
+    height: 320px;
+}
+
+.reviews-about-nursery .nursery-description p {
+    padding-bottom: 10px;
+}
+
+.reviews-about-nursery .nursery-description .important-info {
+    font:  22px eirikRaude;
+    color: #323232;
+}
+
+.reviews-about-nursery .nursery-description .very-important-info {
+    font: 28px eirikRaude;
+    color: #323232;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
 .reviews-about-nursery img {
-    max-height: 325px;
+    max-height: 350px;
     object-fit: contain; /* Fit logo in the image size */
     -o-object-fit: contain; /* Fit logo fro opera browser */
     object-position: top; /* Set logo position */
     -o-object-position: top;
-/*    float: left;*/
 }
 
-
-/*.reviews-about-nursery .nursery-container{
-    text-align: center;
-}*/
 .reviews-comment-item .date{
     opacity: .5;
     margin:  10px 0px;

@@ -78,13 +78,9 @@ reviews:
         pay_attention: Pay attention!
         comment_disclaimer: '<p>All comments are thoroughly moderated. For publication are not allowed: </p><p> - comments of an advertising nature </p><p> - comments containing insults </p><p> - comments without specifying contact information</p>'
     nursery:
-        name: Name
-        bdate: Creation date
-        owner: Owner
-        adress: Address
-        phones: Phones
-        email: Email
-        about: About
+        conact_us_via: You can contact us via
+        conact_us_via_phones: 'phone:'
+        conact_us_via_email: 'email:'
     label: 
         name: Name
         email: Email
