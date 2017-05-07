@@ -23,7 +23,6 @@
                                 {% endfor %}
                         </ul>
                     </div>
-
                     <a href="#" class="jcarousel-control-prev inactive" data-jcarouselcontrol="true">‹</a>
                     <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
                 </div>
@@ -50,7 +49,7 @@
                         </div>
                         <div class="home-news-item-text">
                             <div class="home-news-item-title">
-                                {{ get_translated(news, 'title') }}
+                                 <a class='decorated-href' href='{{path('news_show', {'idNews': news.idNews})}}'>{{ get_translated(news, 'title') }}</a>
                             </div>
                             <div class="home-news-item-description">
                                 {{ get_translated(news, 'newsdesc') }}
@@ -61,13 +60,6 @@
             </div>
         </div>
     {% endif %}
-    {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <ul>
-            <li>
-                <a href="{{ path('news_new') }}">Create a new news</a>
-            </li>
-        </ul>
-    {% endif %}#}
 
     {% if partners|length %}
         <div class="home-partners">

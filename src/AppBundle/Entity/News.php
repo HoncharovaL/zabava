@@ -321,5 +321,6 @@ class News
     public function __construct() {
         $this->dogsPhotos = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->updatedAt = new \DateTime();
     }
 }

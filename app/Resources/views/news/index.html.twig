@@ -1,46 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>News list</h1>
+    <div class='container'>
+        <div class='news-container'>
+            <h3> {{ 'main.block.news'|trans }} </h3>
 
-    <table>
- 
-        <tbody>
-        {% for news in news %}
-            <tr>
-                <td>{% if news.ndate %}{{ news.ndate|date('Y-m-d') }}{% endif %}</td>
-                <td><a href="{{ path('news_show', { 'idNews': news.idNews }) }}">
-                {% if app.request.getLocale !='en' %}
-                {{ news.titleEn }}
-                {% else %}
-               {{news.title}}
-                {%endif%}
-                </a></td>
-                <td><img src="{{photo_path}}{{news.photo}}" 
-                         style="width:304px;height:228px;"></td>
-                {% if app.request.getLocale!='en' %}
-                <td>{{ news.newsdescEn }}</td>
-                {% else %}
-                <td>{{news.newsdesc}}</td>
-                {%endif%}
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('news_show', { 'idNews': news.idNews }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('news_edit', { 'idNews': news.idNews }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class='button-container'>
+                    <a class="submit-button" href="{{ path('news_new') }}">{{ "total.create"|trans }}</a>
+                </div>
+            {% endif %}
+            <div class='news-list'>
+                {% for news in news %}
+                    <div class="home-news-item">
+                        <div class="home-news-item-image">
+                            <img src="{{photo_path}}{{news.photo}}"/>
+                        </div>
+                        <div class="home-news-item-text">
+                            <div class="home-news-item-title">
+                                <a class='decorated-href' href='{{path('news_show', {'idNews': news.idNews})}}'>{{ get_translated(news, 'title') }}</a>
+                            </div>
+                            <div class="home-news-item-description">
+                                {{ get_translated(news, 'newsdesc') }}
+                            </div>
+                        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('news_new') }}">Create a new news</a>
-        </li>
-    </ul>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="submit-button" href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{"total.edit"|trans}}</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

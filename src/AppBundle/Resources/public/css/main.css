@@ -9,11 +9,34 @@
     src: url(../fonts/EIRIK_RAUDE.ttf);
 }
 
-body 
+body
 {
     background-color: #f8f8f8;
     color: #323232;
     font: 14px Verdana;
+}
+
+a {
+    color : #323232;
+    text-decoration: none;
+}
+
+a.decorated-href:hover {
+    color: #e59e18;
+    border-bottom: 2px #e59e18 dashed;
+} 
+
+h3 {
+    text-align: center;
+    font: 30px eirikRaude;
+    padding: 20px 0;
+
+}
+
+.button-container {
+    text-align: right;
+    height: 40px;
+    padding-right: 30px;
 }
 
 .container {
@@ -45,16 +68,6 @@ body
     display: inline-block;
     margin: 0 15px;
     padding-top: 20px;
-}
-
-.header-top .menu-item a {
-    color: #323232;
-    text-decoration: none;
-}
-
-.header-top .menu-item a:hover {
-    color: #e59e18;
-    border-bottom: 2px #e59e18 dashed;
 }
 
 .header-bottom {
@@ -140,13 +153,6 @@ body
     position: relative;
 }
 
-.home-news h3, .home-partners h3, .home-about-breed h3 , .reviews-about-nursery h3 {
-    text-align: center;
-    font: 30px eirikRaude;
-    padding: 20px 0;
-
-}
-
 .home-about-breed-image {
     text-align: center;
     margin-top: 15px;
@@ -172,6 +178,11 @@ body
     margin-left: 20px;
     background: #fff;
     border-bottom: 5px #e59e18 solid;
+    margin-bottom: 15px;
+}
+
+.home-news-item  .decorated-href {
+    font:  18px eirikRaude;
 }
 
 .home-news-item-image {

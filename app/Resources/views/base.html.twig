@@ -19,14 +19,14 @@
                                 <div class="logo">
                                     <a href="{{path("homepage")}}"><img src="{{ asset('bundles/app/img/logo_orange.png') }}"/></a>
                                 </div>
-                                <div class="menu-item"><a href="{{path("homepage")}}">{{"header.link.main"|trans}}</a></div>
-                                <div class="menu-item"><a href="{{path("dogs_index")}}">{{"header.link.our_dogs"|trans}}</a></div>
-                                <div class="menu-item"><a href="{{path("litters_index")}}">{{"header.link.litters"|trans}}</a></div>
-                                <div class="menu-item"><a href="{{path("news_index", { 'newsType': 1})}}">{{"header.link.advices"|trans}}</a></div>
-                                <div class="menu-item"><a href="{{path("news_index", { 'newsType': 2})}}">{{"header.link.exhibitions"|trans}}</a></div>
-                                <div class="menu-item"><a href="{{path("services_index")}}">{{"header.link.services"|trans}}</a></div>
-                                <div class="menu-item"><a href="">{{"header.link.gallery"|trans}}</a></div>
-                                <div class="menu-item"><a href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{"header.link.reviews"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path("homepage")}}">{{"header.link.main"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path("dogs_index")}}">{{"header.link.our_dogs"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path("litters_index")}}">{{"header.link.litters"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path("news_index", { 'newsType': 2})}}">{{"header.link.advices"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path("news_index", { 'newsType': 1})}}">{{"header.link.exhibitions"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{path("services_index")}}">{{"header.link.services"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="">{{"header.link.gallery"|trans}}</a></div>
+                                <div class="menu-item"><a class='decorated-href' href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{"header.link.reviews"|trans}}</a></div>
                                 <div class="menu-item">
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                         <a href="{{path('fos_user_security_logout')}}">{{"header.link.logout"|trans}}</a>
