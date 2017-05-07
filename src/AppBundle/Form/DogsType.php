@@ -27,6 +27,7 @@ class DogsType extends AbstractType {
                 ->add('description')
                 ->add('descriptionEn')
                 ->add('sex', ChoiceType::class, ['choices' => ['total.male' => '2', 'total.female' => '1']])
+                ->add('state', ChoiceType::class, ['choices' => ['total.forsale' => '0', 'продан' => '1']])
                 ->add('quality', ChoiceType::class, ['choices' => ['Show' => 'Show', 'Breed' => "Breed", 'Pet' => "Pet"]])
                 ->add('litters', EntityType::class, ['class' => Litters::class])
                 ->add('photoFile', VichImageType::class, [

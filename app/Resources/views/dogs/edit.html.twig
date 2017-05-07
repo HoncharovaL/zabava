@@ -7,6 +7,7 @@
     {{ form_row(form.bdate)}}
     {{ form_row(form.name)}}
     {{ form_row(form.nameEn)}}
+    {{ form_row(form.state)}}
     {{ form_row(form.description)}}
     {{ form_row(form.descriptionEn)}}
     {{ form_row(form.sex)}}
@@ -25,6 +26,7 @@
         {% endfor %}
         <a href="#" id="add-another-photo">Add another photo</a>
     </ul>
+     {% do form.dogsPhotos.setRendered %}
 
     <ul class="form-collection-container" data-count="{{ form.videos|length }}" id="videos-fields-list"
         data-prototype="{{ form_widget(form.videos.vars.prototype)|e }}">
@@ -36,6 +38,7 @@
         {% endfor %}
         <a href="#" class="add-new-element"  >Add another video</a>
     </ul>
+     {% do form.videos.setRendered %}
     <ul class="form-collection-container" data-count="{{ form.dogTitles|length }}" id="titles-fields-list"
         data-prototype="{{ form_widget(form.dogTitles.vars.prototype)|e }}">
         {% for dogTitle in form.dogTitles %}
@@ -46,6 +49,7 @@
         {% endfor %}
         <a href="#" class="add-new-element" >Add title</a>
     </ul>
+     {% do form.dogTitles.setRendered %}
     <ul class="form-collection-container" data-count="{{ form.dogVaccinations|length }}" id="vaccinations-fields-list"
         data-prototype="{{ form_widget(form.dogVaccinations.vars.prototype)|e }}">
         {% for dogVaccination in form.dogVaccinations %}
@@ -56,6 +60,7 @@
         {% endfor %}
         <a href="#" class="add-new-element" >Add vaccination</a>
     </ul>
+     {% do form.dogVaccinations.setRendered %}
     <input type="submit" value="{{'total.save'|trans}}"/>
 
     {{ form_end(form) }}
