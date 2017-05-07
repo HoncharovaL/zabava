@@ -388,7 +388,7 @@ h3 {
 
 .photos .photo-item {
     margin: 15px auto;
-    width: 410px;
+    width: 31%;
     height: 400px;
     padding: 10px 10px;
     display: inline-block;
@@ -401,7 +401,7 @@ h3 {
 }
 
 .videos .video-item {
-    width: 620px;
+    width: 48%;
     height: 350px;
     padding: 10px 10px;
     display: inline-block;
