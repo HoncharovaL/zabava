@@ -76,6 +76,9 @@
 {% block javascripts %}
     <script type="text/javascript" src="{{asset("bundles/app/js/jquery-3.2.1.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("bundles/app/js/jquery.colorbox-min.js")}}"></script>
+    <script type='text/javascript'>
+        $('a.colorbox').colorbox({rel: 'group1', maxWidth:'95%', maxHeight:'95%'});
+    </script>
 {% endblock %}
 </body>
 </html>

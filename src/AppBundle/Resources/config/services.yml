@@ -23,3 +23,10 @@ services:
             - '@app.service.translation'
         tags:
             - { name: twig.extension }
+            
+    app.twig_extension.age_culculator:
+        class: AppBundle\Twig\Extension\AgeCalculatorExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+

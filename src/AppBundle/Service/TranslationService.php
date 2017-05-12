@@ -23,14 +23,14 @@ class TranslationService
 
     public function getTranslatedField($object, $fieldName)
     {
-        $locale = $this->requestStack->getMasterRequest()->getLocale();
+        $locale = explode('_', $this->requestStack->getMasterRequest()->getLocale());
         $getter = 'get' . ucfirst($fieldName);
 
-        if ($locale != self::DEFAULT_LOCALE) {
-            $getter .= ucfirst($locale);
+        if ($locale[0] != self::DEFAULT_LOCALE) {
+            $getter .= ucfirst($locale[0]);
         }
 
-        return $object->$getter();
+        return method_exists($object, $getter) ? $object->$getter() : '';
     }
 
 }

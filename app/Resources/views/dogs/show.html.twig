@@ -1,75 +1,90 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/app/css/jcarousel.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
-    <h1>Dog</h1>
+    <div class='container'>
+        <div class='dogs-show-container'>
+            <div class="dogs_photos">
+                <div class='dogs-photo-container'>
+                    <a class='colorbox group1' href='{{photo_path}}{{dog.photo}}'><img class='dogs-photo' src="{{photo_path}}{{dog.photo}}" ></a>
+                </div>
+               
+                <div class="dogs-other-photos-container">
+                    <div class="dogs-other-photos-wrapper">
+                        <div class="dogs-photo-jcarousel" data-jcarousel="true">
+                            <ul style="left: 0px; top: 0px;">
+                                {% for photo in dog.dogsPhotos %}
+                                    <li><a class='colorbox group1' href='{{photo_path}}{{photo.photo}}'><img src="{{photo_path}}{{photo.photo}}"/></a></li>
+                                    {% endfor %}
+                            </ul>
+                        </div>
+                        <a href="#" class="jcarousel-control-prev inactive" data-jcarouselcontrol="true">‹</a>
+                        <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
+                    </div>
+                </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Name</th>
-                {% if app.request.getLocale!='en' %}
-                <td>{{ dog.name }}</td>
-                {% else %}
-                <td>{{dog.nameEn}}</td>
-                {%endif%}
-            </tr>
-            <tr>
-                <th>Bdate</th>
-                <td>{% if dog.bdate %}{{ dog.bdate|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                {% if app.request.getLocale!='en' %}
-                <td>{{ dog.description }}</td>
-                {% else %}
-                <td>{{dog.descriptionEn}}</td>
-                {%endif%}
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td> <img src="{{photo_path}}{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
-            </tr>
-            <tr>
-                <th>Quality</th>
-                <td>{{ dog.quality}}</td>
-            </tr>
-            <tr>
-                <th>Sex</th>
-                {% if dog.sex=='1' %}
-                <td>{{ 'total.female'|trans}}</td>
-                {% else %}
-                <td>{{ 'total.male'|trans}}</td>
-                {%endif%}
-            </tr>
-            {% if dog.state=='0' %}
-                 <tr>
-                 <th>State</th>
-                <td>{{ 'total.forsale'|trans}}</td>
-                </tr>
-                {%endif%}
-            
-        </tbody>
-    </table>
-{% for photo in dog.dogsPhotos %}
-<img src="{{photo_path}}{{photo.photo}}" style="width:304px;height:228px;"/>
-{% endfor %}
+            </div>
+            <div class='dogs-about-container'>
+                <div class='sex-img'>
+                    <img src='{{ asset('bundles/app/img/sex/'~dog.sex~'.png') }}'>
+                </div>
+                <div class='dog-name'>
+                    {{ get_translated(dog, 'name') }}
+                </div>
+                <div class='dogs-description'>
+                    {{ get_translated(dog, 'description') }}
+                </div>
+                <div>
+                    {{"dogs.about.dogage"|trans}}
+                    {% set age = calculate_age(dog.bdate) %}
+                    {% transchoice age.y with {'%month%': age.m, '%year%': age.y} %}
+                    dogs.about.age
+                    {% endtranschoice %}
+                </div>
+                <div>
+                    {{"dogs.about.birthday"|trans}}
+                    {{ dog.bdate |date('d.m.Y') }}
+                </div>
 
-{% for video in dog.videos %}
-    <iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe>
-{% endfor %}
-{% for title in dog.dogTitles %}
-{{title.titles}}
-{{title.description}}
-{% endfor %}
-{% for vacc in dog.dogVaccinations %}
-{{vacc.vaccinations}}
-{% endfor %}
+                <div>
+                    {% if dog.dogTitles | length %}
+                        {{"dogs.about.titles"|trans}}
 
-<h1>{{'total.yourquestion'|trans}}</h1>
+                        {% for title in dog.dogTitles %}
+                            <div>{{title.titles}}</div>
+                        {% endfor %}
+                    {% endif%}
+                </div>
+                <div>
+                    {% if dog.dogVaccinations | length %}
+                        {{"dogs.about.vaccinations"|trans}}
+                        {% for vacc in dog.dogVaccinations %}
+                            <div>{{vacc.vaccinations}}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {#{% for video in dog.videos %}
+        <iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe>
+        {% endfor %}#}
+
+
+
+
+
+
+    {#<h1>{{'total.yourquestion'|trans}}</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value={{'total.save'|trans}} />
+    {{ form_widget(form) }}
+    <input type="submit" value={{'total.save'|trans}} />
     {{ form_end(form) }}
     <ul>
         <li>
@@ -80,8 +95,42 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-    </ul>
+    </ul>#}
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{asset("bundles/app/js/jquery.jcarousel.min.js")}}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.dogs-photo-jcarousel').jcarousel({
+                wrap: 'circular'
+            });
+
+            $('.jcarousel-control-prev')
+                    .on('jcarouselcontrol:active', function () {
+                        $(this).removeClass('inactive');
+                    })
+                    .on('jcarouselcontrol:inactive', function () {
+                        $(this).addClass('inactive');
+                    })
+                    .jcarouselControl({
+                        target: '-=1'
+                    });
+
+            $('.jcarousel-control-next')
+                    .on('jcarouselcontrol:active', function () {
+                        $(this).removeClass('inactive');
+                    })
+                    .on('jcarouselcontrol:inactive', function () {
+                        $(this).addClass('inactive');
+                    })
+                    .jcarouselControl({
+                        target: '+=1'
+                    });
+        });
+    </script>
 {% endblock %}

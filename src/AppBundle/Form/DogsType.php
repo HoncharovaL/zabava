@@ -23,7 +23,7 @@ class DogsType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name')
                 ->add('nameEn')
-                ->add('bdate', DateType::class, ['data' => new \DateTime()])
+                ->add('bdate', DateType::class, ['empty_data' => new \DateTime()])
                 ->add('description')
                 ->add('descriptionEn')
                 ->add('sex', ChoiceType::class, ['choices' => ['total.male' => '2', 'total.female' => '1']])

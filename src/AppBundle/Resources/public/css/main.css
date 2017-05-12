@@ -66,17 +66,19 @@ h3 {
     float: left;
     height: 77px;
     display: inline-block;
+    text-align: center;
 }
+
 
 .header-top .menu-item {
     height: 77px;
     display: inline-block;
     margin: 0 15px;
-    padding-top: 20px;
+    line-height: 77px;
 }
 
 .header-bottom {
-    margin: -35px 0 0 38%;
+    margin: 0 0 0 40%;
 }
 
 .header-bottom .header-bottom-phonenumber {
@@ -138,7 +140,7 @@ h3 {
     color: #e59e18;
 }
 .home-dogs-left-block{
-    text-align: center;    
+    text-align: right;    
     width: 35%;
     display: inline-block;
     margin-top: 0px;
@@ -406,4 +408,88 @@ h3 {
     padding: 10px 10px;
     display: inline-block;
     text-align: center;
+}
+
+    
+
+.dogs-photo-container .dogs-photo {
+    max-height: 100%;
+    max-width: 100%;
+}
+.dogs-photo-container{
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    
+}
+.dogs-list-item .dogs-photo-container{
+    display: inline-block;
+    float: left;
+}
+.dogs-list-item .dogs-about-container{
+    height: 400px;
+}
+
+.dogs_photos{
+    float: left;
+    display: inline-block;
+    height: 600px;
+    width: 600px;
+}
+.dogs-other-photos-container{
+    width:600px;
+}
+.dogs-other-photos-container .dogs-other-photos{
+    margin: 5px;
+    max-height: 200px;
+}
+.dogs-about-container{
+    width: 300px;
+    height: 520px;
+    display: inline-block;
+    padding: 40px; 
+    
+}
+.dogs-show-container .dogs-about-container{
+    margin: 30px;
+}
+
+.dogs-list-item, .dogs-show-container{
+    width: 1100px;
+    margin: 30px auto;
+    display: block;
+}
+
+.sex-img {
+    width: 15px;
+    height: 15px;
+    float: left;
+    display: inline-block;
+}
+.sex-img img{
+    max-width: 15px;
+    max-height: 15px;
+    
+}
+.dogs-show-container .sex-img img{
+    max-width: 25px;
+    max-height: 25px;
+    
+}
+.dogs-show-container .dog-name{
+    font-size: 25px;
+}
+.dog-name{
+    display: inline-block;
+}
+.dogs-list .button-container{
+    margin: 10px 0;
+    text-align: left;
+}
+.dogs-about-container > * { 
+    font: 17px eirikRaude;
+    padding: 5px 10px; 
+}
+.dogs-description{
+    opacity: 0.5;
 }
