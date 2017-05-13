@@ -10,7 +10,7 @@
         <div class="dogs-list">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class='button-container'>
-                    <a class="submit-button" href="{{ path('dogs_new') }}">{{ "total.create"|trans }}</a>
+                    <a class="orange-button" href="{{ path('dogs_new') }}">{{ "total.create"|trans }}</a>
                 </div>
             {% endif %}
             <div class="dogs-list-item">
@@ -50,9 +50,9 @@
 
                         <div class='button-container'>
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <a class="submit-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">{{ "total.edit"|trans }}</a>
+                                <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">{{ "total.edit"|trans }}</a>
                             {% endif %}
-                            <a class="submit-button" href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">{{ "total.show"|trans }}</a>   
+                            <a class="orange-button" href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">{{ "total.show"|trans }}</a>   
                         </div>
 
                     </div>

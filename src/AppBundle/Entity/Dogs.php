@@ -481,6 +481,56 @@ class Dogs {
     {
         $this->dogVaccinations->removeElement($dogVaccination);
     }
+
+    /**
+     * Remove DogsPhotos
+     *
+     * @param \AppBundle\Entity\DogsPhotos $dogphoto
+     */
+    public function removeDogsphoto(\AppBundle\Entity\DogsPhotos $dogphoto)
+    {
+        $this->dogsPhotos->removeElement($dogphoto);
+    }
+    
+    /**
+     * Add $dogphoto
+     *
+     * @param \AppBundle\Entity\DogsPhotos $dogphoto
+     *
+     * @return Dogs
+     */
+    public function addDogsphoto(\AppBundle\Entity\DogsPhotos $dogphoto)
+    {
+        $dogphoto->setIdDogs($this);
+        $this->dogsPhotos->add($dogphoto);
+
+        return $this;
+    }
+
+    /**
+     * Remove Videos
+     *
+     * @param \AppBundle\Entity\Videos $videos
+     */
+    public function removeVideo(\AppBundle\Entity\Videos $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+    
+    /**
+     * Add Videos
+     *
+     * @param \AppBundle\Entity\Videos $videos
+     *
+     * @return Dogs
+     */
+    public function addVideo(\AppBundle\Entity\Videos $videos)
+    {
+        $videos->setIdDogs($this);
+        $this->videos->add($videos);
+
+        return $this;
+    }
     
     public function __construct() {
         $this->dogsPhotos = new ArrayCollection();

@@ -4,9 +4,10 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{{"main.title"|trans}}{% endblock %}</title>
         {% block stylesheets %}
+            <link href="{{ asset('bundles/app/css/colorbox.css') }}" rel="stylesheet">
+            <link href="{{ asset('bundles/app/css/jquery-ui.min.css') }}" rel="stylesheet">
             <link href="{{ asset('bundles/app/css/main.css') }}" rel="stylesheet">
             <link href="{{ asset('bundles/app/css/forms.css') }}" rel="stylesheet">
-            <link href="{{ asset('bundles/app/css/colorbox.css') }}" rel="stylesheet">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -48,8 +49,8 @@
                         </div>
                     </div>
                 {% endblock %}
-{# {{locale_switcher()}}#}
-                {% block body %}{% endblock %}
+                {# {{locale_switcher()}}#}
+            {% block body %}{% endblock %}
             {% block footer %}
                 <div class="footer">
                     <div class="container">
@@ -73,12 +74,18 @@
             {% endblock %}
         {% endblock %}
     </div>
-{% block javascripts %}
-    <script type="text/javascript" src="{{asset("bundles/app/js/jquery-3.2.1.min.js")}}"></script>
-    <script type="text/javascript" src="{{asset("bundles/app/js/jquery.colorbox-min.js")}}"></script>
-    <script type='text/javascript'>
-        $('a.colorbox').colorbox({rel: 'group1', maxWidth:'95%', maxHeight:'95%'});
-    </script>
-{% endblock %}
+    {% block javascripts %}
+        <script type="text/javascript" src="{{asset("bundles/app/js/jquery-3.2.1.min.js")}}"></script>
+        <script type="text/javascript" src="{{asset("bundles/app/js/jquery.colorbox-min.js")}}"></script>
+        <script type="text/javascript" src="{{asset("bundles/app/js/jquery-ui.min.js")}}"></script>
+        <script type='text/javascript'>
+            $('a.colorbox').colorbox({rel: 'group1', maxWidth: '95%', maxHeight: '95%'});
+            $('a.colorbox-form').each(function () {
+                var html = $('#' + $(this).data('formId')).html();
+                $(this).colorbox({html: html, closeButton: false});
+            });
+            $(".tabs").tabs();
+        </script>
+    {% endblock %}
 </body>
 </html>

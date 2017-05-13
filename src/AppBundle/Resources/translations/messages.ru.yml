@@ -1,6 +1,11 @@
 dogs:
+    askquestion: Задать вопрос
+    questions: Вопросы
     ourdogs: Наши собаки
     about:
+        bdate: 'Дата рождения:'
+        name: 'Имя:' 
+        nameen: 'Имя (En):'
         age: '{0} %month% м.|]1,Inf[ %year% г.'
         age_with_years: %year% г. %month% м.
         age_without_years:  %month% м.
@@ -16,6 +21,16 @@ dogs:
         quality_Show: Для выставок
         quality_Breed: Для разведения
         quality_Pet: Домашний питомец
+        description: 'Описание:'
+        descriptionen: 'Описание (En):'
+        photo: 'Фото:'
+        photoFile: 'Фото:'
+        litters: 'Помет:'
+        otherphotos: 'Другие фото:'
+        videos: 'Видео:'
+        dogsPhotos:  'Другие фото:'
+        dogTitles: 'Титулы:'
+        dogVaccinations: 'Прививки:'
         
 nursery:
     list:
@@ -33,6 +48,11 @@ nursery:
         nursery: Список питомников       
 
 total:
+    add_photo: Добавить фото
+    add_video: Добавить видео
+    add_title: Добавить титул
+    add_vaccination: Добавить прививку
+    main_info: Главное
     action: Действия
     show: Подробнее
     edit: Изменить
@@ -50,7 +70,11 @@ total:
     type: Категория
     exhibition: Выставки
     advice: Советы
-    other: Другое    
+    other: Другое 
+    male: Кобель
+    female: Сука
+    forsale: Ищу хозяина
+    select_file: Выберите файл
 
 main: 
     title: Главная
@@ -92,3 +116,4 @@ reviews:
         name: Ваше имя
         email: Ваш e-mail
         comment: Комментарий
+        phone: Телефон

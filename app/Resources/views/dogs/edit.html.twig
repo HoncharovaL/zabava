@@ -1,80 +1,109 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Dog edit</h1>
+    <div class="dogs-edit container">
+        <div class="row">
+            <div class="button-container left col-4">
+                <a class="grey-button" href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+            </div>
+            <div class="button-container col-8">
+                {% if delete_form is defined %}
+                    {{ form_start(delete_form) }}
+                    <input class="grey-button" type="submit" value="{{"total.delete"|trans}}">
+                    {{ form_end(delete_form) }}
+                {% endif %}
+                <input class="orange-button" onclick="$('#main-form').submit();" type="submit" value="{{'total.save'|trans}}"/>
+            </div>
+        </div>
+        {{ form_start(form, {'attr': {'id': 'main-form'} }) }}
+        <div class="tabs">
+            <ul>
+                <li><a href="#tab-main-info">{{'total.main_info'|trans}}</a></li>
+                <li><a href="#tab-titles">{{form.dogTitles.vars.label|trans}}</a></li>
+                <li><a href="#tab-vaccinations">{{form.dogVaccinations.vars.label|trans}}</a></li>
+                <li><a href="#tab-photos">{{form.dogsPhotos.vars.label|trans}}</a></li>
+                <li><a href="#tab-videos">{{form.videos.vars.label|trans}}</a></li>
+            </ul>
+            <div class="dog-info row" id="tab-main-info">
+                <div class="main-photo col-4">
+                    {{ form_widget(form.photoFile)}}
+                </div>
+                <div class="main-info col-6">
+                    {{ form_row(form.name, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.nameEn, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.description, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.descriptionEn, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.bdate, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.sex, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.state, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.quality, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.litters, {'attr': {'class': 'parent-width'} })}}
+                </div>
+            </div>
+            <div class="embedded-form titles" id="tab-titles">
+                <ul class="form-collection-container" data-count="{{ form.dogTitles|length }}" id="titles-fields-list"
+                    data-prototype="{{ form_widget(form.dogTitles.vars.prototype)|e }}">
+                    {% for dogTitle in form.dogTitles %}
+                        <li>
+                            {{ form_row(dogTitle.titles) }}
+                            {{ form_row(dogTitle.description) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="add-button-container">
+                    <a href="#" class="add-new-element">{{"total.add_title"|trans}}</a>
+                </div>
+            </div>
+            {% do form.dogTitles.setRendered %}
 
-    {{ form_start(form) }}
-    {{ form_row(form.bdate)}}
-    {{ form_row(form.name)}}
-    {{ form_row(form.nameEn)}}
-    {{ form_row(form.state)}}
-    {{ form_row(form.description)}}
-    {{ form_row(form.descriptionEn)}}
-    {{ form_row(form.sex)}}
-    {{ form_row(form.photoFile)}}
-    {{ form_row(form.quality)}}
-    {{ form_row(form.litters)}}
-    {{ form_row(form.photoFile)}}
-    {# store the prototype on the data-prototype attribute #}
-    <ul id="photos-fields-list"
-        data-prototype="{{ form_widget(form.dogsPhotos.vars.prototype)|e }}">
-        {% for dogsPhoto in form.dogsPhotos %}
-            <li>
-                {{ form_errors(dogsPhoto) }}
-                {{ form_widget(dogsPhoto) }}
-            </li>
-        {% endfor %}
-        <a href="#" id="add-another-photo">Add another photo</a>
-    </ul>
-     {% do form.dogsPhotos.setRendered %}
+            <div class="embedded-form vaccinations" id="tab-vaccinations">
+                <ul class="form-collection-container" data-count="{{ form.dogVaccinations|length }}" id="vaccinations-fields-list"
+                    data-prototype="{{ form_widget(form.dogVaccinations.vars.prototype)|e }}">
+                    {% for dogVaccination in form.dogVaccinations %}
+                        <li>
+                            {{ form_row(dogVaccination.vaccinations) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="add-button-container">
+                    <a href="#" class="add-new-element" >{{"total.add_vaccination"|trans}}</a>
+                </div>
+            </div>
+            {% do form.dogVaccinations.setRendered %}
 
-    <ul class="form-collection-container" data-count="{{ form.videos|length }}" id="videos-fields-list"
-        data-prototype="{{ form_widget(form.videos.vars.prototype)|e }}">
-        {% for video in form.videos %}
-            <li>
-                {{ form_errors(video) }}
-                {{ form_widget(video) }}
-            </li>
-        {% endfor %}
-        <a href="#" class="add-new-element"  >Add another video</a>
-    </ul>
-     {% do form.videos.setRendered %}
-    <ul class="form-collection-container" data-count="{{ form.dogTitles|length }}" id="titles-fields-list"
-        data-prototype="{{ form_widget(form.dogTitles.vars.prototype)|e }}">
-        {% for dogTitle in form.dogTitles %}
-            <li>
-                {{ form_errors(dogTitle) }}
-                {{ form_widget(dogTitle) }}
-            </li>
-        {% endfor %}
-        <a href="#" class="add-new-element" >Add title</a>
-    </ul>
-     {% do form.dogTitles.setRendered %}
-    <ul class="form-collection-container" data-count="{{ form.dogVaccinations|length }}" id="vaccinations-fields-list"
-        data-prototype="{{ form_widget(form.dogVaccinations.vars.prototype)|e }}">
-        {% for dogVaccination in form.dogVaccinations %}
-            <li>
-                {{ form_errors(dogVaccination) }}
-                {{ form_widget(dogVaccination) }}
-            </li>
-        {% endfor %}
-        <a href="#" class="add-new-element" >Add vaccination</a>
-    </ul>
-     {% do form.dogVaccinations.setRendered %}
-    <input type="submit" value="{{'total.save'|trans}}"/>
+            <div class="embedded-form photos" id="tab-photos">
+                <ul class="form-collection-container" data-count="{{form.dogsPhotos|length}}"
+                    data-prototype="{{ form_widget(form.dogsPhotos.vars.prototype)|e }}">
+                    {% for dogsPhoto in form.dogsPhotos %}
+                        <li>
+                            {{ form_row(dogsPhoto.photoFile) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="add-button-container">
+                    <a href="#" class="add-new-element">{{"total.add_photo"|trans}}</a>
+                </div>
+            </div>
+            {% do form.dogsPhotos.setRendered %}
 
-    {{ form_end(form) }}
+            <div class="embedded-form videos" id="tab-videos">
+                <ul class="form-collection-container" data-count="{{ form.videos|length }}" id="videos-fields-list"
+                    data-prototype="{{ form_widget(form.videos.vars.prototype)|e }}">
+                    {% for video in form.videos %}
+                        <li>
+                            {{ form_row(video.video) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="add-button-container">
+                    <a href="#" class="add-new-element">{{"total.add_video"|trans}}</a>
+                </div>
+            </div>
+            {% do form.videos.setRendered %}
+        </div>
 
-    {% if delete_form is defined %}
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Delete">
-        {{ form_end(delete_form) }}
-    {% endif %}
-    <ul>
-        <li>
-            <a href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
-        </li>
-    </ul>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -82,29 +111,10 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var photoCount = '{{ form.dogsPhotos|length }}';
-            $('#add-another-photo').on('click', function (e) {
+            $('.embedded-form .add-new-element').on('click', function (e) {
                 e.preventDefault();
 
-                var photosList = $('#photos-fields-list');
-
-                // grab the prototype template
-                var newWidget = photosList.attr('data-prototype');
-                // replace the "__name__" used in the id and name of the prototype
-                // with a number that's unique to your emails
-                // end name attribute looks like name="contact[emails][2]"
-                newWidget = newWidget.replace(/__name__/g, photoCount);
-                photoCount++;
-
-                // create a new list element and add it to the list
-                var newLi = $('<li></li>').html(newWidget);
-                newLi.appendTo(photosList);
-            });
-
-            $('.form-collection-container .add-new-element').on('click', function (e) {
-                e.preventDefault();
-
-                var list = $(this).parents('.form-collection-container');
+                var list = $(this).parents('.embedded-form').find('.form-collection-container');
 
                 // grab the prototype template
                 var newWidget = list.attr('data-prototype');
@@ -125,14 +135,11 @@
             });
 
             function addDeleteLink($formLi) {
-                var $removeLi = $('<a href="#">{{"total.delete"|trans}}</a>');
+                var $removeLi = $('<a class="grey-button" href="#">{{"total.delete"|trans}}</a>');
                 $formLi.append($removeLi);
 
                 $removeLi.on('click', function (e) {
-                    // prevent the link from creating a "#" on the URL
                     e.preventDefault();
-
-                    // remove the li for the tag form
                     $formLi.remove();
                 });
             }

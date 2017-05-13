@@ -51,7 +51,7 @@ class LittersController extends Controller
             return $this->redirectToRoute('litters_show', array('idLitters' => $litter->getIdlitters()));
         }
 
-        return $this->render('litters/new.html.twig', array(
+        return $this->render('litters/edit.html.twig', array(
             'litter' => $litter,
             'form' => $form->createView(),
         ));

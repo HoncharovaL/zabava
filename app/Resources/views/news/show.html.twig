@@ -5,9 +5,9 @@
         <div class='news-page'>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class='button-container'>
-                    <a class="submit-button" href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{"total.edit"|trans}}</a>
+                    <a class="orange-button" href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{"total.edit"|trans}}</a>
                     {{ form_start(delete_form) }}
-                    <input class="submit-button" type="submit" value="{{'total.delete'|trans}}">
+                    <input class="orange-button" type="submit" value="{{'total.delete'|trans}}">
                     {{ form_end(delete_form) }}
                 </div>
             {% endif %}

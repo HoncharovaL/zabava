@@ -1,4 +1,9 @@
 total:
+    add_photo: Add another photo
+    add_video: Add another video
+    add_title: Add title
+    add_vaccination: Add vaccination
+    main_info: Main info
     action: Action
     show: Show
     edit: Edit
@@ -16,10 +21,19 @@ total:
     type: Category
     exhibition: Exhibition
     advice: Advice
-    other: Other    
+    other: Other
+    male: Male
+    female: Femail
+    forsale: Looking for a host
+    select_file: Select file
 dogs:
+    askquestion: Ask Question
+    questions: Questions
     ourdogs: Our Dogs
     about:
+        bdate: 'Birthday:'
+        name: 'Name:' 
+        nameen: 'Name (En):'
         age: '{0} %month% m. old|]1,Inf[ %year% y. old'
         age_with_years: %year% y., %month% m. old
         age_without_years:  %month% m. old
@@ -34,7 +48,17 @@ dogs:
         state: 'State:'
         quality_Show: For show
         quality_Breed: For breeding
-        quality_Pet: Pet          
+        quality_Pet: Pet  
+        description: 'Description:'
+        descriptionen: 'Description (En):'
+        photo: 'Photo:'
+        photoFile: 'Photo:'
+        litters: 'Litters:'
+        otherphotos: 'Other photos:'
+        videos: 'Videos:'
+        dogsPhotos: 'Additional photos:'
+        dogTitles: 'Titles:'
+        dogVaccinations: 'Vaccinations:'
             
 nursery:
     list:
@@ -91,3 +115,4 @@ reviews:
         name: Name
         email: Email
         comment: Comment
+        phone: Phone

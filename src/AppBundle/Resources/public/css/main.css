@@ -35,8 +35,13 @@ h3 {
 
 .button-container {
     text-align: right;
+    margin: 20px 0px;
     height: 40px;
     padding-right: 30px;
+}
+
+.button-container.left {
+    text-align: left;
 }
 
 .button-container > * {
@@ -44,9 +49,57 @@ h3 {
     margin-right: 10px;
 }
 
+.row .button-container {
+    padding-right: 0;
+}
 .container {
     width: 1300px;
     margin: auto;
+}
+
+.popup-form {
+    visibility: hidden;
+}
+
+.row:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.col-2 {
+    display: inline-block;
+    width: 16%;
+    float: left;
+}
+
+.col-3 {
+    display: inline-block;
+    width: 25%;
+    float: left;
+}
+
+.col-4 {
+    display: inline-block;
+    width: 33%;
+    float: left;
+}
+
+.col-6 {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.col-8 {
+    display: inline-block;
+    width: 66%;
+    float: left;
+}
+.parent-width {
+    width: 100%;
 }
 
 .header {
@@ -66,9 +119,7 @@ h3 {
     float: left;
     height: 77px;
     display: inline-block;
-    text-align: center;
 }
-
 
 .header-top .menu-item {
     height: 77px;
@@ -203,6 +254,34 @@ h3 {
 }
 
 .home-news-item-text {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    background-image:
+        linear-gradient(white, white),  /*  общий фон блока, всегда идёт первым перекрывая всё что под ним  */
+        linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+        linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+    background-repeat: repeat, repeat-x, repeat-x;
+    background-position: 0 0, 10px 0, 10px 0;
+    background-size: auto auto, 20px 20px, 20px 20px;
+    background-clip: padding-box, border-box, border-box;  /*  обрезаем края у общей заливки  */
+    background-origin: padding-box, border-box, border-box, border-box, border-box; 
+}
+.ask-question{
+    line-height: 150px;
+    height: 150px;
+    z-index: -1;
+    background-color: #e59e18;
+}
+.ask-question h3{
+    padding: 75px 0;
+    text-align: center;
+    font: 30px eirikRaude;
+    color: white;
+}
+.dogs-add-question{
     position: relative;
     z-index: 1;
     padding: 20px;
@@ -410,8 +489,6 @@ h3 {
     text-align: center;
 }
 
-    
-
 .dogs-photo-container .dogs-photo {
     max-height: 100%;
     max-width: 100%;
@@ -443,7 +520,7 @@ h3 {
     margin: 5px;
     max-height: 200px;
 }
-.dogs-about-container{
+.dogs-about-container {
     width: 300px;
     height: 520px;
     display: inline-block;
@@ -492,4 +569,30 @@ h3 {
 }
 .dogs-description{
     opacity: 0.5;
+}
+.dogs-add-question textarea {
+    width: 400px;
+}
+.dogs-add-question input[type="text"] {
+    width: 400px;
+    display: block;
+}
+.dogs-add-question{
+    text-align: center;
+
+}
+
+.dogs-edit .dog-info label {
+    display: block;
+}
+
+.ui-widget-content .ui-state-active {
+    background-color: #e59e18;
+    border-color: #DCDCDC;
+}
+
+
+.dog-info .vich-image img {
+    max-width: 95%;
+    max-height: 100%;
 }
