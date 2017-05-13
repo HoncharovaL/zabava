@@ -50,27 +50,27 @@ label {
     background: #e59e18;
 }
 
-.embedded-form {
-    text-align: center;
-    /*background: #ddd;*/
-    border-radius: 2px;
-    margin-bottom: 20px;
-}
-
-.embedded-form.photos {
-    text-align: left;
-}
-
 .embedded-form li {
+    text-align: center;
     list-style-type: none;
     padding-bottom: 20px;
+    position: relative;
+    background-color: #f6f6f6;
+    margin: 10px auto;
+    width: 600px;
+    padding-top: 40px;
+    border: #ccc solid 1px;
 }
 
-.embedded-form.vaccinations li, .embedded-form.videos li {
-    line-height: 100px;
+.embedded-form.photos li  {
+    display: inline-block;
+    width: 380px;
+    height: 380px;
+    margin: 10px 10px;
+    float: left;
 }
 
-.embedded-form.vaccinations li:after, .embedded-form.videos li:after {
+.embedded-form.photos .form-collection-container:after {
     content: '.';
     display: block;
     height: 0;
@@ -78,10 +78,20 @@ label {
     visibility: hidden;
 }
 
-.embedded-form.vaccinations li > div,  .embedded-form.videos li > div{
+.embedded-form .delete-icon {
     display: inline-block;
-    padding-right: 20px;
-    float: left;
+    width: 30px;
+    height: 30px;
+    background-image: url(./images/delete.png);
+    background-size: 30px 30px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    opacity: 0.33;
+}
+
+.embedded-form .delete-icon:hover {
+    opacity: 1;
 }
 
 .embedded-form li > div {
@@ -90,6 +100,7 @@ label {
 
 .embedded-form textarea, .embedded-form select, .embedded-form input[type="text"]  {
     width: 500px;
+    background: #fbfbfb;
 }
 
 .embedded-form .add-button-container {
@@ -108,20 +119,18 @@ label {
     font: 20px eirikRaude;
 }
 
-.embedded-form.photos li {
-    display: inline-block;
-}
-
 .embedded-form label:not(.fileContainer) {
     display: none;
 }
 
 .vich-image img {
-    max-height: 300px;
-    max-width: 300px;
+    max-height: 350px;
+    max-width: 100%;
 }
-.vich-image {
-    display: inline-block;
+
+.embedded-form.photos .upload-button {
+    position: absolute;
+    bottom: 0;
 }
 
 .fileContainer {

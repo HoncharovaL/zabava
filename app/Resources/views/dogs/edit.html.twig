@@ -135,7 +135,7 @@
             });
 
             function addDeleteLink($formLi) {
-                var $removeLi = $('<a class="grey-button" href="#">{{"total.delete"|trans}}</a>');
+                var $removeLi = $('<a class="delete-icon" title="{{"total.delete"|trans}}" href="#"></a>');
                 $formLi.append($removeLi);
 
                 $removeLi.on('click', function (e) {
