@@ -62,22 +62,6 @@ label {
     border: #ccc solid 1px;
 }
 
-.embedded-form.photos li  {
-    display: inline-block;
-    width: 380px;
-    height: 380px;
-    margin: 10px 10px;
-    float: left;
-}
-
-.embedded-form.photos .form-collection-container:after {
-    content: '.';
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-}
-
 .embedded-form .delete-icon {
     display: inline-block;
     width: 30px;
@@ -131,6 +115,41 @@ label {
 .embedded-form.photos .upload-button {
     position: absolute;
     bottom: 0;
+}
+
+
+.embedded-form.photos li  {
+    display: inline-block;
+    width: 380px;
+    height: 380px;
+    margin: 10px 10px;
+    float: left;
+}
+
+.embedded-form.dogs li  {
+    display: inline-block;
+    width: 600px;
+    margin: 10px 10px;
+    float: left;
+}
+
+.embedded-form.dogs textarea, .embedded-form.dogs select, .embedded-form.dogs input[type="text"]  {
+    width: 80%;
+    background: #fbfbfb;
+}
+
+
+.embedded-form.dogs label {
+    display: block;
+}
+
+.embedded-form.photos .form-collection-container:after,  
+.embedded-form.dogs .form-collection-container:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
 .fileContainer {

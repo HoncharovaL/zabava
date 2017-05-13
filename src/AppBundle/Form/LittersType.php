@@ -15,9 +15,9 @@ class LittersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('ldate')
-                ->add('mother')
-                ->add('father')
+        $builder->add('ldate', null, ['label' => 'total.date'])
+                ->add('mother', null, ['label' => 'total.mother'])
+                ->add('father', null, ['label' => 'total.father'])
                 ->add('dogs', CollectionType::class, [
                     'required' => false,
                     'by_reference' => false,
@@ -25,6 +25,7 @@ class LittersType extends AbstractType
                     'allow_add' => true,
                     'allow_delete' => true,
                     'prototype' => true,
+                    'label' => 'total.dogs',
                 ])
                 ;
     }

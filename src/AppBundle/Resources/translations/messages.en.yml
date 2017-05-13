@@ -3,6 +3,7 @@ total:
     add_video: Add another video
     add_title: Add title
     add_vaccination: Add vaccination
+    add_dog: Add dog
     main_info: Main info
     action: Action
     show: Show
@@ -14,6 +15,9 @@ total:
     save: Save
     send: Send
     date: Date
+    mother: Mother
+    father: Father
+    dogs: Dogs
     partners: Partners
     reviews: 'Reviews:'
     caption: Caption

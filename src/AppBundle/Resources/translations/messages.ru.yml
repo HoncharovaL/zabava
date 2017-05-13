@@ -52,6 +52,7 @@ total:
     add_video: Добавить видео
     add_title: Добавить титул
     add_vaccination: Добавить прививку
+    add_dog: Добавить собаку
     main_info: Главное
     action: Действия
     show: Подробнее
@@ -63,6 +64,9 @@ total:
     save: Сохранить
     send: Отправить
     date: Дата
+    mother: Мать
+    father: Отец
+    dogs: Собаки
     partners: Партнеры
     reviews: 'Отзывы:'
     caption: Заголовок
