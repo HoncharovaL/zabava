@@ -91,7 +91,7 @@ class DogsPhotos
     /**
      * @var \AppBundle\Entity\News
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\News")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\News", inversedBy="dogsPhotos")
      * @ORM\JoinColumns({
      * @ORM\JoinColumn(name="id_news", referencedColumnName="id_news")
      * })

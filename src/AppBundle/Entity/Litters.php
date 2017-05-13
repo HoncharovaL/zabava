@@ -33,9 +33,8 @@ class Litters
      * @var \AppBundle\Entity\Dogs
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
-     * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="id_mother", referencedColumnName="id_dogs")
-     * })
+     * 
+     * @ORM\JoinColumn(name="id_mother", referencedColumnName="id_dogs", onDelete="SET NULL")
      */
     private $mother;
 
@@ -43,9 +42,9 @@ class Litters
      * @var \AppBundle\Entity\Dogs
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
-     * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="id_father", referencedColumnName="id_dogs")
-     * })
+     * 
+     * @ORM\JoinColumn(name="id_father", referencedColumnName="id_dogs", onDelete="SET NULL")
+     * 
      */
     private $father;
 

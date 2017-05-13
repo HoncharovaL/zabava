@@ -15,18 +15,18 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class Dogs {
-/**
+class Dogs
+{
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="photo_image", fileNameProperty="photo")
      * 
      * @var File
      */
-   private $photoFile;
+    private $photoFile;
 
-   
-     /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -45,7 +45,7 @@ class Dogs {
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
-    
+
         return $this;
     }
 
@@ -57,17 +57,20 @@ class Dogs {
         return $this->photoFile;
     }
 
-/**
+    /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
      */
     private $updatedAt;
-    function getUpdatedAt() {
+
+    function getUpdatedAt()
+    {
         return $this->updatedAt;
     }
 
-    function setUpdatedAt(\DateTime $updatedAt) {
+    function setUpdatedAt(\DateTime $updatedAt)
+    {
         $this->updatedAt = $updatedAt;
     }
 
@@ -77,7 +80,7 @@ class Dogs {
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
-    
+
     /**
      * @var string
      *
@@ -98,30 +101,35 @@ class Dogs {
      * @ORM\Column(name="description", type="text", length=65535, nullable=false)
      */
     private $description;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="description_en", type="text", length=65535, nullable=false)
      */
     private $descriptionEn;
-    function getNameEn() {
+
+    function getNameEn()
+    {
         return $this->nameEn;
     }
 
-    function getDescriptionEn() {
+    function getDescriptionEn()
+    {
         return $this->descriptionEn;
     }
 
-    function setNameEn($nameEn) {
+    function setNameEn($nameEn)
+    {
         $this->nameEn = $nameEn;
     }
 
-    function setDescriptionEn($descriptionEn) {
+    function setDescriptionEn($descriptionEn)
+    {
         $this->descriptionEn = $descriptionEn;
     }
 
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=300, nullable=true)
@@ -135,36 +143,55 @@ class Dogs {
      */
     private $quality;
 
-
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="sex", type="string", length=10, nullable=false)
      */
     private $sex;
-    
 
-
-        /**
+    /**
      * @var integer
      *
      * @ORM\Column(name="state", type="integer")
      */
     private $state = 0;
-    
+
     /**
      * @var \AppBundle\Entity\Dogs
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\DogsPhotos", mappedBy="idDogs", cascade={"ALL"}, orphanRemoval=true)
      */
     private $dogsPhotos = [];
+
     /**
      * @var \AppBundle\Entity\Dogs
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Videos", mappedBy="idDogs", cascade={"ALL"}, orphanRemoval=true)
      */
     private $videos = [];
-    
+
+//    /**
+//     * @var \AppBundle\Entity\Comments
+//     *
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comments", mappedBy="idDogs", onDelete="SET NULL", orphanRemoval=true)
+//     */
+//    private $comments = [];
+//
+//    /**
+//     * @var \AppBundle\Entity\Litters
+//     *
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Litters", mappedBy="mother", onDelete="SET NULL", orphanRemoval=true)
+//     */
+//    private $motherInLitters = [];
+//
+//    /**
+//     * @var \AppBundle\Entity\Litters
+//     *
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Litters", mappedBy="father", onDelete="SET NULL", orphanRemoval=true)
+//     */
+//    private $fatherInLitters = [];
+
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\DogTitles", mappedBy="idDogs", cascade={"ALL"}, orphanRemoval=true)
@@ -177,63 +204,71 @@ class Dogs {
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\DogVaccinations", mappedBy="idDogs", cascade={"ALL"}, orphanRemoval=true)
      */
     private $dogVaccinations = [];
-    
-    function getDogsPhotos() {
+
+    function getDogsPhotos()
+    {
         return $this->dogsPhotos;
     }
 
-    function getVideos() {
+    function getVideos()
+    {
         return $this->videos;
     }
-    
-    function getDogVaccinations() {
+
+    function getDogVaccinations()
+    {
         return $this->dogVaccinations;
     }
-    function setDogsPhotos($dogsPhotos) {
-        foreach($dogsPhotos as $photo) {
+
+    function setDogsPhotos($dogsPhotos)
+    {
+        foreach ($dogsPhotos as $photo) {
             $photo->setIdDogs($this);
-            
         }
         $this->dogsPhotos = $dogsPhotos;
-    }    
-    public function setDogVaccinations($dogVaccinations) {
-        foreach($dogVaccinations as $dogVaccination) {
+    }
+
+    public function setDogVaccinations($dogVaccinations)
+    {
+        foreach ($dogVaccinations as $dogVaccination) {
             $dogVaccination->setIdDogs($this);
-            
         }
-        
+
         $this->dogVaccinations = $dogVaccinations;
     }
-    
-        public function setDogTitles (array $dogTitles) {
-        foreach($dogTitles  as $dogTitle) {
+
+    public function setDogTitles(array $dogTitles)
+    {
+        foreach ($dogTitles as $dogTitle) {
             $dogTitle->setIdDogs($this);
         }
-        
+
         $this->dogTitles = $dogTitles;
     }
-    
-        public function setVideos($videos) {
-        foreach($videos as $video) {
+
+    public function setVideos($videos)
+    {
+        foreach ($videos as $video) {
             $video->setIdDogs($this);
-            
         }
-        
+
         $this->videos = $videos;
     }
-    
-    function getState() {
+
+    function getState()
+    {
         return $this->state;
     }
 
-    function getDogTitles() {
+    function getDogTitles()
+    {
         return $this->dogTitles;
     }
 
-    function setState($state) {
+    function setState($state)
+    {
         $this->state = $state;
     }
-
 
     /**
      * @var integer
@@ -261,11 +296,13 @@ class Dogs {
      */
     private $litters;
 
-    function setLitters($litters) {
+    function setLitters($litters)
+    {
         $this->litters = $litters;
     }
 
-    function getLitters() {
+    function getLitters()
+    {
         return $this->litters;
     }
 
@@ -276,7 +313,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -287,7 +325,8 @@ class Dogs {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -298,7 +337,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setBdate($bdate) {
+    public function setBdate($bdate)
+    {
         $this->bdate = $bdate;
 
         return $this;
@@ -309,7 +349,8 @@ class Dogs {
      *
      * @return \DateTime
      */
-    public function getBdate() {
+    public function getBdate()
+    {
         return $this->bdate;
     }
 
@@ -320,7 +361,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -331,7 +373,8 @@ class Dogs {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -342,7 +385,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setPhoto($photo) {
+    public function setPhoto($photo)
+    {
         $this->photo = $photo;
 
         return $this;
@@ -353,7 +397,8 @@ class Dogs {
      *
      * @return string
      */
-    public function getPhoto() {
+    public function getPhoto()
+    {
         return $this->photo;
     }
 
@@ -364,7 +409,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setQuality($quality) {
+    public function setQuality($quality)
+    {
         $this->quality = $quality;
 
         return $this;
@@ -375,7 +421,8 @@ class Dogs {
      *
      * @return string
      */
-    public function getQuality() {
+    public function getQuality()
+    {
         return $this->quality;
     }
 
@@ -386,7 +433,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setSex($sex) {
+    public function setSex($sex)
+    {
         $this->sex = $sex;
 
         return $this;
@@ -397,7 +445,8 @@ class Dogs {
      *
      * @return string
      */
-    public function getSex() {
+    public function getSex()
+    {
         return $this->sex;
     }
 
@@ -406,7 +455,8 @@ class Dogs {
      *
      * @return integer
      */
-    public function getIdDogs() {
+    public function getIdDogs()
+    {
         return $this->idDogs;
     }
 
@@ -417,7 +467,8 @@ class Dogs {
      *
      * @return Dogs
      */
-    public function setNursery(\AppBundle\Entity\Nursery $nursery = null) {
+    public function setNursery(\AppBundle\Entity\Nursery $nursery = null)
+    {
         $this->nursery = $nursery;
 
         return $this;
@@ -428,7 +479,8 @@ class Dogs {
      *
      * @return \AppBundle\Entity\Nursery
      */
-    public function getNursery() {
+    public function getNursery()
+    {
         return $this->nursery;
     }
 
@@ -456,7 +508,7 @@ class Dogs {
     {
         $this->dogTitles->removeElement($dogtitle);
     }
-    
+
     /**
      * Add dogVaccinations
      *
@@ -491,7 +543,7 @@ class Dogs {
     {
         $this->dogsPhotos->removeElement($dogphoto);
     }
-    
+
     /**
      * Add $dogphoto
      *
@@ -516,7 +568,7 @@ class Dogs {
     {
         $this->videos->removeElement($videos);
     }
-    
+
     /**
      * Add Videos
      *
@@ -531,15 +583,19 @@ class Dogs {
 
         return $this;
     }
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->dogsPhotos = new ArrayCollection();
         $this->videos = new ArrayCollection();
         $this->dogTitles = new ArrayCollection();
         $this->dogVaccinations = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         $this->updatedAt = new \DateTime();
     }
-        public function __toString() {
+
+    public function __toString()
+    {
         return $this->name;
     }
 }

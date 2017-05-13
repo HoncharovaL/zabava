@@ -39,7 +39,7 @@ class Videos
     /**
      * @var \AppBundle\Entity\News
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\News")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\News", inversedBy="videos")
      * @ORM\JoinColumns({
      * @ORM\JoinColumn(name="id_news", referencedColumnName="id_news")
      * })

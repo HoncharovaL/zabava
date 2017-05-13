@@ -7,30 +7,34 @@
 {% block body %}
     <div class='container'>
         <div class='dogs-show-container'>
-            <div class="button-container">
-                <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">Edit</a>
-                {{ form_start(delete_form) }}
-                <input class="orange-button" type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="button-container">
+                    <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">Edit</a>
+                    {{ form_start(delete_form) }}
+                    <input class="orange-button" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            {% endif %}
             <div class="dogs_photos">
                 <div class='dogs-photo-container'>
                     <a class='colorbox group1' href='{{photo_path}}{{dog.photo}}'><img class='dogs-photo' src="{{photo_path}}{{dog.photo}}" ></a>
                 </div>
 
-                <div class="dogs-other-photos-container">
-                    <div class="dogs-other-photos-wrapper">
-                        <div class="dogs-photo-jcarousel" data-jcarousel="true">
-                            <ul style="left: 0px; top: 0px;">
-                                {% for photo in dog.dogsPhotos %}
-                                    <li><a class='colorbox group1' href='{{photo_path}}{{photo.photo}}'><img src="{{photo_path}}{{photo.photo}}"/></a></li>
-                                        {% endfor %}
-                            </ul>
+                {% if dog.dogsPhotos|length %}
+                    <div class="dogs-other-photos-container">
+                        <div class="dogs-other-photos-wrapper">
+                            <div class="dogs-photo-jcarousel" data-jcarousel="true">
+                                <ul style="left: 0px; top: 0px;">
+                                    {% for photo in dog.dogsPhotos %}
+                                        <li><a class='colorbox group1' href='{{photo_path}}{{photo.photo}}'><img src="{{photo_path}}{{photo.photo}}"/></a></li>
+                                            {% endfor %}
+                                </ul>
+                            </div>
+                            <a href="#" class="jcarousel-control-prev inactive" data-jcarouselcontrol="true">‹</a>
+                            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
                         </div>
-                        <a href="#" class="jcarousel-control-prev inactive" data-jcarouselcontrol="true">‹</a>
-                        <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
                     </div>
-                </div>
+                {% endif %}
 
             </div>
             <div class='dogs-about-container'>
