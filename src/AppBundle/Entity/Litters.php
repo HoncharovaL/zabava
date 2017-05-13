@@ -145,8 +145,8 @@ class Litters
      */
     public function __toString() {
         return sprintf('%s + %s (%s)',
-                $this->getFather()->getName(),
-                $this->getMother()->getName(),
+                $this->getFather() ? $this->getFather()->getName() : 'deleted',
+                $this->getMother() ? $this->getMother()->getName() : 'deleted',
                 $this->ldate->format('d.m.Y'));
     }
 
