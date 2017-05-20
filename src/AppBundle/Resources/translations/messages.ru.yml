@@ -1,6 +1,39 @@
-dogs:
-    askquestion: Задать вопрос
+total:
     questions: Вопросы
+    askquestion: Задать вопрос
+    add_photo: Добавить фото
+    add_video: Добавить видео
+    add_title: Добавить титул
+    add_vaccination: Добавить прививку
+    add_dog: Добавить собаку
+    main_info: Главное
+    action: Действия
+    show: Подробнее
+    edit: Изменить
+    create: Создать
+    delete: Удалить
+    back: Назад
+    comments: Комментарии
+    save: Сохранить
+    send: Отправить
+    date: Дата
+    mother: Мать
+    father: Отец
+    dogs: Собаки
+    partners: Партнеры
+    reviews: 'Отзывы:'
+    caption: Заголовок
+    news: Новость
+    type: Категория
+    exhibition: Выставки
+    advice: Советы
+    other: Другое 
+    male: Кобель
+    female: Сука
+    forsale: Ищу хозяина
+    select_file: Выберите файл
+    uah: грн.
+dogs:
     ourdogs: Наши собаки
     about:
         bdate: 'Дата рождения:'
@@ -47,38 +80,7 @@ nursery:
         
         nursery: Список питомников       
 
-total:
-    add_photo: Добавить фото
-    add_video: Добавить видео
-    add_title: Добавить титул
-    add_vaccination: Добавить прививку
-    add_dog: Добавить собаку
-    main_info: Главное
-    action: Действия
-    show: Подробнее
-    edit: Изменить
-    create: Создать
-    delete: Удалить
-    back: Назад
-    comments: Комментарии
-    save: Сохранить
-    send: Отправить
-    date: Дата
-    mother: Мать
-    father: Отец
-    dogs: Собаки
-    partners: Партнеры
-    reviews: 'Отзывы:'
-    caption: Заголовок
-    news: Новость
-    type: Категория
-    exhibition: Выставки
-    advice: Советы
-    other: Другое 
-    male: Кобель
-    female: Сука
-    forsale: Ищу хозяина
-    select_file: Выберите файл
+
 
 main: 
     title: Главная
@@ -107,6 +109,11 @@ header:
         login: Вход
         logout: Выход
 
+services:
+    list:
+        services: Услуга
+        description: Описание
+        price: Цена
 reviews:
     text:
         comment_author: '<strong>%name%</strong> написала:'

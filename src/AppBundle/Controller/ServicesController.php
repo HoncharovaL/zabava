@@ -90,6 +90,31 @@ class ServicesController extends Controller
     }
 
     /**
+     * @Route("/{idServices}/comment", name="services_comment")
+     * @Method({"GET", "POST"})
+     */
+    public function commentServiceAction(Services $service, Request $request1)
+    {
+        $comment = new Comments();
+        $form = $this->createForm('AppBundle\Form\CommentsType', $comment);
+        $form->handleRequest($request1);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager(); 
+            $comment->setIdServices($service);
+            $dt = new DateTime();
+            $comment->setCdate($dt);
+            $em->persist($comment);
+            $em->flush();
+            return $this->redirectToRoute('services_index');
+        }
+        
+        return $this->render('services/comment.html.twig', array(
+            'service' => $service,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing service entity.
      *
      * @Route("/{idServices}/edit", name="services_edit")

@@ -1,46 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'services.list.services'|trans}}</h1>
+    <div class="container">
+        <div class="service-container">
+            <div class="services-img">
+                <img src="{{ asset('bundles/app/img/about_breed_img.png') }}">
+            </div>
+            <div class="service-list">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="button-container"> 
+                        <a class="orange-button" href="{{ path('services_new') }}">{{'total.create'|trans}}</a>
+                    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>{{'services.list.services'|trans}}</th>
-                <th>{{'services.list.price'|trans}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for service in services %}
-            <tr>
-                {% if loc!='en' %}
-                <td>{{ service.services }}</td>
-                {% else %}
-                <td>{{service.servicesEng}}</td>
-                {%endif%}
-                <td>{{ service.price }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('services_show', { 'idServices': service.idServices }) }}">{{'total.show'|trans}}</a>
-                        </li>
-                         {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                        <li>
-                            <a href="{{ path('services_edit', { 'idServices': service.idServices }) }}">{{'total.edit'|trans}}</a>
-                        </li>
-                           {# {% endif %}#}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-                         {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                {% endif %}
+                <ul>
+                    {% for service in services %}
+                        <div class="service-list-item">
+                            <li>
+                                <div class="service-name">
+                                    <a onclick="$(this).parents('.service-list-item').find('.service-about').toggleClass('hidden');" class="decorated-href">
+                                        {% if loc!='en' %}
+                                            <td>{{ service.services }}</td>
+                                        {% else %}
+                                            <td>{{service.servicesEng}}</td>
+                                        {%endif%}
+                                    </a>
+                                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('services_new') }}">{{'total.create'|trans}}</a>
-        </li>
-    </ul>
-             {# {% endif %}#}
+                                <div class="service-about hidden">
+                                    <div class="service-description">
+                                        {{ get_translated(service, 'description') }}
+                                    </div>
+                                    <div class="service-price">
+                                        {{ service.price }}{{"total.uah"|trans}}
+                                    </div>
+                                    
+                                    <a class="orange-button colorbox-ajax-form" href="{{ path('services_comment', { 'idServices': service.idServices }) }}">
+                                        {{'total.askquestion'|trans}}
+                                    </a>
+                                </div>
+                            </li>
+                        </div>
+                    {% endfor%}
+                </ul>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

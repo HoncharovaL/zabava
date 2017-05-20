@@ -1,4 +1,6 @@
 total:
+    askquestion: Ask Question
+    questions: Questions
     add_photo: Add another photo
     add_video: Add another video
     add_title: Add title
@@ -30,9 +32,9 @@ total:
     female: Femail
     forsale: Looking for a host
     select_file: Select file
+    uah: UAH
 dogs:
-    askquestion: Ask Question
-    questions: Questions
+    
     ourdogs: Our Dogs
     about:
         bdate: 'Birthday:'
@@ -106,6 +108,13 @@ header:
         login: Login
         logout: Logout
         
+services:
+    list:
+        services: Service
+        description: Description
+        price: Price
+
+
 reviews:
     text:
         comment_author: '<strong>%name%</strong> wrote:'
@@ -120,3 +129,4 @@ reviews:
         email: Email
         comment: Comment
         phone: Phone
+        

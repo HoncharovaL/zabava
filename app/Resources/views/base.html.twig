@@ -36,6 +36,7 @@
                                         <a href="{{path('fos_user_security_login')}}">{{"header.link.login"|trans}}</a>
                                     {% endif %}
                                 </div>
+                                <div class="locale-switcher">{{locale_switcher()}}</div>
                             </div>
                             <div class="header-bottom">
                                 {% set phonenumbers = get_nursery_phonenumbers() %}
@@ -49,7 +50,7 @@
                         </div>
                     </div>
                 {% endblock %}
-                {# {{locale_switcher()}}#}
+                 
             {% block body %}{% endblock %}
             {% block footer %}
                 <div class="footer">
@@ -84,6 +85,7 @@
                 var html = $('#' + $(this).data('formId')).html();
                 $(this).colorbox({html: html, closeButton: false});
             });
+            $('a.colorbox-ajax-form').colorbox();
             $(".tabs").tabs();
         </script>
     {% endblock %}
