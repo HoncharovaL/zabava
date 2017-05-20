@@ -7,22 +7,24 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use AppBundle\Entity\Titles;
 
 class DogTitlesType extends AbstractType
 {
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description', TextType::class, ['label' => 'desc'])
-                ->add('titles', EntityType::class, [
+        $builder->add('titles', EntityType::class, [
                     'class' => Titles::class,
                     'label' => 'title'
-                ]);
+                ])
+                ->add('description', TextareaType::class, ['label' => 'desc']);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -40,6 +42,5 @@ class DogTitlesType extends AbstractType
     {
         return 'appbundle_dogtitles';
     }
-
 
 }

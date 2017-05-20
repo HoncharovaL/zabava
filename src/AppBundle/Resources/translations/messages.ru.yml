@@ -1,49 +1,86 @@
-dogs.list.name: Имя
-dogs.list.birthday: Дата рождения
-nursery.list.name: Питомник
-nursery.list.photo: Фотография
-nursery.list.bdate: Дата основания
-nursery.list.owner: Владелец
-nursery.list.adress: Адрес
-nursery.list.phone: Телефон
-nursery.list.cellphone: Мобильный телефон
-nursery.list.email: E-mail
-nursery.list.site: Сайт
-nursery.list.about: О питомнике
-nursery.list.nursery: Список питомников
-total.action: Действия
-total.show: Подробнее
-total.edit: Изменить
-total.create: Создать
-total.delete: Удалить
-total.back: Назад
-total.comments: Комментарии
-total.entername: Введите Ваше имя
-total.save: Сохранить
-total.yourcomment: Ваш комментарий
-total.date: Дата
-total.partners: Партнеры
-titles.list.title: Титул
-titles.list.titles: Титулы
-vaccinations.list.vaccinations: Прививки
-services.list.services: Услуги
-services.list.description: Описание
-services.list.price: Цена, грн
-total.yourquestion: Введите Ваш вопрос
-total.questions: Вопросы
-comments.list.questserv: Вопросы об услугах
-comments.list.questdogs: Вопросы о собаках
-comments.list.name: Имя посетителя
-dogs.list.namedog: Кличка собаки
-total.caption: Заголовок
-total.news: Новость
-total.type: Категория
-total.exhibition: Выставки
-total.advice: Советы
-total.other: Другое
-total.male: Кобель
-total.female: Сука
-total.forsale: Доступен
+total:
+    questions: Вопросы
+    askquestion: Задать вопрос
+    add_photo: Добавить фото
+    add_video: Добавить видео
+    add_title: Добавить титул
+    add_vaccination: Добавить прививку
+    add_dog: Добавить собаку
+    main_info: Главное
+    action: Действия
+    show: Подробнее
+    edit: Изменить
+    create: Создать
+    delete: Удалить
+    back: Назад
+    comments: Комментарии
+    save: Сохранить
+    send: Отправить
+    date: Дата
+    mother: Мать
+    father: Отец
+    dogs: Собаки
+    partners: Партнеры
+    reviews: 'Отзывы:'
+    caption: Заголовок
+    news: Новость
+    type: Категория
+    exhibition: Выставки
+    advice: Советы
+    other: Другое 
+    male: Кобель
+    female: Сука
+    forsale: Ищу хозяина
+    select_file: Выберите файл
+    uah: грн.
+dogs:
+    ourdogs: Наши собаки
+    about:
+        bdate: 'Дата рождения:'
+        name: 'Имя:' 
+        nameen: 'Имя (En):'
+        age: '{0} %month% м.|]1,Inf[ %year% г.'
+        age_with_years: %year% г. %month% м.
+        age_without_years:  %month% м.
+        soldout: Продан
+        forsale: Ищу хозяина
+        birthday: 'Дата рождения:'
+        titles: 'Титулы:'
+        vaccinations: 'Прививки:'
+        dogage: 'Возвраст:'
+        quality: 'Качество:'
+        sex: 'Пол:'
+        state: 'Статус:'
+        quality_Show: Для выставок
+        quality_Breed: Для разведения
+        quality_Pet: Домашний питомец
+        description: 'Описание:'
+        descriptionen: 'Описание (En):'
+        photo: 'Фото:'
+        photoFile: 'Фото:'
+        litters: 'Помет:'
+        otherphotos: 'Другие фото:'
+        videos: 'Видео:'
+        dogsPhotos:  'Другие фото:'
+        dogTitles: 'Титулы:'
+        dogVaccinations: 'Прививки:'
+        
+nursery:
+    list:
+        about: О питомнике
+        name: Питомник
+        photo: Фотография
+        bdate: Дата основания
+        owner: Владелец
+        adress: Адрес
+        phone: Телефон
+        cellphone: Мобильный телефон
+        email: E-mail
+        site: Сайт
+        
+        nursery: Список питомников       
+
+
 
 main: 
     title: Главная
@@ -71,3 +108,23 @@ header:
         reviews: Отзывы
         login: Вход
         logout: Выход
+
+services:
+    list:
+        services: Услуга
+        description: Описание
+        price: Цена
+reviews:
+    text:
+        comment_author: '<strong>%name%</strong> написала:'
+        pay_attention: Обратите внимание!
+        comment_disclaimer: '<p>Все комментарии проходят тщательную модерацию. К публикации не допускаются: </p><p> - комментарии рекламного характера </p><p> - комментарии содержащие оскорбления </p><p> - комментарии без указания контактных данных</p>'
+    nursery:
+        conact_us_via: Вы можете связаться со мной по
+        conact_us_via_phones: 'телефонам:'
+        conact_us_via_email: 'эл. почте:'
+    label: 
+        name: Ваше имя
+        email: Ваш e-mail
+        comment: Комментарий
+        phone: Телефон

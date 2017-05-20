@@ -1,18 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<table>
-        <tbody>
-        {% for dog in dogsPhotos %}
-                 <td> <img src="{{photo_path}}{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
-        {% endfor %}
-        </tbody>
-    </table>
-<table>
-        <tbody>
-{% for video in videos %}
-   <td><iframe width="560" height="315" src="{{video.video}}" frameborder="0" allowfullscreen></iframe></td> 
-{% endfor %}
-        </tbody>
-</table>
+    <div class='container'>
+        <div class='photos'>
+            {% for photo in dogsPhotos %}
+                <div class='photo-item'><a class='colorbox group1' href='{{photo_path}}{{photo.photo}}'><img src="{{photo_path}}{{photo.photo}}"/></a></div>
+                    {% endfor %}
+        </div>
+        <div class='videos'>
+            {% for video in videos %}
+                <div class='video-item'>{{video.video|raw}}</div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

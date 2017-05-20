@@ -9,18 +9,103 @@
     src: url(../fonts/EIRIK_RAUDE.ttf);
 }
 
-body 
+body
 {
     background-color: #f8f8f8;
     color: #323232;
     font: 14px Verdana;
 }
 
+a {
+    color : #323232;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.decorated-href:hover {
+    color: #e59e18;
+    border-bottom: 2px #e59e18 dashed;
+} 
+
+h3 {
+    text-align: center;
+    font: 30px eirikRaude;
+    padding: 20px 0;
+
+}
+
+.button-container {
+    text-align: right;
+    margin: 20px 0px;
+    height: 40px;
+    padding-right: 30px;
+}
+
+.button-container.left {
+    text-align: left;
+}
+
+.button-container > * {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.row .button-container {
+    padding-right: 0;
+}
 .container {
     width: 1300px;
     margin: auto;
 }
 
+.popup-form {
+    visibility: hidden;
+}
+
+.row:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.col-2 {
+    display: inline-block;
+    width: 16%;
+    float: left;
+}
+
+.col-3 {
+    display: inline-block;
+    width: 25%;
+    float: left;
+}
+
+.col-4 {
+    display: inline-block;
+    width: 33%;
+    float: left;
+}
+
+.col-6 {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.col-8 {
+    display: inline-block;
+    width: 66%;
+    float: left;
+}
+.parent-width {
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
 .header {
     background-image: url(../img/top.png);
     background-size:     cover;
@@ -34,7 +119,7 @@ body
 }
 
 .header-top .logo {
-    width: 25%;
+    width: 20%;
     float: left;
     height: 77px;
     display: inline-block;
@@ -44,21 +129,16 @@ body
     height: 77px;
     display: inline-block;
     margin: 0 15px;
-    padding-top: 20px;
+    line-height: 77px;
 }
-
-.header-top .menu-item a {
-    color: #323232;
-    text-decoration: none;
-}
-
-.header-top .menu-item a:hover {
-    color: #e59e18;
-    border-bottom: 2px #e59e18 dashed;
+.header-top .locale-switcher{
+    display: inline-block;
+    margin: 30px 0;
+    float: right;
 }
 
 .header-bottom {
-    margin: -35px 0 0 38%;
+    margin: 0 0 0 40%;
 }
 
 .header-bottom .header-bottom-phonenumber {
@@ -98,24 +178,36 @@ body
 }
 
 .home-dogs {
+    padding: 30px 0px; 
     font: 18px eirikRaude;
+    text-align: center;
 }
 .home-dogs-left-block-take {
-    font-size: 110px;
+    font-size: 73px;
 }
 
 .home-dogs-left-block-for-u {
-    font-size: 185px;
+    font-size: 123px;
     color: #e59e18;
 }
 
 .home-dogs-left-block-tailed {
-    font-size: 71px;
+    font-size: 48px;
 }
 
 .home-dogs-left-block-zabava {
-    font-size: 119px;
+    font-size: 73px;
     color: #e59e18;
+}
+.home-dogs-left-block{
+    text-align: right;    
+    width: 35%;
+    display: inline-block;
+    margin-top: 0px;
+}
+.home-dogs-right-block{
+    display: inline-block;
+    width: 64%;    
 }
 
 .home-about-breed {
@@ -126,13 +218,6 @@ body
     font: 18px eirikRaude;
     z-index: 1;
     position: relative;
-}
-
-.home-news h3, .home-partners h3, .home-about-breed h3 {
-    text-align: center;
-    font: 30px eirikRaude;
-    padding: 20px 0;
-    
 }
 
 .home-about-breed-image {
@@ -160,6 +245,11 @@ body
     margin-left: 20px;
     background: #fff;
     border-bottom: 5px #e59e18 solid;
+    margin-bottom: 15px;
+}
+
+.home-news-item  .decorated-href {
+    font:  18px eirikRaude;
 }
 
 .home-news-item-image {
@@ -173,6 +263,34 @@ body
 }
 
 .home-news-item-text {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    background-image:
+        linear-gradient(white, white),  /*  общий фон блока, всегда идёт первым перекрывая всё что под ним  */
+        linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+        linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+    background-repeat: repeat, repeat-x, repeat-x;
+    background-position: 0 0, 10px 0, 10px 0;
+    background-size: auto auto, 20px 20px, 20px 20px;
+    background-clip: padding-box, border-box, border-box;  /*  обрезаем края у общей заливки  */
+    background-origin: padding-box, border-box, border-box, border-box, border-box; 
+}
+.ask-question{
+    line-height: 150px;
+    height: 150px;
+    z-index: -1;
+    background-color: #e59e18;
+}
+.ask-question h3{
+    padding: 75px 0;
+    text-align: center;
+    font: 30px eirikRaude;
+    color: white;
+}
+.dogs-add-question{
     position: relative;
     z-index: 1;
     padding: 20px;
@@ -211,3 +329,392 @@ body
     width: 80px;
     margin: 0 15px;
 }
+
+.reviews-about-nursery .nursery-photo, .reviews-about-nursery .nursery-description {
+    display: inline-block;
+}
+
+.reviews-about-nursery .nursery-photo {
+    width: 60%;
+    float: left;
+    text-align: center;
+}
+
+.reviews-about-nursery .nursery-description {
+    width: 25%;
+    border: #3f84ba 2px solid;
+    padding: 15px;
+    font: 20px eirikRaude;
+    color: #6C6C6C;
+    height: 320px;
+}
+
+.reviews-about-nursery .nursery-description p {
+    padding-bottom: 10px;
+}
+
+.reviews-about-nursery .nursery-description .important-info {
+    font:  22px eirikRaude;
+    color: #323232;
+}
+
+.reviews-about-nursery .nursery-description .very-important-info {
+    font: 28px eirikRaude;
+    color: #323232;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+.reviews-about-nursery img {
+    max-height: 350px;
+    object-fit: contain; /* Fit logo in the image size */
+    -o-object-fit: contain; /* Fit logo fro opera browser */
+    object-position: top; /* Set logo position */
+    -o-object-position: top;
+}
+
+.reviews-comment-item .date{
+    opacity: .5;
+    margin:  10px 0px;
+    font: 15px eirikRaude;
+}
+.reviews-comment-item .title {
+    margin:  10px 0px;   
+}
+.reviews-comment-item .text {
+    margin:  10px 0px;
+}
+.reviews-comment-item {
+    padding: 30px 30px;
+    /*font: 18px eirikRaude;*/
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.reviews-add-comment .review-form, .reviews-add-comment .review-disclaimer {
+    display: inline-block;
+    width: 45%;
+}
+
+.reviews-add-comment .review-disclaimer {
+    padding-top: 28px;
+}
+.reviews-add-comment .review-disclaimer h4 {
+    color: #e59e18;
+    font-size: 18px;
+    font: bold italic 18px eirikRaude;
+    padding-bottom: 20px;
+}
+
+.reviews-add-comment .review-disclaimer p {
+    font: 18px eirikRaude;
+    color: #B5B5B5;
+    padding-bottom: 5px;
+}
+
+.reviews-add-comment .review-form {
+    padding: 20px 30px;
+    float: left;
+}
+
+.reviews-add-comment input[type="text"], .reviews-add-comment textarea {
+    width: 49.5%;
+}
+
+.reviews-add-comment textarea {
+    width: 100%;
+}
+
+.news-page {
+    margin-top: 20px;
+    overflow: hidden;
+    background: #fff;
+    border-bottom: 5px #e59e18 solid;
+}
+
+.news-page .decorated-href {
+    font:  18px eirikRaude;
+}
+
+.news-page .image {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.news-page .image img {
+    width: 100%;
+    z-index: -1;
+}
+
+.news-page .text {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    margin-top: -10px;
+    border-top: 10px solid transparent;
+    background-image:
+        linear-gradient(white, white),  /*  общий фон блока, всегда идёт первым перекрывая всё что под ним  */
+        linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+        linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+    background-repeat: repeat, repeat-x, repeat-x;
+    background-position: 0 0, 10px 0, 10px 0;
+    background-size: auto auto, 20px 20px, 20px 20px;
+    background-clip: padding-box, border-box, border-box;  /*  обрезаем края у общей заливки  */
+    background-origin: padding-box, border-box, border-box, border-box, border-box; 
+}
+
+.news-page .title {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px #F3F3F3 solid;
+}
+
+.news-page .description {
+    color: #787878;
+    padding-top: 20px;
+}
+
+.photos .photo-item {
+    margin: 15px auto;
+    width: 31%;
+    height: 400px;
+    padding: 10px 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.photos .photo-item img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.videos .video-item {
+    width: 48%;
+    height: 350px;
+    padding: 10px 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.dogs-photo-container .dogs-photo {
+    max-height: 100%;
+    max-width: 100%;
+}
+.dogs-photo-container{
+    width: 600px;
+    height: 400px;
+    text-align: center;
+
+}
+.dogs-list-item .dogs-photo-container{
+    display: inline-block;
+    float: left;
+}
+.dogs-list-item .dogs-about-container{
+    height: 400px;
+}
+
+.dogs_photos{
+    float: left;
+    display: inline-block;
+    height: 600px;
+    width: 600px;
+}
+.dogs-other-photos-container{
+    width:600px;
+}
+.dogs-other-photos-container .dogs-other-photos{
+    margin: 5px;
+    max-height: 200px;
+}
+.dogs-about-container {
+    width: 300px;
+    height: 520px;
+    display: inline-block;
+    padding: 40px; 
+
+}
+.dogs-show-container .dogs-about-container{
+    margin: 30px;
+}
+
+.dogs-list-item, .dogs-show-container{
+    width: 1100px;
+    margin: 30px auto;
+    display: block;
+}
+
+.sex-img {
+    width: 15px;
+    height: 15px;
+    float: left;
+    display: inline-block;
+}
+.sex-img img{
+    max-width: 15px;
+    max-height: 15px;
+
+}
+.dogs-show-container .sex-img img{
+    max-width: 25px;
+    max-height: 25px;
+
+}
+.dogs-show-container .dog-name{
+    font-size: 25px;
+}
+.dog-name{
+    display: inline-block;
+}
+.dogs-list .button-container{
+    margin: 10px 0;
+    text-align: left;
+}
+.dogs-about-container > * { 
+    font: 17px eirikRaude;
+    padding: 5px 10px; 
+}
+.dogs-description{
+    opacity: 0.5;
+}
+.dogs-add-question textarea {
+    width: 400px;
+}
+.dogs-add-question input[type="text"] {
+    width: 400px;
+    display: block;
+}
+.dogs-add-question{
+    text-align: center;
+
+}
+
+.dogs-edit .dog-info label {
+    display: block;
+}
+
+.ui-widget-content .ui-state-active {
+    background-color: #e59e18;
+    border-color: #DCDCDC;
+}
+
+
+.dog-info .vich-image img {
+    max-width: 95%;
+    max-height: 100%;
+}
+.litter-item .parents-img{
+    width: 200px;
+    height: 300px;
+    line-height: 300px;
+    display: block;
+}
+
+.parents-img img{
+    width: 200px;
+    max-height: 300px;
+    vertical-align: middle;
+    object-fit: contain;
+
+
+}
+.litter-item .parent-container{
+    display: inline-block;
+    text-align: center;
+    margin: 24px;
+}
+.litter-date{
+    text-align: center;
+}
+.litter-item{
+    width:500px;
+    display: inline-block;
+    float: left;
+    margin: 10px;
+}
+.litters_container:after{
+    content: '.';
+    float: none;
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.litter-item-child-list{
+    width: 500px;
+
+}
+.litter-item-child-list .child-list-item{
+    text-align: center;
+    height: 35px;
+    margin: 20px 5px; 
+    padding: 0 20px;
+}
+.child-list-item .child-sex{
+    width: 30px;
+    height: 30px;
+    float:left;
+}
+.child-sex img{
+    max-height: 30px;
+    width: 30px;
+}
+.child-list-item .child-state{
+    width: 30px;
+    height: 30px;
+    float:right;
+}
+.child-list-item .child-sex, .child-list-item .child-state, .child-list-item .child-name{
+    display: inline-block;
+}
+.child-list-item .child-name{
+    line-height: 35px;
+}
+.services-img{
+    float: left;
+
+}
+.services-img, .service-list{
+    display: inline-block;
+}
+.service-container:after{
+    content: '.';
+    float: none;
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;    
+}
+.service-about .service-price{
+    font-size: 15px;
+    font-weight: bold;
+}
+.service-about .service-price, .service-about .service-description {
+    margin: 20px 0;
+}  
+.service-name{
+    margin: 10px 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+.service-about{
+    margin-left: 10px; 
+}
+.services-img{
+    width: 500px;
+    margin-left: 200px;
+    margin-bottom: 30px;
+}
+.service-list{
+    width: 500px;
+    margin: 50px;
+}
+.service-list-item{
+    margin: 20px 0;
+}
+.service-about .orange-button{
+    margin: 20px 0;
+}
+

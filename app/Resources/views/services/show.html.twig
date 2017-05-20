@@ -7,37 +7,43 @@
         <tbody>
             <tr>
                 <th>{{'services.list.services'|trans}}</th>
-                {% if loc!='en' %}
-                <td>{{ service.services }}</td>
+                    {% if loc!='en' %}
+                    <td>{{ service.services }}</td>
                 {% else %}
-                <td>{{service.servicesEng}}</td>
+                    <td>{{service.servicesEng}}</td>
                 {%endif%}
             </tr>
             <tr>
                 <th>{{'services.list.description'|trans}}</th>
-                {% if loc!='en' %}
-                <td>{{ service.description }}</td>
+                    {% if loc!='en' %}
+                    <td>{{ service.description }}</td>
                 {% else %}
-                <td>{{service.descriptionEn}}</td>
+                    <td>{{service.descriptionEn}}</td>
                 {%endif%}
             </tr>
             <tr>
                 <th>{{'services.list.price'|trans}}</th>
                 <td>{{ service.price }}</td>
             </tr>
-            
-        </tbody>
-    </table>
+        <div class="service-edit">
+            {#                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+            <a class="decorated-href" href="{{ path('services_edit', { 'idServices': service.idServices }) }}">
+                {{'total.edit'|trans}}
+            </a>
+            {#                                    {% endif %}#}
+        </div>
+    </tbody>
+</table>
 
-    <ul>
-        <li>
-            <a href="{{ path('services_index') }}">{{'total.back'|trans}}</a>
-        </li>
-    </ul>
-    <h1>{{'total.yourquestion'|trans}}</h1>
+<ul>
+    <li>
+        <a href="{{ path('services_index') }}">{{'total.back'|trans}}</a>
+    </li>
+</ul>
+<h1>{{'total.yourquestion'|trans}}</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value={{'total.save'|trans}} />
-    {{ form_end(form) }}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<input type="submit" value={{'total.save'|trans}} />
+{{ form_end(form) }}
 {% endblock %}

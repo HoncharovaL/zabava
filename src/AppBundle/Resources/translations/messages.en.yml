@@ -1,48 +1,85 @@
-dogs.list.name: Name
-dogs.list.birthday: Birthday
-nursery.list.name: Nursery
-nursery.list.photo: Photo
-nursery.list.bdate: Birthday
-nursery.list.owner: Owner
-nursery.list.adress: Adress
-nursery.list.phone: Phone
-nursery.list.cellphone: Cellphone
-nursery.list.email: E-mail
-nursery.list.site: Site
-nursery.list.about: About
-nursery.list.nursery: Nursery list
-total.action: Action
-total.show: Show
-total.edit: Edit
-total.create: Create
-total.delete: Delete
-total.back: Back
-total.comments: Comments
-total.entername: Enter your name
-total.save: Save
-total.yourcomment: Your comment
-total.date: Date
-total.partners: Partners
-titles.list.title: Title
-vaccinations.list.vaccinations: Vaccinations
-services.list.services: Services
-services.list.description: Description
-services.list.price: Price, UAH
-total.yourquestion: Enter your question
-total.questions: Questions
-comments.list.questserv: Questions about services
-comments.list.questdogs: Questions about dogs
-comments.list.name: Visitor's name
-dogs.list.namedog: Dog's name
-total.caption: Caption
-total.news: News
-total.type: Category
-total.exhibition: Exhibition
-total.advice: Advice
-total.other: Other
-total.male: Male dog
-total.female: Female dog
-total.forsale: Is available
+total:
+    askquestion: Ask Question
+    questions: Questions
+    add_photo: Add another photo
+    add_video: Add another video
+    add_title: Add title
+    add_vaccination: Add vaccination
+    add_dog: Add dog
+    main_info: Main info
+    action: Action
+    show: Show
+    edit: Edit
+    create: Create
+    delete: Delete
+    back: Back
+    comments: Comments
+    save: Save
+    send: Send
+    date: Date
+    mother: Mother
+    father: Father
+    dogs: Dogs
+    partners: Partners
+    reviews: 'Reviews:'
+    caption: Caption
+    news: News
+    type: Category
+    exhibition: Exhibition
+    advice: Advice
+    other: Other
+    male: Male
+    female: Femail
+    forsale: Looking for a host
+    select_file: Select file
+    uah: UAH
+dogs:
+    
+    ourdogs: Our Dogs
+    about:
+        bdate: 'Birthday:'
+        name: 'Name:' 
+        nameen: 'Name (En):'
+        age: '{0} %month% m. old|]1,Inf[ %year% y. old'
+        age_with_years: %year% y., %month% m. old
+        age_without_years:  %month% m. old
+        soldout: Sold out
+        forsale: Looking for a host
+        birthday: 'Birthday:'
+        titles: 'Titles:'
+        vaccinations: 'Vaccinations:'
+        dogage: 'Age:'
+        quality: 'Quality:'
+        sex: 'Sex:'
+        state: 'State:'
+        quality_Show: For show
+        quality_Breed: For breeding
+        quality_Pet: Pet  
+        description: 'Description:'
+        descriptionen: 'Description (En):'
+        photo: 'Photo:'
+        photoFile: 'Photo:'
+        litters: 'Litters:'
+        otherphotos: 'Other photos:'
+        videos: 'Videos:'
+        dogsPhotos: 'Additional photos:'
+        dogTitles: 'Titles:'
+        dogVaccinations: 'Vaccinations:'
+            
+nursery:
+    list:
+        name: Nursery
+        photo: Photo
+        bdate: Birthday
+        owner: Owner
+        adress: Adress
+        phone: Phone
+        cellphone: Cellphone
+        email: E-mail
+        site: Site
+        about: About
+        nursery: Nursery list
+
 
 main: 
     title: Home
@@ -70,3 +107,26 @@ header:
         reviews: Reviews
         login: Login
         logout: Logout
+        
+services:
+    list:
+        services: Service
+        description: Description
+        price: Price
+
+
+reviews:
+    text:
+        comment_author: '<strong>%name%</strong> wrote:'
+        pay_attention: Pay attention!
+        comment_disclaimer: '<p>All comments are thoroughly moderated. For publication are not allowed: </p><p> - comments of an advertising nature </p><p> - comments containing insults </p><p> - comments without specifying contact information</p>'
+    nursery:
+        conact_us_via: You can contact us via
+        conact_us_via_phones: 'phone:'
+        conact_us_via_email: 'email:'
+    label: 
+        name: Name
+        email: Email
+        comment: Comment
+        phone: Phone
+        

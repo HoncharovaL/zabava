@@ -1,102 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'nursery.list.about'|trans}}</h1>
-
-    <table>
-             <tbody>  
-              <tr>
-                <th>{{'nursery.list.name'|trans}}</th>
-                {% if loc!='en' %}
-                <td>{{ nursery.nameNur }}</td>
-                {% else %}
-                <td>{{nursery.nameNurEn}}</td>
-                {%endif%}
-            </tr>
-            <tr>
-                <th>{{'nursery.list.photo'|trans}}</th>
-                <td><img src="{{photo_path}}{{nursery.photo}}" 
-                         style="width:304px;height:228px;"></td>
-            </tr>
-            <tr>
-                <th>{{'nursery.list.bdate'|trans}}</th>
-                <td>{% if nursery.bdate %}{{ nursery.bdate|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                
-                <th>{{'nursery.list.owner'|trans}}</th>
-                {% if loc!='en' %}
-                <td>{{ nursery.owner }}</td>
-                {% else %}
-                <td>{{nursery.nameNurEn}}</td>
-                {%endif%}
-            </tr>
-            <tr>
-                <th>{{'nursery.list.adress'|trans}}</th>
-                {% if loc!='en' %}
-                <td>{{ nursery.adress }}</td>
-                {% else %}
-                <td>{{nursery.adressEn}}</td>
-                {%endif%}
-            </tr>
-            <tr>
-                <th>{{'nursery.list.phone'|trans}}</th>
-                 <td>{{ nursery.phone }}</td>
-            </tr>
-            <tr>
-                <th>{{'nursery.list.cellphone'|trans}}</th>
-                <td>{{ nursery.cellphone }}</td>
-            </tr>
-            <tr>
-                <th>{{'nursery.list.email'|trans}}</th>
-                <td>{{ nursery.email }}</td>
-            </tr>
-            <tr>
-                <th>{{'nursery.list.site'|trans}}</th>
-                <td>{{ nursery.site }}</td>
-            </tr>
-            <tr>
-                <th>{{'nursery.list.about'|trans}}</th>
-                {% if loc!='en' %}
-                <td>{{ nursery.about }}</td>
-                {% else %}
-                <td>{{nursery.aboutEn}}</td>
-                {%endif%}
-            </tr>
-        </tbody>
-    </table>
-            <h1>{{'total.comments'|trans}}</h1>
-{% for comments in comments %}
-                    <tr>
-                    <td>{{ comments.cdate|date("d/m/Y")  }}</td>
-                    </tr>
-                    <br/>
-                    <tr>
-                    <td>{{ comments.klname }}</td>
-                    </tr>
-                     <br/>
-                    <tr>
-                        <td>{{ comments.question }}</td>
-                    </tr>
-                    <br/>
-                {% endfor %}
-    <ul>
-        <li>
-            <a href="{{ path('homepage')}}">{{'total.back'|trans}}</a>
-        </li>
-  {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-        <li>
-            <a href="{{ path('nursery_edit', { 'idNursery': nursery.idNursery }) }}">{{'total.edit'|trans}}</a>
-        </li>
-
-   {# {% endif %}#}
-
-    </ul>
-            <h1>{{'total.yourcomment'|trans}}</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value={{'total.save'|trans}} />
-    {{ form_end(form) }}
-
+    <div class="container">
+        <div class="reviews-about-nursery">
+            <h3>{{'nursery.list.about'|trans}}</h3>
+            <div class="nursery-container">
+                <div class="nursery-photo">
+                    <img src="{{photo_path}}{{nursery.photo}}"/>
+                </div>
+                <div class="nursery-description">
+                    <p>{{'reviews.nursery.conact_us_via'|trans}}</p>
+                    <p>{{'reviews.nursery.conact_us_via_phones'|trans}}</p>
+                    <p class="important-info">{{ nursery.phone }}</p>
+                    <p class="important-info">{{ nursery.cellphone }}</p>
+                    <p>{{'reviews.nursery.conact_us_via_email'|trans}}</p>
+                    <p class="important-info">{{ nursery.email }}</p>
+                    <p>{{ get_translated(nursery, 'adress') }}</p>
+                    <p class="very-important-info">{{ get_translated(nursery, 'owner') }}</p>
+                </div>
+            </div>
+            <div style="clear: left"></div>
+        </div>
+        <div class="reviews-comments-list">
+            <h3>{{'total.reviews'|trans}}</h3>
+            {% for comments in comments %}
+                <div class="reviews-comment-item">
+                    <div class="date">{{ comments.cdate|date("m.d.Y")}}</div>
+                    <div class="title">{{"reviews.text.comment_author"|trans({"%name%": comments.klname})|raw}}</div>
+                    <div class="text">{{comments.question}}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="reviews-add-comment">
+            <div class="review-form">
+                {{ form_start(form) }}
+                <div>
+                    {{ form_widget(form.klname, {'attr': {'placeholder': 'reviews.label.name'|trans} })}}
+                    {{ form_widget(form.email, {'attr': {'placeholder': 'reviews.label.email'|trans} })}}
+                </div>
+                <div>
+                    {{ form_widget(form.question, {'attr': {'placeholder': 'reviews.label.comment'|trans, 'rows': 5} }) }}
+                </div>
+                <input class="orange-button" type="submit" value={{'total.send'|trans}} />
+                {{ form_end(form) }}
+            </div>
+            <div class="review-disclaimer">
+                <h4>{{'reviews.text.pay_attention'|trans}}</h4>
+                <p>{{'reviews.text.comment_disclaimer'|trans|raw}}</p>
+            </div>
+        </div>
+        <div style="clear: left"></div>
+    </div>
 {% endblock %}

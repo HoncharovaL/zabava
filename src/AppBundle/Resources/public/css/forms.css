@@ -1,0 +1,185 @@
+input[type="text"], textarea, select {
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+select {
+    background-color: #f3f3f3;
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    padding-right: 20px;
+}
+
+.orange-button {
+    background-color: #e59e18;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font: 20px eirikRaude;
+}
+
+.grey-button {
+    background-color: #ccc;
+    border: none;
+    color: white !important;
+    padding: 10px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font: 20px eirikRaude;
+}
+
+.grey-button:hover {
+    background: #e59e18;
+}
+
+.embedded-form li {
+    text-align: center;
+    list-style-type: none;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: #f6f6f6;
+    margin: 10px auto;
+    width: 600px;
+    padding-top: 40px;
+    border: #ccc solid 1px;
+}
+
+.embedded-form .delete-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url(./images/delete.png);
+    background-size: 30px 30px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    opacity: 0.33;
+}
+
+.embedded-form .delete-icon:hover {
+    opacity: 1;
+}
+
+.embedded-form li > div {
+    padding-bottom: 20px;
+}
+
+.embedded-form textarea, .embedded-form select, .embedded-form input[type="text"]  {
+    width: 500px;
+    background: #fbfbfb;
+}
+
+.embedded-form .add-button-container {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.embedded-form .add-new-element {
+    background-color: #e59e18;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font: 20px eirikRaude;
+}
+
+.embedded-form label:not(.fileContainer) {
+    display: none;
+}
+
+.vich-image img {
+    max-height: 350px;
+    max-width: 100%;
+}
+
+.embedded-form.photos .upload-button {
+    position: absolute;
+    bottom: 0;
+}
+
+
+.embedded-form.photos li  {
+    display: inline-block;
+    width: 380px;
+    height: 380px;
+    margin: 10px 10px;
+    float: left;
+}
+
+.embedded-form.dogs li  {
+    display: inline-block;
+    width: 600px;
+    margin: 10px 10px;
+    float: left;
+}
+
+.embedded-form.dogs textarea, .embedded-form.dogs select, .embedded-form.dogs input[type="text"]  {
+    width: 80%;
+    background: #fbfbfb;
+}
+
+
+.embedded-form.dogs label {
+    display: block;
+}
+
+.embedded-form.photos .form-collection-container:after,  
+.embedded-form.dogs .form-collection-container:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+    background: #ccc;
+    color: #fff;
+    float: left;
+    border: none;
+    padding: 10px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font: 20px eirikRaude;
+}
+
+.fileContainer:hover {
+    background: #e59e18;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}

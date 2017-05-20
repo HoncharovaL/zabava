@@ -1,45 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Litters list</h1>
 
-    <table>
-        <tbody>
-        {% for litter in litters %}
-            <tr>
-                
-                <td> <img src="{{photo_path}}{{litter.mother.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
-                <td><a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">{{ litter.mother.name }}</a></td>
-                <td> <img src="{{photo_path}}{{litter.father.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
-                <td><a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">{{ litter.father.name }}</a></td>
-                <td>{% if litter.ldate  %}{{ litter.ldate |date('Y-m-d') }}{% endif %}</td>
-                <td>  
-                        <table>
-        <tbody>
-            {% for child in litter.dogs %}
-            <a href="{{ path('dogs_show', { 'id': child.idDogs }) }}">{{ child.name }}</a>
-            {{child.state}}
-            {{child.sex}}
+    <div class="container">
+        <div class="litters_container">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class=" button-container">
+                    <a class="orange-button" href="{{ path('litters_new') }}">{{"total.create"|trans}}</a>
+                </div>
+            {%endif%}
+            {% for litter in litters %}
+                <div class = "litter-item">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="button-container">
+                            <a class="orange-button" href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">{{"total.edit"|trans}}</a>
+                        </div>
+                    {% endif %}
+                    <div class="parent-container">
+                        <div class="parents-img">
+                            <img  src="{{photo_path}}{{litter.mother.photo}}" alt="dog" > 
+                        </div>
+                        <a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">
+                            {{ get_translated(litter.mother, 'name') }}
+                        </a>
+                    </div>
+                    <div class="parent-container">
+                        <div class="parents-img">
+                            <img src="{{photo_path}}{{litter.father.photo}}" alt="dog" > 
+                        </div>
+                        <a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">
+                            {{ get_translated(litter.father, 'name') }}
+                        </a>
+                    </div>
+                    <div class="litter-date">
+                        {% if litter.ldate  %}{{ litter.ldate |date('d-m-Y') }}{% endif %}
+                    </div>
+                    <div class="litter-item-child-list">
+                        {% for child in litter.dogs %}
+                            <div class="child-list-item">
+                                <div class="child-sex"><img src='{{ asset('bundles/app/img/sex/'~child.sex~'.png') }}'></div>
+                                <div class="child-name">
+                                    <a href="{{ path('dogs_show', { 'id': child.idDogs }) }}">
+                                        {{ get_translated(child, 'name') }}
+                                    </a>
+                                </div>
+                                <div class="child-state"><img src='{{ asset('bundles/app/img/state/'~child.state~'.png') }}'></div>
+                            </div>
+                        {% endfor %}
+                    </div>       
+                </div>
             {% endfor %}
-                    </tbody>
-    </table>
-            </td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('litters_new') }}">Create a new litter</a>
-        </li>
-    </ul>
+        </div>
+    </div>
 {% endblock %}

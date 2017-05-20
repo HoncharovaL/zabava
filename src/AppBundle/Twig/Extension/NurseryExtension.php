@@ -4,6 +4,7 @@ namespace AppBundle\Twig\Extension;
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use AppBundle\Entity\Nursery;
+use AppBundle\Service\TranslationService;
 
 /**
  * Class NurseryExtension
@@ -16,16 +17,23 @@ class NurseryExtension extends \Twig_Extension
     private $doctrine;
 
     /**
+     * @var TranslationService
+     */
+    private $translator;
+
+    /**
      * @var Nursery
      */
     private $nursery;
 
     /**
      * @param Registry $doctrine
+     * @param TranslationService $translator
      */
-    public function __construct(Registry $doctrine)
+    public function __construct(Registry $doctrine, TranslationService $translator)
     {
         $this->doctrine = $doctrine;
+        $this->translator = $translator;
     }
 
     /**
@@ -63,14 +71,14 @@ class NurseryExtension extends \Twig_Extension
     {
         $this->findNursery();
 
-        return $this->nursery->getOwner();
+        return $this->translator->getTranslatedField($this->nursery, 'owner');
     }
 
     public function getAddress()
     {
         $this->findNursery();
 
-        return $this->nursery->getAdress();
+        return $this->translator->getTranslatedField($this->nursery, 'adress');
     }
 
     public function getNurseryId()

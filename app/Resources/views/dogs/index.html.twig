@@ -1,61 +1,63 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="{{path('nursery_index')}}">nursery are there</a>
-    <a href="{{path('titles_index')}}">titles are there</a>
-    <a href="{{path('litters_index')}}">litters are there</a>
-    <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
-    <h1>Dogs list</h1>
+    <div class='container'>
+        <a href="{{path('nursery_index')}}">nursery are there</a>
+        <a href="{{path('titles_index')}}">titles are there</a>
+        <a href="{{path('litters_index')}}">litters are there</a>
+        <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
+        <h3>{{"dogs.ourdogs"|trans}}</h3>
+        <div class="dogs-list">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class='button-container'>
+                    <a class="orange-button" href="{{ path('dogs_new') }}">{{ "total.create"|trans }}</a>
+                </div>
+            {% endif %}
+            <div class="dogs-list-item">
+                {% for dog in dogs %}
+                    <div class="dogs-photo-container">
+                        <img class='dogs-photo' src="{{photo_path}}{{dog.photo}}" >
+                    </div>
+                    <div class="dogs-about-container">
+                        <div class='sex-img'>
+                            <img src='{{ asset('bundles/app/img/sex/'~dog.sex~'.png') }}'>
+                        </div>
+                        <div class='dog-name'>
+                            {{ get_translated(dog, 'name') }}
+                        </div>
+                        <div>
+                            {{"dogs.about.dogage"|trans}}
+                            {% set age = calculate_age(dog.bdate) %}
+                            {% transchoice age.y with {'%month%': age.m, '%year%': age.y} %}
+                            dogs.about.age
+                            {% endtranschoice %}
+                        </div>
+                        <div>
+                            {{"dogs.about.quality"|trans}}
+                            {{("dogs.about.quality_"~dog.quality)|trans}}
+                        </div>
+                        <div>
+                            {{"dogs.about.state"|trans}}
+                            {% if dog.state %}
+                                {{"dogs.about.forsale"|trans}}
+                            {% else %}
+                                {{"dogs.about.soldout"|trans}}    
+                            {%endif%}
+                        </div>
+                        <div class='dogs-description'>
+                            {{ get_translated(dog, 'description') }}
+                        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>{% trans %}dogs.list.name{% endtrans %}</th>
-                <th>Photo</th>
-                <th>Quality</th>
-                <th>Sex</th>
-                <th>State</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for dog in dogs %}
-            <tr>
-                {% if app.request.getLocale!='en' %}
-                <td>{{ dog.name }}</td>
-                {% else %}
-                <td>{{dog.nameEn}}</td>
-                {%endif%}
-                <td> <img src="{{photo_path}}{{dog.photo}}" alt="dog" style="width:304px;height:228px;"> </td>
-                {% if app.request.getLocale!='en' %}
-                <td>{{ dog.quality}}</td>
-                {% else %}
-                <td>{{dog.qualityEn}}</td>
-                {%endif%}
-                {% if app.request.getLocale!='en' %}
-                <td>{{ dog.sex}}</td>
-                {% else %}
-                <td>{{dog.sexEn}}</td>
-                {%endif%}
-                <td>{{dog.state}}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                        <div class='button-container'>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">{{ "total.edit"|trans }}</a>
+                            {% endif %}
+                            <a class="orange-button" href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">{{ "total.show"|trans }}</a>   
+                        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('dogs_new') }}">Create a new dog</a>
-        </li>
-    </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>    
+    </div>
 {% endblock %}

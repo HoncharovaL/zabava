@@ -79,7 +79,7 @@ class NurseryController extends Controller
         'SELECT p FROM AppBundle:Comments p WHERE p.idNursery=1');
         $comments = $query->getResult();
         $comment = new Comments();
-        $form = $this->createForm('AppBundle\Form\CommentsType', $comment);
+        $form = $this->createForm(\AppBundle\Form\ReviewType::class, $comment);
         $form->handleRequest($request1);
        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager(); 
@@ -89,7 +89,7 @@ class NurseryController extends Controller
             $em->persist($comment);
             $em->flush();
             $comments = $query->getResult();
-            return $this->redirectToRoute('nursery_show', ['id' => $nursery->getIdNursery()]);
+            return $this->redirectToRoute('nursery_show', ['idNursery' => $nursery->getIdNursery()]);
 
         }
          return $this->render('nursery/show.html.twig', array(

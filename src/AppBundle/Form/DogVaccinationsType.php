@@ -12,7 +12,7 @@ class DogVaccinationsType extends AbstractType
 {
     /**
      * {@inheritdoc}
-     */
+     */ 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('vaccinations', EntityType::class, [

@@ -22,7 +22,7 @@ class Comments
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=100, nullable=false)
+     * @ORM\Column(name="phone", type="string", length=100, nullable=true)
      */
     private $phone;
 
@@ -53,9 +53,9 @@ class Comments
      * @var \AppBundle\Entity\Dogs
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dogs")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_dogs", referencedColumnName="id_dogs")
-     * })
+     *
+     * @ORM\JoinColumn(name="id_dogs", referencedColumnName="id_dogs", onDelete="SET NULL")
+     *
      */
     private $idDogs;
         /**
