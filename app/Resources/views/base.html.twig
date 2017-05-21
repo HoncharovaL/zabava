@@ -33,10 +33,10 @@
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                         <a href="{{path('fos_user_security_logout')}}">{{"header.link.logout"|trans}}</a>
                                     {% else %}
-                                        <a href="{{path('fos_user_security_login')}}">{{"header.link.login"|trans}}</a>
+                                        <a class="colorbox-ajax-form" href="{{path('fos_user_security_login')}}">{{"header.link.login"|trans}}</a>
                                     {% endif %}
                                 </div>
-                                <div class="locale-switcher">{{locale_switcher()}}</div>
+                                <div class="menu-item locale-switcher">{{locale_switcher()}}</div>
                             </div>
                             <div class="header-bottom">
                                 {% set phonenumbers = get_nursery_phonenumbers() %}
@@ -85,7 +85,7 @@
                 var html = $('#' + $(this).data('formId')).html();
                 $(this).colorbox({html: html, closeButton: false});
             });
-            $('a.colorbox-ajax-form').colorbox();
+            $('a.colorbox-ajax-form').colorbox({closeButton: false});
             $(".tabs").tabs();
         </script>
     {% endblock %}

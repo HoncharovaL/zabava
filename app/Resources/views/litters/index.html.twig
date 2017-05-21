@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="container">
         <div class="litters_container">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -16,22 +15,26 @@
                             <a class="orange-button" href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">{{"total.edit"|trans}}</a>
                         </div>
                     {% endif %}
-                    <div class="parent-container">
-                        <div class="parents-img">
-                            <img  src="{{photo_path}}{{litter.mother.photo}}" alt="dog" > 
+                    {% if litter.mother %}
+                        <div class="parent-container">
+                            <div class="parents-img">
+                                <img  src="{{photo_path}}{{litter.mother.photo}}" alt="dog" > 
+                            </div>
+                            <a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">
+                                {{ get_translated(litter.mother, 'name') }}
+                            </a>
                         </div>
-                        <a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">
-                            {{ get_translated(litter.mother, 'name') }}
-                        </a>
-                    </div>
-                    <div class="parent-container">
-                        <div class="parents-img">
-                            <img src="{{photo_path}}{{litter.father.photo}}" alt="dog" > 
+                    {% endif %}
+                    {% if litter.father %}
+                        <div class="parent-container">
+                            <div class="parents-img">
+                                <img src="{{photo_path}}{{litter.father.photo}}" alt="dog" > 
+                            </div>
+                            <a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">
+                                {{ get_translated(litter.father, 'name') }}
+                            </a>
                         </div>
-                        <a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">
-                            {{ get_translated(litter.father, 'name') }}
-                        </a>
-                    </div>
+                    {% endif %}
                     <div class="litter-date">
                         {% if litter.ldate  %}{{ litter.ldate |date('d-m-Y') }}{% endif %}
                     </div>

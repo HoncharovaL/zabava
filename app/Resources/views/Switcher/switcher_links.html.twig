@@ -1,0 +1,4 @@
+<img class="current-locale" src="{{ asset('bundles/app/img/locale/'~current_locale~'.png') }}">
+{% for locale in locales %}
+    <a href="{{ locale.link }}" title="{{ locale.locale_current_language }}"><img src="{{ asset('bundles/app/img/locale/'~locale.locale~'.png') }}"></a>
+{% endfor %}

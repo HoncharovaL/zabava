@@ -1,4 +1,5 @@
 total:
+    log_in: Login
     askquestion: Ask Question
     questions: Questions
     add_photo: Add another photo

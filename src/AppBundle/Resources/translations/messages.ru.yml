@@ -1,4 +1,5 @@
 total:
+    log_in: Вход
     questions: Вопросы
     askquestion: Задать вопрос
     add_photo: Добавить фото

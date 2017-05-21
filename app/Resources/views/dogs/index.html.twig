@@ -7,12 +7,13 @@
         <a href="{{path('litters_index')}}">litters are there</a>
         <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
         <h3>{{"dogs.ourdogs"|trans}}</h3>
-        <div class="dogs-list">
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class='button-container'>
                     <a class="orange-button" href="{{ path('dogs_new') }}">{{ "total.create"|trans }}</a>
                 </div>
             {% endif %}
+        <div class="dogs-list">
+
             <div class="dogs-list-item">
                 {% for dog in dogs %}
                     <div class="dogs-photo-container">

@@ -75,6 +75,8 @@ swiftmailer:
     spool:     { type: memory }
 
 lunetics_locale:
+  switcher:
+    template: :Switcher:switcher_links.html.twig
   guessing_order:
     - query
     - router

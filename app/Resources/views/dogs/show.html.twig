@@ -7,14 +7,7 @@
 {% block body %}
     <div class='container'>
         <div class='dogs-show-container'>
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <div class="button-container">
-                    <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">Edit</a>
-                    {{ form_start(delete_form) }}
-                    <input class="orange-button" type="submit" value="Delete">
-                    {{ form_end(delete_form) }}
-                </div>
-            {% endif %}
+
             <div class="dogs_photos">
                 <div class='dogs-photo-container'>
                     <a class='colorbox group1' href='{{photo_path}}{{dog.photo}}'><img class='dogs-photo' src="{{photo_path}}{{dog.photo}}" ></a>
@@ -79,6 +72,14 @@
                 <div>
                     <a class="colorbox-form orange-button" data-form-id="ask-question-form">{{'total.askquestion'|trans}}</a>
                 </div>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="button-container">
+                        <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">{{"total.edit"|trans}}</a>
+                        {{ form_start(delete_form) }}
+                        <input class="orange-button" type="submit" value={{"total.delete"|trans}}>
+                        {{ form_end(delete_form) }}
+                    </div>
+                {% endif %}
                 <div class="popup-form" id="ask-question-form">
                     <div class="ask-question">
                         <h3>{{'total.askquestion'|trans}}</h3>
@@ -93,6 +94,7 @@
                         <div class="question-form">
                             {{ form_widget(form.question, {'attr': {'placeholder': 'reviews.label.comment'|trans, 'rows': 5} }) }}
                         </div>
+
                         <input class="orange-button" type="submit" value={{'total.send'|trans}} />
                         {{ form_end(form) }}
                     </div>
