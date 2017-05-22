@@ -1,16 +1,10 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <h1>{{'vaccinations.list.vaccinations'|trans}}</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value={{'total.create'|trans}} />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('vaccinations_index') }}">{{'total.back'|trans}}</a>
-        </li>
-    </ul>
-{% endblock %}
+<div class="edit-head">
+    <h3>{{'total.create'|trans}}</h3>
+</div>
+<div class="edit-content">
+{{ form_start(form, {'action':path('vaccinations_new')}) }}
+{{ form_row(form.vaccinations, {'attr': {'class': 'parent-width'} })}}
+{{ form_row(form.vaccinationsEng, {'attr': {'class': 'parent-width'} })}}
+<input class="orange-button" type="submit" value={{'total.create'|trans}} />
+{{ form_end(form) }}
+</div>

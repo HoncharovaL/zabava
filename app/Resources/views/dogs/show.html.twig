@@ -71,15 +71,16 @@
                 </div>
                 <div>
                     <a class="colorbox-form orange-button" data-form-id="ask-question-form">{{'total.askquestion'|trans}}</a>
-                </div>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="button-container">
+                    
                         <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">{{"total.edit"|trans}}</a>
                         {{ form_start(delete_form) }}
-                        <input class="orange-button" type="submit" value={{"total.delete"|trans}}>
+                        <input class="grey-button" type="submit" value={{"total.delete"|trans}}>
                         {{ form_end(delete_form) }}
-                    </div>
+                    
                 {% endif %}
+                </div>
+                
                 <div class="popup-form" id="ask-question-form">
                     <div class="ask-question">
                         <h3>{{'total.askquestion'|trans}}</h3>

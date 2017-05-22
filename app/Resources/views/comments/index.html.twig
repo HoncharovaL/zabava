@@ -1,72 +1,69 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'comments.list.questserv'|trans}}</h1>
+    <div class="comments container">
+        <div>
+            {% if comments | length %}
+                <h3>{{"total.question_about.services"|trans}}</h3>
+                {% for comment in comments %}
+                    <div class="comment-item">
+                        <div class="comment-date">
+                            {% if comment.cdate %}{{ comment.cdate|date('d-m-Y') }}{% endif %}
+                        </div>
+                        <div class="user-name">
+                            {{ comment.klname }}
+                        </div>
+                        <div class="user-phone">
+                            {{ comment.phone }}
+                        </div>
+                        <div class="user-email">
+                            {{ comment.email }}
+                        </div>
+                        <div class="comment-theme">
+                            {{"total.subject"|trans}}
+                            {{ comment.services}}
+                        </div>
+                        <div class="user-question">
+                            {{ comment.question }}
+                        </div>                    
+                        <div class="comment-delete">
+                            <a class="orange-button" href="{{ path('delete_route_name', {'id': comment.idComments }) }}">{{'total.delete'|trans}}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {% if commentsdogs | length %}
+                <h3>{{"total.question_about.dogs"|trans}}</h3>
+                {% for comment in commentsdogs %}
+                    <div class="comment-item">
+                        <div class="comment-date">
+                            {% if comment.cdate %}{{ comment.cdate|date('Y-m-d') }}{% endif %}
+                        </div>
+                        <div class="user-name">
+                            {{ comment.klname }}
+                        </div>
+                        <div class="user-phone">
+                            {{ comment.phone }}
+                        </div>
+                        <div class="user-email">
+                            {{ comment.email }}
+                        </div>
+                        <div class="comment-theme">
+                            {{"total.subject"|trans}}
+                            {{ comment.name}}
+                        </div>
+                        <div class="user-question">
+                            {{ comment.question }}
+                        </div>                    
+                        <div class="comment-delete">
+                            <a class="orange-button" href="{{ path('delete_route_name', {'id': comment.idComments }) }}">{{'total.delete'|trans}}</a>
+                        </div>
+                    </div>
+                {% endfor %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>{{'total.date'|trans}}</th>
-                <th>{{'comments.list.name'|trans}}</th>
-                <th>{{'nursery.list.phone'|trans}}</th>
-                <th>{{'nursery.list.email'|trans}}</th>
-                <th>{{'total.questions'|trans}}</th>
-                <th>{{'services.list.services'|trans}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comment in comments %}
-            <tr>
-                <td>{% if comment.cdate %}{{ comment.cdate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ comment.klname }}</td>
-                <td>{{ comment.phone }}</td>
-                <td>{{ comment.email }}</td>
-                <td>{{ comment.question }}</td>
-                <td>{{ comment.services}}</td>
-                <td>
-                    <ul>
-                         {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                         <a href="{{ path('delete_route_name', {'id': comment.idComments }) }}">{{'total.delete'|trans}}</a>
-                         {# {% endif %}#}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-<h1>{{'comments.list.questdogs'|trans}}</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>{{'total.date'|trans}}</th>
-                <th>{{'comments.list.name'|trans}}</th>
-                <th>{{'nursery.list.phone'|trans}}</th>
-                <th>{{'nursery.list.email'|trans}}</th>
-                <th>{{'total.questions'|trans}}</th>
-                <th>{{'dogs.list.namedog'|trans}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comment in commentsdogs %}
-            <tr>
-                <td>{% if comment.cdate %}{{ comment.cdate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ comment.klname }}</td>
-                <td>{{ comment.phone }}</td>
-                <td>{{ comment.email }}</td>
-                <td>{{ comment.question }}</td>
-                <td>{{ comment.name}}</td>
-                 <td>
-                    <ul>
-                         {#  {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                        <li>
-                            <a href="{{ path('comments_edit', { 'idComments': comment.idComments }) }}">{{'total.edit'|trans}}</a>
-                        </li>
-                           {# {% endif %}#}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

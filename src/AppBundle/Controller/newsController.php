@@ -132,7 +132,7 @@ class newsController extends Controller {
             $em->flush();
         }
 
-        return $this->redirectToRoute('news_index');
+        return $this->redirectToRoute('homepage');
     }
 
     /**

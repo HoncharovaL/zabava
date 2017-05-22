@@ -4,7 +4,7 @@
     <div class="services-edit container">
         <div class="row">
             <div class="button-container left col-4">
-                <a class="grey-button" href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+                <a class="grey-button" href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{'total.back'|trans}}</a>
             </div>
             <div class="button-container col-8">
                 {% if delete_form is defined %}

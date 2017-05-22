@@ -2,10 +2,6 @@
 
 {% block body %}
     <div class='container'>
-        <a href="{{path('nursery_index')}}">nursery are there</a>
-        <a href="{{path('titles_index')}}">titles are there</a>
-        <a href="{{path('litters_index')}}">litters are there</a>
-        <a href="{{path('dogtitles_index')}}">dogtitles are there</a>
         <h3>{{"dogs.ourdogs"|trans}}</h3>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class='button-container'>
@@ -49,12 +45,12 @@
                             {{ get_translated(dog, 'description') }}
                         </div>
 
-                        <div class='button-container'>
+                        
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                 <a class="orange-button" href="{{ path('dogs_edit', { 'id': dog.idDogs }) }}">{{ "total.edit"|trans }}</a>
                             {% endif %}
                             <a class="orange-button" href="{{ path('dogs_show', { 'id': dog.idDogs }) }}">{{ "total.show"|trans }}</a>   
-                        </div>
+                        
 
                     </div>
                 {% endfor %}

@@ -127,7 +127,7 @@ class CommentsController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('comments_index');
+        return $this->redirectToRoute('homepage');
     }
 
     /**

@@ -13,8 +13,8 @@ class VaccinationsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('vaccinations', null, array('label' =>'vaccinations.list.vaccinations'))
-                ->add('vaccinationsEng', null, array('label' =>'On English'));
+        $builder->add('vaccinations', null, array('label' =>'dogs.vaccination'))
+                ->add('vaccinationsEng', null, array('label' =>'dogs.vaccination_en'));
     }
     
     /**

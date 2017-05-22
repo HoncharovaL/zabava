@@ -1,4 +1,12 @@
 total:
+    partners: Partners
+    name: Name (Ru)
+    name_en: Name 
+    admin_panel: Admin panel
+    question_about:
+        services: Questions about services
+        dogs: Questions about dogs
+    subject: "Subject:"
     photos: Photos
     videos: Videos
     log_in: Login
@@ -45,42 +53,47 @@ user:
 
 dogs:    
     ourdogs: Our Dogs
+    title: Title (RU)
+    title_en: Title
+    vaccination: Vaccination (Ru)
+    vaccination_en: Vaccination 
     about:
-        bdate: 'Birthday:'
-        name: 'Name:' 
-        nameen: 'Name (En):'
+        bdate: Birthday
+        name: Name
+        nameen: Name (En)
         age: '{0} %month% m. old|]1,Inf[ %year% y. old'
         age_with_years: %year% y., %month% m. old
         age_without_years:  %month% m. old
         soldout: Sold out
         forsale: Looking for a host
-        birthday: 'Birthday:'
-        titles: 'Titles:'
-        vaccinations: 'Vaccinations:'
-        dogage: 'Age:'
-        quality: 'Quality:'
-        sex: 'Sex:'
-        state: 'State:'
+        birthday: Birthday
+        titles: Titles
+        vaccinations: Vaccinations
+        dogage: Age
+        quality: Quality
+        sex: Sex
+        state: State
         quality_Show: For show
         quality_Breed: For breeding
         quality_Pet: Pet  
-        description: 'Description:'
-        descriptionen: 'Description (En):'
-        photo: 'Photo:'
-        photoFile: 'Photo:'
-        litters: 'Litters:'
-        otherphotos: 'Other photos:'
-        videos: 'Videos:'
-        dogsPhotos: 'Additional photos:'
-        dogTitles: 'Titles:'
-        dogVaccinations: 'Vaccinations:'
+        description: Description
+        descriptionen: Description (En)
+        photo: Photo
+        photoFile: Photo
+        litters: Litters
+        otherphotos: Other photos
+        videos: Videos
+        dogsPhotos: Additional photos
+        dogTitles: Titles
+        dogVaccinations: Vaccinations
+
             
 nursery:
     list:
-        name: Nursery
+        name: 'Nursery:'
         photo: Photo
         bdate: Birthday
-        owner: Owner
+        owner: 'Owner:'
         adress: Adress
         phone: Phone
         cellphone: Cellphone

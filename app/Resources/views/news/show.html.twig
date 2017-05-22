@@ -3,14 +3,14 @@
 {% block body %}
     <div class='container'>
         <div class='news-page'>
-{#            {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class='button-container'>
                     <a class="orange-button" href="{{ path('news_edit', { 'idNews': news.idNews }) }}">{{"total.edit"|trans}}</a>
                     {{ form_start(delete_form) }}
                     <input class="orange-button" type="submit" value="{{'total.delete'|trans}}">
                     {{ form_end(delete_form) }}
                 </div>
-{#            {% endif %}#}
+            {% endif %}
             <div class="image">
                 <a class='colorbox group1' href='{{photo_path}}{{news.photo}}'><img src="{{photo_path}}{{news.photo}}"/></a>
             </div>

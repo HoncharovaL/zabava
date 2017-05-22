@@ -31,12 +31,33 @@
                                 <div class="menu-item"><a class='decorated-href' href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{"header.link.reviews"|trans}}</a></div>
                                 <div class="menu-item">
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                        <a href="{{path('fos_user_security_logout')}}">{{"header.link.logout"|trans}}</a>
+                                        <div class=" dropdownbtn">
+                                            {{"total.admin_panel"|trans}}     
+                                            <div class="dropdown-content">
+                                                <div class="dropdown-item">
+                                                    <a class="decorated-href" href="{{path('vaccinations_index')}}" > {{"dogs.about.vaccinations"|trans}} </a>
+                                                </div>
+                                                <div class="dropdown-item">
+                                                    <a class="decorated-href" href="{{path('titles_index')}}"> {{"dogs.about.titles"|trans}} </a>
+                                                </div>
+                                                <div class="dropdown-item">
+                                                    <a class="decorated-href" href="{{path('comments_index')}}"> {{"total.questions"|trans}} </a>
+                                                </div>
+                                                <div class="dropdown-item">
+                                                    <a class="decorated-href" href="{{path('nursery_index')}}"> {{"total.partners"|trans}} </a>
+                                                </div>
+                                                <div class="dropdown-item">
+                                                    <a  class="decorated-href" href="{{path('fos_user_security_logout')}}">
+                                                        {{"header.link.logout"|trans}}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>                                        
                                     {% else %}
                                         <a class="colorbox-ajax-form" href="{{path('fos_user_security_login')}}">{{"header.link.login"|trans}}</a>
                                     {% endif %}
                                 </div>
-                                <div class="menu-item locale-switcher">{{locale_switcher()}}</div>
+                                <div class="locale-switcher">{{locale_switcher()}}</div>
                             </div>
                             <div class="header-bottom">
                                 {% set phonenumbers = get_nursery_phonenumbers() %}
@@ -50,7 +71,7 @@
                         </div>
                     </div>
                 {% endblock %}
-                 
+
             {% block body %}{% endblock %}
             {% block footer %}
                 <div class="footer">

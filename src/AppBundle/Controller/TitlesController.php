@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TitlesController extends Controller
 {
+
     /**
      * Lists all title entities.
      *
@@ -28,7 +29,7 @@ class TitlesController extends Controller
         $titles = $em->getRepository('AppBundle:Titles')->findAll();
 
         return $this->render('titles/index.html.twig', array(
-            'titles' => $titles,
+                    'titles' => $titles,
         ));
     }
 
@@ -49,12 +50,12 @@ class TitlesController extends Controller
             $em->persist($title);
             $em->flush();
 
-            return $this->redirectToRoute('titles_show', array('idTitles' => $title->getIdtitles()));
+            return $this->redirectToRoute('titles_index');
         }
 
         return $this->render('titles/new.html.twig', array(
-            'title' => $title,
-            'form' => $form->createView(),
+                    'title' => $title,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -69,8 +70,8 @@ class TitlesController extends Controller
         $deleteForm = $this->createDeleteForm($title);
 
         return $this->render('titles/show.html.twig', array(
-            'title' => $title,
-            'delete_form' => $deleteForm->createView(),
+                    'title' => $title,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -89,13 +90,13 @@ class TitlesController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('titles_edit', array('idTitles' => $title->getIdtitles()));
+            return $this->redirectToRoute('titles_index');
         }
 
         return $this->render('titles/edit.html.twig', array(
-            'title' => $title,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'title' => $title,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -120,6 +121,22 @@ class TitlesController extends Controller
     }
 
     /**
+     * Deletes a title entity.
+     *
+     * @Route("/{idTitles}/delete", name="titles_delete_href")
+     */
+    public function deletehrefAction(Request $request, Titles $title)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($title);
+        $em->flush();
+
+
+        return $this->redirectToRoute('titles_index');
+    }
+
+    /**
      * Creates a form to delete a title entity.
      *
      * @param Titles $title The title entity
@@ -129,9 +146,10 @@ class TitlesController extends Controller
     private function createDeleteForm(Titles $title)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('titles_delete', array('idTitles' => $title->getIdtitles())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('titles_delete', array('idTitles' => $title->getIdtitles())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

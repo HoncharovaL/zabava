@@ -4,7 +4,7 @@
     <div class="nursery-edit container">
         <div class="row">
             <div class="button-container left col-4">
-                <a class="grey-button" href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+                <a class="grey-button" href="{{ path('nursery_show', { 'idNursery': get_nursery_id()}) }}">{{'total.back'|trans}}</a>
             </div>
             <div class="button-container col-8">                
                 <input class="orange-button" onclick="$('#main-form').submit();" type="submit" value="{{'total.save'|trans}}"/>
@@ -38,17 +38,17 @@
             </div>
             <div class="nursery-comments row" id="tab-comments">
                 {% for comment in comments %}
-                    <div class="comment-container">
+                    <div class="comment-item">
                         <div class="comment-date">
                             {{ comment.cdate|date("d/m/Y") }}
                         </div>
-                        <div class="comment-author">
+                        <div class="user-name">
                             <a href="{{ path('comments_show', { 'idComments': comment.idComments }) }}">{{ comment.klname }}</a>
                         </div>
-                        <div class="comment-email">
+                        <div class="user-email">
                             {{ comment.email }}
                         </div>
-                        <div class="comment-question">
+                        <div class="user-question">
                             {{ comment.question }}
                         </div>
                         <div class="comment-edit">

@@ -48,7 +48,7 @@ class LittersController extends Controller
             $em->persist($litter);
             $em->flush();
 
-            return $this->redirectToRoute('litters_show', array('idLitters' => $litter->getIdlitters()));
+            return $this->redirectToRoute('litters_index', array('idLitters' => $litter->getIdlitters()));
         }
 
         return $this->render('litters/edit.html.twig', array(

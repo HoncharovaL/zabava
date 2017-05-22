@@ -1,4 +1,12 @@
 total:
+    partners: Партнеры
+    name: Название
+    name_en: Название (EN)
+    admin_panel: Админ панель
+    question_about:
+        services: Вопросы о услугах
+        dogs: Вопросы о собаках
+    subject: "Тема:"
     photos: Фотографии
     videos: Видео
     log_in: Вход
@@ -46,43 +54,48 @@ user:
 
 dogs:
     ourdogs: Наши собаки
+    title: Титул 
+    title_en: Титул (EN)
+    vaccination: Прививка
+    vaccination_en: Прививка (En)
     about:
-        bdate: 'Дата рождения:'
-        name: 'Имя:' 
-        nameen: 'Имя (En):'
+        bdate: Дата рождения
+        name: Имя
+        nameen: Имя (En)
         age: '{0} %month% м.|]1,Inf[ %year% г.'
         age_with_years: %year% г. %month% м.
         age_without_years:  %month% м.
         soldout: Продан
         forsale: Ищу хозяина
-        birthday: 'Дата рождения:'
-        titles: 'Титулы:'
-        vaccinations: 'Прививки:'
-        dogage: 'Возвраст:'
-        quality: 'Качество:'
-        sex: 'Пол:'
-        state: 'Статус:'
+        birthday: Дата рождения
+        titles: Титулы
+        vaccinations: Прививки
+        dogage: Возвраст
+        quality: Качество
+        sex: Пол
+        state: Статус
         quality_Show: Для выставок
         quality_Breed: Для разведения
         quality_Pet: Домашний питомец
-        description: 'Описание:'
-        descriptionen: 'Описание (En):'
-        photo: 'Фото:'
-        photoFile: 'Фото:'
-        litters: 'Помет:'
-        otherphotos: 'Другие фото:'
-        videos: 'Видео:'
-        dogsPhotos:  'Другие фото:'
-        dogTitles: 'Титулы:'
-        dogVaccinations: 'Прививки:'
+        description: Описание
+        descriptionen: Описание (En)
+        photo: Фото
+        photoFile: Фото
+        litters: Помет
+        otherphotos: Другие фото
+        videos: Видео
+        dogsPhotos:  Другие фото
+        dogTitles: Титулы
+        dogVaccinations: Прививки
+        
         
 nursery:
     list:
         about: О питомнике
-        name: Питомник
+        name: 'Питомник:'
         photo: Фотография
         bdate: Дата основания
-        owner: Владелец
+        owner: 'Владелец:'
         adress: Адрес
         phone: Телефон
         cellphone: Мобильный телефон

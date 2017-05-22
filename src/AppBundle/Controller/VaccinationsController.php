@@ -48,7 +48,7 @@ class VaccinationsController extends Controller
             $em->persist($vaccination);
             $em->flush();
 
-            return $this->redirectToRoute('vaccinations_show', array('idVaccinations' => $vaccination->getIdvaccinations()));
+            return $this->redirectToRoute('vaccinations_index');
         }
 
         return $this->render('vaccinations/new.html.twig', array(
@@ -88,7 +88,7 @@ class VaccinationsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('vaccinations_edit', array('idVaccinations' => $vaccination->getIdvaccinations()));
+            return $this->redirectToRoute('vaccinations_index');
         }
 
         return $this->render('vaccinations/edit.html.twig', array(
@@ -114,6 +114,20 @@ class VaccinationsController extends Controller
             $em->remove($vaccination);
             $em->flush();
         }
+
+        return $this->redirectToRoute('vaccinations_index');
+    }
+
+    /**
+     * Deletes a vaccination entity.
+     *
+     * @Route("/{idVaccinations}/delete", name="vaccinations_delete_href")
+     */
+    public function deleteHrefAction(Vaccinations $vaccination)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($vaccination);
+        $em->flush();
 
         return $this->redirectToRoute('vaccinations_index');
     }

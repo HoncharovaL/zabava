@@ -10,17 +10,13 @@
             {%endif%}
             {% for litter in litters %}
                 <div class = "litter-item">
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <div class="button-container">
-                            <a class="orange-button" href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">{{"total.edit"|trans}}</a>
-                        </div>
-                    {% endif %}
+                    
                     {% if litter.mother %}
                         <div class="parent-container">
                             <div class="parents-img">
                                 <img  src="{{photo_path}}{{litter.mother.photo}}" alt="dog" > 
                             </div>
-                            <a href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">
+                            <a class="decorated-href" href="{{ path('dogs_show', { 'id': litter.mother.idDogs }) }}">
                                 {{ get_translated(litter.mother, 'name') }}
                             </a>
                         </div>
@@ -30,7 +26,7 @@
                             <div class="parents-img">
                                 <img src="{{photo_path}}{{litter.father.photo}}" alt="dog" > 
                             </div>
-                            <a href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">
+                            <a class="decorated-href" href="{{ path('dogs_show', { 'id': litter.father.idDogs }) }}">
                                 {{ get_translated(litter.father, 'name') }}
                             </a>
                         </div>
@@ -43,14 +39,19 @@
                             <div class="child-list-item">
                                 <div class="child-sex"><img src='{{ asset('bundles/app/img/sex/'~child.sex~'.png') }}'></div>
                                 <div class="child-name">
-                                    <a href="{{ path('dogs_show', { 'id': child.idDogs }) }}">
+                                    <a class="decorated-href" href="{{ path('dogs_show', { 'id': child.idDogs }) }}">
                                         {{ get_translated(child, 'name') }}
                                     </a>
                                 </div>
                                 <div class="child-state"><img src='{{ asset('bundles/app/img/state/'~child.state~'.png') }}'></div>
                             </div>
                         {% endfor %}
-                    </div>       
+                    </div>  
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        
+                            <a class="orange-button" href="{{ path('litters_edit', { 'idLitters': litter.idLitters }) }}">{{"total.edit"|trans}}</a>
+                        
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

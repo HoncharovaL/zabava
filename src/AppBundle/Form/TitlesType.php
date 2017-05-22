@@ -13,8 +13,8 @@ class TitlesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', null, array('label' =>'titles.list.title'))
-                ->add('titleEng', null, array('label' =>'on english'));
+        $builder->add('title', null, array('label' =>'dogs.title'))
+                ->add('titleEng', null, array('label' =>'dogs.title_en'));
     }
     
     /**
