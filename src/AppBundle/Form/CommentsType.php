@@ -13,10 +13,10 @@ class CommentsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('klname', null, array('label' =>'total.entername'))
-                ->add('phone', null, array('label' =>'nursery.list.phone'))
-                ->add('email', null, array('label' =>'nursery.list.email'))
-                ->add('question', null, array('label' =>'total.comments'));
+        $builder->add('klname', null, array('label' =>'user.name'))
+                ->add('phone', null, array('label' =>'user.phone'))
+                ->add('email', null, array('label' =>'user.email'))
+                ->add('question', null, array('label' =>'user.comment'));
     }
     
     /**

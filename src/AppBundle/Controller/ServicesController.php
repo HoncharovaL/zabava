@@ -54,7 +54,7 @@ class ServicesController extends Controller
             return $this->redirectToRoute('services_show', array('idServices' => $service->getIdservices()));
         }
 
-        return $this->render('services/new.html.twig', array(
+        return $this->render('services/edit.html.twig', array(
             'service' => $service,
             'form' => $form->createView(),
         ));
@@ -134,7 +134,7 @@ class ServicesController extends Controller
 
         return $this->render('services/edit.html.twig', array(
             'service' => $service,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

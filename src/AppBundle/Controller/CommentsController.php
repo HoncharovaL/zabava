@@ -105,7 +105,7 @@ class CommentsController extends Controller
 
         return $this->render('comments/edit.html.twig', array(
             'comment' => $comment,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

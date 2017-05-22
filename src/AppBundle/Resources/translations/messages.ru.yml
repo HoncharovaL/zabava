@@ -1,4 +1,6 @@
 total:
+    photos: Фотографии
+    videos: Видео
     log_in: Вход
     questions: Вопросы
     askquestion: Задать вопрос
@@ -34,6 +36,14 @@ total:
     forsale: Ищу хозяина
     select_file: Выберите файл
     uah: грн.
+
+
+user:
+    name: Имя пользователя
+    phone: Телефон
+    comment: Комментарий
+    email: Email
+
 dogs:
     ourdogs: Наши собаки
     about:

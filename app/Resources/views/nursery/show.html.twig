@@ -4,6 +4,11 @@
     <div class="container">
         <div class="reviews-about-nursery">
             <h3>{{'nursery.list.about'|trans}}</h3>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="button-container">
+                    <a class="orange-button" href="{{ path('nursery_edit', { 'idNursery': get_nursery_id()}) }}">{{"total.edit"|trans}}</a>
+                </div>
+            {% endif %}
             <div class="nursery-container">
                 <div class="nursery-photo">
                     <img src="{{photo_path}}{{nursery.photo}}"/>

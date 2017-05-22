@@ -1,4 +1,6 @@
 total:
+    photos: Photos
+    videos: Videos
     log_in: Login
     askquestion: Ask Question
     questions: Questions
@@ -34,8 +36,14 @@ total:
     forsale: Looking for a host
     select_file: Select file
     uah: UAH
-dogs:
-    
+
+user:
+    name: User name
+    phone: Phone
+    comment: Comment
+    email: Email
+
+dogs:    
     ourdogs: Our Dogs
     about:
         bdate: 'Birthday:'

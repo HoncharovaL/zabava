@@ -25,13 +25,7 @@
                 <th>{{'services.list.price'|trans}}</th>
                 <td>{{ service.price }}</td>
             </tr>
-        <div class="service-edit">
-            {#                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-            <a class="decorated-href" href="{{ path('services_edit', { 'idServices': service.idServices }) }}">
-                {{'total.edit'|trans}}
-            </a>
-            {#                                    {% endif %}#}
-        </div>
+        
     </tbody>
 </table>
 

@@ -127,7 +127,7 @@ class NurseryController extends Controller
 
         return $this->render('nursery/edit.html.twig', array(
             'nursery' => $nursery,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'comments'=>$comments,
         ));
     }

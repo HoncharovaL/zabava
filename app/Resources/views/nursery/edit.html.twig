@@ -1,49 +1,68 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'nursery.list.name'|trans}}</h1>
+    <div class="nursery-edit container">
+        <div class="row">
+            <div class="button-container left col-4">
+                <a class="grey-button" href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+            </div>
+            <div class="button-container col-8">                
+                <input class="orange-button" onclick="$('#main-form').submit();" type="submit" value="{{'total.save'|trans}}"/>
+            </div>
+        </div>
+        {{ form_start(form, {'attr': {'id': 'main-form'} }) }}
+        <div class="tabs">
+            <ul>
+                <li><a href="#tab-main-info">{{'total.main_info'|trans}}</a></li>
+                <li><a href="#tab-comments">{{"total.comments"|trans}}</a></li>
+            </ul>
+            <div class="nursery-info row" id="tab-main-info">
+                <div class="main-photo col-4">
+                    {{ form_widget(form.photoFile)}}
+                </div>
+                <div class="main-info col-6">
+                    {{ form_row(form.nameNur, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.nameNur_en, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.bdate, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.owner, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.ownerEn, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.adress, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.adressEn, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.phone, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.cellphone, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.email, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.about, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.aboutEn, {'attr': {'class': 'parent-width'} })}}
+                    {{ form_row(form.site, {'attr': {'class': 'parent-width'} })}}
+                </div>
+            </div>
+            <div class="nursery-comments row" id="tab-comments">
+                {% for comment in comments %}
+                    <div class="comment-container">
+                        <div class="comment-date">
+                            {{ comment.cdate|date("d/m/Y") }}
+                        </div>
+                        <div class="comment-author">
+                            <a href="{{ path('comments_show', { 'idComments': comment.idComments }) }}">{{ comment.klname }}</a>
+                        </div>
+                        <div class="comment-email">
+                            {{ comment.email }}
+                        </div>
+                        <div class="comment-question">
+                            {{ comment.question }}
+                        </div>
+                        <div class="comment-edit">
+                            <a class="orange-button" href="{{ path('comments_edit', { 'idComments': comment.idComments }) }}">{{'total.edit'|trans}}</a>
+                        </div>    
+                    </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="{{'total.edit'|trans}}" />
-        
-    {{ form_end(edit_form) }}
-    <h1>{{'total.comments'|trans}}</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>{{'total.date'|trans}}</th>
-                <th>{{'dogs.list.name'|trans}}</th>
-                <th>{{'nursery.list.email'|trans}}</th>
-                <th>{{'total.comments'|trans}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comment in comments %}
-            <tr>
-                <td>{{ comment.cdate|date("d/m/Y") }}</td>
-                <td><a href="{{ path('comments_show', { 'idComments': comment.idComments }) }}">{{ comment.klname }}</a></td>
-                <td>{{ comment.email }}</td>
-                <td>{{ comment.question }}</td>
+                {% endfor %}
+            </div>
 
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('comments_edit', { 'idComments': comment.idComments }) }}">{{'total.edit'|trans}}</a>
-                        </li>
-                        
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-   
-    <ul>
-        <li>
-            <a href="{{ path('homepage')}}">{{'total.back'|trans}}</a>
-        </li>
-       
-    </ul>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}

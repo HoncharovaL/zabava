@@ -1,21 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'services.list.services'|trans}}</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="{{'total.edit'|trans}}" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('services_index') }}">{{'total.back'|trans}}</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="{{'total.delete'|trans}}">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="services-edit container">
+        <div class="row">
+            <div class="button-container left col-4">
+                <a class="grey-button" href="{{ path('homepage') }}">{{'total.back'|trans}}</a>
+            </div>
+            <div class="button-container col-8">
+                {% if delete_form is defined %}
+                    {{ form_start(delete_form) }}
+                    <input class="grey-button" type="submit" value="{{"total.delete"|trans}}">
+                    {{ form_end(delete_form) }}
+                {% endif %}
+                <input class="orange-button" onclick="$('#main-form').submit();" type="submit" value="{{'total.save'|trans}}"/>
+            </div>
+        </div>
+        {{ form_start(form, {'attr': {'id': 'main-form'} }) }}
+        <div class="tabs">
+            <ul>
+                <li><a href="#tab-main-info">{{'total.main_info'|trans}}</a></li>                
+            </ul>
+            <div class="services-info row" id="tab-main-info">                
+                <div class="main-info col-6">
+                    <div class="left-col">
+                        {{ form_row(form.services, {'attr': {'class': 'parent-width'} })}}
+                        {{ form_row(form.description, {'attr': {'class': 'parent-width'} })}}
+                    </div> 
+                    <div class="right-col">
+                        {{ form_row(form.servicesEng, {'attr': {'class': 'parent-width'} })}}
+                        {{ form_row(form.descriptionEn, {'attr': {'class': 'parent-width'} })}}
+                    </div>
+                    <div class="service-price">
+                        {{ form_row(form.price, {'attr': {'class': 'parent-width'} })}}  
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
+

@@ -288,6 +288,50 @@ h3 {
     font: 30px eirikRaude;
     color: white;
 }
+.service-about .orange-button{
+        display: block;
+    width: 115px;
+}
+.services-info .col-6{
+    width: 100%;
+    text-align: center;
+}
+
+.services-info .right-col, .services-info .left-col{
+    display: inline-block;
+    width: 40%;
+    margin: 5px;
+}
+.services-info .left-col{
+    float: left;
+}
+.services-info .right-col{
+    float: right;
+}
+.services-info .service-price{
+    width: 80px;
+    margin: auto;
+}
+.comment-container .comment-author,.comment-container .comment-date,
+.comment-container .comment-email, .comment-container .comment-question{
+    margin: 10px;
+}
+.comment-container{
+    border: 1px #B5B5B5 solid;
+    border-radius: 10px;
+}
+
+.comment-container .comment-author{
+    font-weight: bold;
+    margin: 15px 10px;
+}
+.comment-container .comment-edit{
+    margin: 20px 10px;
+
+}
+.comment-edit .orange-button{
+    color: white;
+}
 .dogs-add-question, .log-in-content{
     position: relative;
     z-index: 1;

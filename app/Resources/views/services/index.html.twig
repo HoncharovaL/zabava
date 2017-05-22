@@ -34,12 +34,18 @@
                                     <div class="service-price">
                                         {{ service.price }}{{"total.uah"|trans}}
                                     </div>
-
-
-
-                                    <a class="orange-button colorbox-ajax-form" href="{{ path('services_comment', { 'idServices': service.idServices }) }}">
-                                        {{'total.askquestion'|trans}}
-                                    </a>
+                                    <div>
+                                        <a class="orange-button colorbox-ajax-form" href="{{ path('services_comment', { 'idServices': service.idServices }) }}">
+                                            {{'total.askquestion'|trans}}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                            <a class="orange-button" href="{{ path('services_edit', { 'idServices': service.idServices }) }}">
+                                                {{'total.edit'|trans}}
+                                            </a>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </li>
                         </div>
