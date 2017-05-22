@@ -123,9 +123,9 @@ main:
 header:
     link:
         main: Главная
-        our_dogs: Наши собаки
+        our_dogs: Собаки
         litters: Пометы
-        advices: Советы по уходу
+        advices: Советы
         exhibitions: Выставки
         services: Услуги
         gallery: Галерея

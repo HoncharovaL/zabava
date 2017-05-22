@@ -129,13 +129,18 @@ h3 {
 }
 
 .header-top .menu-item {
+    width: 100px;
     height: 77px;
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 auto;
     line-height: 77px;
+    text-align: center;
 }
 .menu-item .locale-switcher img{
     width: 10px;
+}
+.menu-item .dropdownbtn{
+    width: 135px;
 }
 .header-bottom {
     margin: 0 0 0 40%;
@@ -632,7 +637,7 @@ h3 {
 .partner-container{
     width:800px;
     margin: auto;
-    
+
 }
 .partner-item{
     margin: 20px 0;
@@ -753,7 +758,7 @@ h3 {
     position: absolute;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 5px 15px;
+    padding: 5px 20px;
     z-index: 1;
     line-height: 40px;
 }
