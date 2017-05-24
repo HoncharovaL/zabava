@@ -2,7 +2,7 @@
     <h3>{{'total.askquestion'|trans}}</h3>
 </div>
 <div class="dogs-add-question">
-    {{ form_start(form) }}
+    {{ form_start(form , {'action':path('services_comment',{'idServices':app.request.get('idServices')})}) }}
     <div>
         {{ form_widget(form.klname, {'attr': {'placeholder': 'reviews.label.name'|trans} })}}
         {{ form_widget(form.email, {'attr': {'placeholder': 'reviews.label.email'|trans} })}}

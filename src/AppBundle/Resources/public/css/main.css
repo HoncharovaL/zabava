@@ -762,6 +762,10 @@ h3 {
     z-index: 1;
     line-height: 40px;
 }
+.nursery-comments {
+    width: 500px;
+    margin: auto;
+}
 .dropdownbtn:hover .dropdown-content{
     display: block;
 
