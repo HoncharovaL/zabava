@@ -62,7 +62,7 @@ h3 {
 }
 
 .popup-form {
-    visibility: hidden;
+    display: none;
 }
 
 .row:after {
@@ -485,11 +485,21 @@ h3 {
 }
 
 .videos .video-item {
-    width: 48%;
-    height: 350px;
     padding: 10px 10px;
     display: inline-block;
     text-align: center;
+}
+
+.videos .video-item iframe{
+    margin-left: 3px;
+}
+
+.videos {
+    margin: 20px 3%;
+}
+
+.dogs-show-container .videos {
+    margin: 20px -4%;
 }
 
 .dogs-photo-container .dogs-photo {
@@ -513,7 +523,6 @@ h3 {
 .dogs_photos{
     float: left;
     display: inline-block;
-    height: 600px;
     width: 600px;
 }
 .dogs-other-photos-container{
@@ -532,6 +541,7 @@ h3 {
 }
 .dogs-show-container .dogs-about-container{
     margin: 30px;
+    height: auto;
 }
 
 .dogs-list-item, .dogs-show-container{
